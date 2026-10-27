@@ -1,0 +1,9 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "primary_teal": "#00b894",
+      "accent_orange": "#ff5e15"
+    }
+  }
+}

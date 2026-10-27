@@ -1,0 +1,17 @@
+{% assign current_product = product %}
+{% if current_product == nil or current_product.id == blank %}
+  {% if template contains 'sticker' or request.path contains 'sticker' %}
+    {% assign current_product = all_products['kiss-cuts-custom-stickers'] | default: all_products['die-cuts-custom-stickers'] %}
+  {% elsif template contains 'cap' or request.path contains 'cap' %}
+    {% assign current_product = all_products['custom-caps'] | default: all_products['caps'] %}
+  {% elsif template contains 'gift' or request.path contains 'gift' %}
+    {% assign current_product = all_products['4-in-1-gift-set-diary-card-holder-keychain-and-pen-comes-with-box'] %}
+  {% else %}
+    {% assign current_product = all_products['custom-polo'] | default: all_products['custom-roundneck'] | default: all_products['custom-oversized'] %}
+  {% endif %}
+{% endif %}
+
+<!-- Judge.me Preview Badge (Star Rating) -->
+<div class="jdgm-widget jdgm-preview-badge" data-id="{{ current_product.id }}" data-template="inside-badge" style="margin: 8px 0 12px; cursor: pointer;">
+  {{ current_product.metafields.judgeme.badge }}
+</div>

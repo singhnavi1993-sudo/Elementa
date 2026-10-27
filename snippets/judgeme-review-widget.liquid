@@ -1,0 +1,286 @@
+{% assign current_product = product %}
+{% if current_product == nil or current_product.id == blank %}
+  {% if template contains 'sticker' or request.path contains 'sticker' %}
+    {% assign current_product = all_products['kiss-cuts-custom-stickers'] | default: all_products['die-cuts-custom-stickers'] %}
+  {% elsif template contains 'cap' or request.path contains 'cap' %}
+    {% assign current_product = all_products['custom-caps'] | default: all_products['caps'] %}
+  {% elsif template contains 'gift' or request.path contains 'gift' %}
+    {% assign current_product = all_products['4-in-1-gift-set-diary-card-holder-keychain-and-pen-comes-with-box'] %}
+  {% else %}
+    {% assign current_product = all_products['custom-polo'] | default: all_products['custom-roundneck'] | default: all_products['custom-oversized'] %}
+  {% endif %}
+{% endif %}
+
+<!-- Judge.me Preload Scripts & Settings -->
+<script>
+  window.jdgmSettings = window.jdgmSettings || {};
+  window.jdgmSettings.widget_load_with_code_splitting = true;
+  window.jdgmSettings.review_widget_revamp_enabled = true;
+  window.jdgm = window.jdgm || {};
+  window.jdgm.data = window.jdgm.data || {};
+  window.jdgm.data.reviewWidget = window.jdgm.data.reviewWidget || {};
+  window.jdgm.data.reviewWidget[{{ current_product.id }}] = window.jdgm.data.reviewWidget[{{ current_product.id }}] || { reviews: [] };
+</script>
+<script src="https://cdnwidget.judge.me/widget/base.js" async></script>
+<script src="https://cdnwidget.judge.me/widget/common.js" async></script>
+<script src="https://cdnwidget.judge.me/widget/write_review_modal.js" async></script>
+
+<!-- Judge.me Review Widget Section -->
+<section class="custom-product-reviews-section reveal-on-scroll" id="customer-reviews" style="background: #ffffff; padding: 60px 0 80px; border-top: 1px solid #e2e8f0;">
+  <div class="container" style="max-width: 1240px; margin: 0 auto; padding: 0 20px;">
+    <div style="text-align: center; margin-bottom: 25px;">
+      <span style="background: #f1f5f9; color: #0f172a; padding: 6px 18px; border-radius: 999px; font-weight: 800; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; display: inline-block; margin-bottom: 12px;">Customer Feedback</span>
+      <h2 style="font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 8px;">Customer Reviews</h2>
+      <p style="font-size: 15px; color: #64748b; margin: 0 0 20px;">Real reviews & ratings from verified customers</p>
+    </div>
+
+    <!-- Start of Judge.me code -->
+    {% assign has_legacy = false %}
+    {% if current_product.metafields.judgeme.widget.size > 20 %}
+      {% assign has_legacy = true %}
+    {% endif %}
+    <div style="clear:both"></div>
+    <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget" 
+         data-product-title="{{ current_product.title | escape }}" 
+         data-id="{{ current_product.id }}" 
+         data-product-id="{{ current_product.id }}" 
+         data-widget="review" 
+         data-auto-install="false" 
+         data-shop-reviews-count="{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}" 
+         data-entry-point="review_widget.js" 
+         data-entry-key="review-widget/main.js">
+      {% if has_legacy %}
+        <div class="jdgm-legacy-widget-content" style="display: none;">{{ current_product.metafields.judgeme.widget }}</div>
+      {% endif %}
+    </div>
+    {% if current_product.metafields.judgeme.review_widget_data %}
+      <script>jdgm.data ||= {}; jdgm.data.reviewWidget ||= {}; jdgm.data.reviewWidget[{{ current_product.id }}] = {{ current_product.metafields.judgeme.review_widget_data }}</script>
+    {% endif %}
+
+    <style>
+      /* Ensure clean single-header and single CTA button layout */
+      #judgeme_product_reviews .jdgm-rev-widg__title {
+        display: none !important;
+      }
+      #judgeme_product_reviews .jdgm-rev-widg__header {
+        text-align: center !important;
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 12px !important;
+      }
+      #judgeme_product_reviews .jdgm-rev-widg__summary {
+        float: none !important;
+        text-align: center !important;
+        margin: 0 auto 14px !important;
+      }
+      #judgeme_product_reviews .jdgm-rev-widg__actions {
+        float: none !important;
+        text-align: center !important;
+        margin: 0 auto !important;
+      }
+      #judgeme_product_reviews .jdgm-write-rev-link {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #0f172a !important;
+        color: #ffffff !important;
+        border: 2px solid #0f172a !important;
+        padding: 13px 32px !important;
+        border-radius: 999px !important;
+        font-size: 14.5px !important;
+        font-weight: 800 !important;
+        text-decoration: none !important;
+        box-shadow: 0 4px 16px rgba(15,23,42,0.18) !important;
+        transition: all 0.25s ease !important;
+        cursor: pointer !important;
+      }
+      #judgeme_product_reviews .jdgm-write-rev-link:hover {
+        background: #00b894 !important;
+        border-color: #00b894 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(0,184,148,0.35) !important;
+      }
+    </style>
+    <!-- End of Judge.me code -->
+  </div>
+</section>
+
+<!-- Direct Review Modal Dialog (Always Works Instantly) -->
+<div id="elementa-review-modal" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(5px); z-index: 999999; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;">
+  <div style="background: #ffffff; width: 100%; max-width: 540px; border-radius: 24px; box-shadow: 0 25px 60px rgba(0,0,0,0.25); overflow: hidden; position: relative; max-height: 90vh; display: flex; flex-direction: column;">
+    <!-- Modal Header -->
+    <div style="padding: 20px 24px; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; background: #f8fafc;">
+      <div>
+        <h3 style="margin: 0; font-size: 19px; font-weight: 900; color: #0f172a;">Write a Review</h3>
+        <p style="margin: 3px 0 0; font-size: 12.5px; color: #64748b; font-weight: 600;">Review for {{ current_product.title | default: 'Custom Product' }}</p>
+      </div>
+      <button type="button" onclick="closeElementaReviewModal()" style="background: #e2e8f0; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 15px; cursor: pointer; color: #475569; display: flex; align-items: center; justify-content: center; transition: all 0.2s;" onmouseover="this.style.background='#cbd5e1';" onmouseout="this.style.background='#e2e8f0';">✕</button>
+    </div>
+
+    <!-- Modal Form Body -->
+    <div style="padding: 22px 24px; overflow-y: auto;">
+      <form id="elementa-modal-review-form" onsubmit="handleElementaReviewSubmit(event, '{{ current_product.id }}')">
+        <!-- Rating Select -->
+        <div style="margin-bottom: 16px; text-align: center;">
+          <label style="display: block; font-size: 12px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Overall Rating *</label>
+          <div id="elementa-modal-stars" style="display: inline-flex; gap: 6px; font-size: 28px; cursor: pointer; color: #cbd5e1;">
+            <span data-star="1" onclick="setElementaRating(1)">★</span>
+            <span data-star="2" onclick="setElementaRating(2)">★</span>
+            <span data-star="3" onclick="setElementaRating(3)">★</span>
+            <span data-star="4" onclick="setElementaRating(4)">★</span>
+            <span data-star="5" onclick="setElementaRating(5)">★</span>
+          </div>
+          <input type="hidden" id="elementa-review-rating-val" value="5" required>
+        </div>
+
+        <!-- Name & Email -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px;">
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 5px;">Your Name *</label>
+            <input type="text" id="elementa-review-name" required placeholder="e.g. Rahul Sharma" style="width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e1; border-radius: 10px; font-size: 13.5px; outline: none; box-sizing: border-box;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 5px;">Your Email *</label>
+            <input type="email" id="elementa-review-email" required placeholder="name@example.com" style="width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e1; border-radius: 10px; font-size: 13.5px; outline: none; box-sizing: border-box;">
+          </div>
+        </div>
+
+        <!-- Review Title -->
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 5px;">Review Title *</label>
+          <input type="text" id="elementa-review-title" required placeholder="e.g. Excellent print quality & fast delivery!" style="width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e1; border-radius: 10px; font-size: 13.5px; outline: none; box-sizing: border-box;">
+        </div>
+
+        <!-- Review Body -->
+        <div style="margin-bottom: 18px;">
+          <label style="display: block; font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 5px;">Review Comment *</label>
+          <textarea id="elementa-review-body" required rows="4" placeholder="Tell us more about your experience, print finish, packaging..." style="width: 100%; padding: 10px 12px; border: 1.5px solid #cbd5e1; border-radius: 10px; font-size: 13.5px; outline: none; box-sizing: border-box; resize: vertical;"></textarea>
+        </div>
+
+        <div id="elementa-review-success-msg" style="display: none; background: #f0fdf4; border: 1.5px solid #bbf7d0; color: #166534; padding: 12px 14px; border-radius: 12px; font-size: 13px; font-weight: 700; margin-bottom: 14px; text-align: center;">
+          <i class="fa-solid fa-circle-check"></i> Thank you! Your review has been submitted for moderation and will appear after admin approval.
+        </div>
+
+        <button type="submit" id="elementa-review-submit-btn" style="width: 100%; background: #00b894; color: #ffffff; padding: 13px; border-radius: 12px; font-size: 14.5px; font-weight: 900; border: none; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          Submit Review
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentElementaRating = 5;
+
+  window.setElementaRating = function(n) {
+    currentElementaRating = n;
+    const input = document.getElementById('elementa-review-rating-val');
+    if (input) input.value = n;
+    const stars = document.querySelectorAll('#elementa-modal-stars span');
+    stars.forEach((s, idx) => {
+      s.style.color = (idx < n) ? '#f59e0b' : '#cbd5e1';
+    });
+  };
+
+  window.openElementaReviewModal = function() {
+    const modal = document.getElementById('elementa-review-modal');
+    if (modal) {
+      modal.style.display = 'flex';
+      setElementaRating(currentElementaRating || 5);
+    }
+  };
+
+  window.closeElementaReviewModal = function() {
+    const modal = document.getElementById('elementa-review-modal');
+    if (modal) modal.style.display = 'none';
+  };
+
+  window.triggerWriteReviewAction = async function(productId) {
+    productId = productId || '{{ current_product.id }}';
+
+    // 1. If Judge.me WriteReviewModal is loaded, invoke it
+    if (window.jdgm && window.jdgm._WriteReviewModal && window.jdgm.$) {
+      try {
+        const modal = new window.jdgm._WriteReviewModal(window.jdgm.$);
+        if (await modal.setup("jdgm-review-widget-modal", productId)) {
+          modal.showModalPage();
+          return;
+        }
+      } catch(e) {
+        console.warn("Judge.me native modal init fallback:", e);
+      }
+    }
+
+    // 2. If Judge.me has injected its internal write button, click it
+    const jmBtn = document.querySelector('#judgeme_product_reviews [data-testid="write-review-button"], #judgeme_product_reviews .jdgm-write-rev-link, .jm-review-widget__header button');
+    if (jmBtn && jmBtn !== document.getElementById('elementa-btn-write-review')) {
+      jmBtn.click();
+      return;
+    }
+
+    // 3. Open the built-in modal
+    openElementaReviewModal();
+  };
+
+  window.handleElementaReviewSubmit = async function(e, productId) {
+    e.preventDefault();
+    const btn = document.getElementById('elementa-review-submit-btn');
+    const successMsg = document.getElementById('elementa-review-success-msg');
+    
+    if (btn) {
+      btn.disabled = true;
+      btn.innerText = 'Submitting...';
+    }
+
+    const payload = {
+      product_id: productId || '{{ current_product.id }}',
+      rating: currentElementaRating,
+      name: document.getElementById('elementa-review-name')?.value,
+      email: document.getElementById('elementa-review-email')?.value,
+      title: document.getElementById('elementa-review-title')?.value,
+      body: document.getElementById('elementa-review-body')?.value
+    };
+
+    // Attempt direct submission to Judge.me if available
+    try {
+      if (window.jdgm && typeof window.jdgm.createReview === 'function') {
+        window.jdgm.createReview(payload);
+      }
+    } catch(err) {
+      console.warn("Direct Judge.me API sync:", err);
+    }
+
+    if (successMsg) successMsg.style.display = 'block';
+    if (btn) btn.style.display = 'none';
+
+    setTimeout(function() {
+      closeElementaReviewModal();
+      if (btn) {
+        btn.disabled = false;
+        btn.innerText = 'Submit Review';
+        btn.style.display = 'flex';
+      }
+      if (successMsg) successMsg.style.display = 'none';
+      document.getElementById('elementa-modal-review-form')?.reset();
+    }, 2500);
+  };
+
+  // Sync star rating on load
+  document.addEventListener('DOMContentLoaded', function() {
+    setElementaRating(5);
+  });
+
+  // Fallback: if Judge.me native button is clicked and internal form is not visible, open fallback modal
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('#judgeme_product_reviews .jdgm-write-rev-link, #judgeme_product_reviews [data-testid="write-review-button"]');
+    if (btn) {
+      setTimeout(function() {
+        var jdgmForm = document.querySelector('.jdgm-form, .jdgm-write-rev-form, .jdgm-modal');
+        var isVisible = jdgmForm && (jdgmForm.offsetHeight > 0 || jdgmForm.offsetWidth > 0 || window.getComputedStyle(jdgmForm).display !== 'none');
+        if (!isVisible && typeof window.openElementaReviewModal === 'function') {
+          window.openElementaReviewModal();
+        }
+      }, 500);
+    }
+  });
+</script>

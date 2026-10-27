@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <title>{{ page_title }}</title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    <!-- Google Site Verification for Google Search Console -->
+    <meta name="google-site-verification" content="0bfmsCPRthOAMkqpioL980YSIX5u37BHZBtR6uRqEPw">
+
+    <!-- Elementa Favicon (Google Search & Multi-Device Compliant) -->
+    {% if settings.favicon != blank %}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 48, height: 48 }}">
+    {% else %}
+      <link rel="icon" type="image/png" sizes="192x192" href="{{ 'favicon-192x192.png' | asset_url }}">
+      <link rel="icon" type="image/png" sizes="96x96" href="{{ 'favicon-96x96.png' | asset_url }}">
+      <link rel="icon" type="image/png" sizes="48x48" href="{{ 'favicon-48x48.png' | asset_url }}">
+      <link rel="icon" type="image/png" sizes="32x32" href="{{ 'favicon-32x32.png' | asset_url }}">
+      <link rel="icon" type="image/png" sizes="16x16" href="{{ 'favicon-16x16.png' | asset_url }}">
+      <link rel="shortcut icon" href="{{ 'favicon.ico' | asset_url }}">
+      <link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    <script>
+      if (window.location.pathname.indexOf('login.html') !== -1 || window.location.pathname.indexOf('/pages/sign-in') !== -1) {
+        window.location.replace('/account/login?return_to=/');
+      }
+      if (window.location.pathname.indexOf('/pages/custom-t-shirts') !== -1 || window.location.pathname.indexOf('/products/custom-t-shirts') !== -1) {
+        window.location.replace('/pages/t-shirts#custom');
+      }
+      window.ShopifyAssetUrl = "{{ 'elementa-logo.png' | asset_url }}".split('?')[0].replace('elementa-logo.png', '');
+      window.getShopifyAsset = function(path) {
+        if (!path) return '';
+        var filename = path.replace(/^assets\//, '');
+        if (window.shopifyAssetMap && window.shopifyAssetMap[filename]) {
+          return window.shopifyAssetMap[filename];
+        }
+        if (path.indexOf('data:') === 0 || path.indexOf('http://') === 0 || path.indexOf('https://') === 0 || path.indexOf('//') === 0) {
+          return path;
+        }
+        if (window.ShopifyAssetUrl) {
+          return window.ShopifyAssetUrl + filename;
+        }
+        return 'assets/' + filename;
+      };
+    </script>
+    <link rel="stylesheet" href="{{ 'main.css' | asset_url }}&cb=20261013v5">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+
+  <body>
+    {% section 'header' %}
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {% if request.page_type == 'policy' or request.path contains '/policies/' %}
+        {% render 'elementa-policies' %}
+      {% else %}
+        {{ content_for_layout }}
+      {% endif %}
+    </main>
+
+    {% section 'footer' %}
+
+    {% render 'cart-drawer' %}
+
+    {% render 'whatsapp-floating' %}
+
+    {% comment %} Cache refresh v3.5 {% endcomment %}
+    <script src="{{ 'main.js' | asset_url }}&cb=20261016v12" defer></script>
+  </body>
+
+</html>

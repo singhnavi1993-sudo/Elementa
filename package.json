@@ -1,0 +1,13 @@
+{
+  "name": "elementa-shopify-theme",
+  "version": "1.0.0",
+  "description": "Elementa Shopify Theme Preview Server",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@shopify/ai-toolkit": "^1.8.4"
+  }
+}

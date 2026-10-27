@@ -1,0 +1,26 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tags",
+      "page": "Page {{ page }}"
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "company_label": "Company Name / GSTIN",
+        "optional_company_label": "Company Name / GSTIN (Optional)",
+        "company_placeholder": "Company Name / GSTIN",
+        "optional_company_placeholder": "Company Name / GSTIN (Optional)"
+      }
+    }
+  },
+  "checkout": {
+    "contact": {
+      "company_label": "Company Name / GSTIN",
+      "optional_company_label": "Company Name / GSTIN (Optional)",
+      "company_placeholder": "Company Name / GSTIN",
+      "optional_company_placeholder": "Company Name / GSTIN (Optional)"
+    }
+  }
+}

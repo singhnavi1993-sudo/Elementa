@@ -1,0 +1,29 @@
+# Dependency directories
+node_modules/
+.npm/
+
+# Large ZIP archives and binary archives
+*.zip
+*.tar.gz
+*.rar
+
+# Temporary test captures and screenshots in root
+/*.png
+/*.jpg
+/*.jpeg
+!/assets/**
+!/images/**
+
+# Python scratch / temp files
+scratch/
+*.py
+__pycache__/
+*.pyc
+
+# System and editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+.agents/

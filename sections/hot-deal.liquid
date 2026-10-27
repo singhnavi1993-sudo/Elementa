@@ -1,0 +1,317 @@
+<div class="unfltrd-founder-fullwidth-wrapper">
+  {% assign founder_img_url = 'founder-priya-blazer.jpg' | asset_url %}
+  {% if section.settings.founder_bg != blank %}
+    {% assign founder_img_url = section.settings.founder_bg | image_url: width: 2200 %}
+  {% endif %}
+
+  <!-- Desktop Fixed Parallax Section (Screens >= 992px) -->
+  <section class="unfltrd-founder-desktop-section">
+    <div class="unfltrd-founder-dim-overlay"></div>
+    <div class="unfltrd-founder-card-wrapper">
+      <article class="unfltrd-founder-card">
+        <header>
+          <h2 class="unfltrd-founder-header">a note from the founder</h2>
+        </header>
+
+        <div class="unfltrd-founder-body">
+          <p>
+            <strong>"Why does getting something customized still feel so complicated?"</strong>
+          </p>
+          <p>
+            That was the question I kept coming back to. Finding the right product, explaining your idea, going back and forth, wondering how it'll turn out. Something that's meant to feel personal can quickly start feeling like a tedious process.
+          </p>
+          <p>
+            I wanted to make it simpler. So I built <strong>Elementa</strong> — a place where you can choose something you love or make it completely your own, without the usual back and forth.
+          </p>
+          <div class="unfltrd-founder-quote">
+            From T-shirts and stickers to caps and gifts, the idea is simple: you bring the idea, and we help make it tangible.
+          </div>
+          <p style="font-weight: 700; color: #0f172a; margin-bottom: 0;">
+            That's Elementa. Your ideas, made tangible.
+          </p>
+        </div>
+
+        <footer>
+          <div class="unfltrd-founder-signoff">— love, Priya</div>
+        </footer>
+      </article>
+    </div>
+  </section>
+
+  <!-- Mobile & Tablet Exact UNFLTRD.IN Architecture (Screens <= 991px) -->
+  <div class="unfltrd-founder-mobile-outer clip-inset">
+    <section class="unfltrd-founder-mobile-container" id="founder-section">
+      <!-- Fixed Viewport Background Image (Clipped inside this rounded container) -->
+      <img
+        src="{{ founder_img_url }}"
+        alt="Priya - Founder of Elementa"
+        class="unfltrd-founder-fixed-img"
+        loading="lazy"
+        width="1381"
+        height="2028"
+      >
+      <div class="unfltrd-founder-dim-overlay"></div>
+
+      <!-- Foreground Founder Note Card -->
+      <div class="unfltrd-founder-mobile-card-wrapper">
+        <article class="unfltrd-founder-card">
+          <header>
+            <h2 class="unfltrd-founder-header">a note from the founder</h2>
+          </header>
+
+          <div class="unfltrd-founder-body">
+            <p>
+              <strong>"Why does getting something customized still feel so complicated?"</strong>
+            </p>
+            <p>
+              That was the question I kept coming back to. Finding the right product, explaining your idea, going back and forth, wondering how it'll turn out. Something that's meant to feel personal can quickly start feeling like a tedious process.
+            </p>
+            <p>
+              I wanted to make it simpler. So I built <strong>Elementa</strong> — a place where you can choose something you love or make it completely your own, without the usual back and forth.
+            </p>
+            <div class="unfltrd-founder-quote">
+              From T-shirts and stickers to caps and gifts, the idea is simple: you bring the idea, and we help make it tangible.
+            </div>
+            <p style="font-weight: 700; color: #0f172a; margin-bottom: 0;">
+              That's Elementa. Your ideas, made tangible.
+            </p>
+          </div>
+
+          <footer>
+            <div class="unfltrd-founder-signoff">— love, Priya</div>
+          </footer>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  /* Full Width Section Wrapper Reset */
+  .unfltrd-founder-fullwidth-wrapper {
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #edf0f2;
+  }
+
+  /* Desktop Fixed Parallax Section (Windows PC/Laptops, Mac Safari & Chrome) */
+  .unfltrd-founder-desktop-section {
+    position: relative;
+    width: 100%;
+    min-height: 115vh;
+    background-color: #edf0f2;
+    background-image: url('{{ founder_img_url }}');
+    background-size: auto 92vh;
+    background-position: 72% center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 120px 8vw;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .unfltrd-founder-mobile-outer {
+    display: none;
+  }
+
+  /* Dim Overlay for Crisp Contrast */
+  .unfltrd-founder-dim-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.04) 0%, rgba(15, 23, 42, 0.16) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Centered / Left Floating Card Container */
+  .unfltrd-founder-card-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 540px;
+    margin: 0;
+  }
+
+  /* Glassmorphism Translucent White Note Card */
+  .unfltrd-founder-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: #1e293b;
+    border-radius: 24px;
+    padding: 44px 38px;
+    width: 100%;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.22);
+    text-align: center;
+    border: 1.5px solid rgba(255, 255, 255, 0.95);
+    box-sizing: border-box;
+  }
+
+  .unfltrd-founder-header {
+    font-size: 22px;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 20px;
+    letter-spacing: -0.4px;
+    text-transform: lowercase;
+  }
+
+  .unfltrd-founder-body {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #334155;
+    font-weight: 500;
+  }
+
+  .unfltrd-founder-body p {
+    margin: 0 0 16px;
+  }
+
+  .unfltrd-founder-quote {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 15px;
+    margin: 18px 0;
+    line-height: 1.6;
+    padding: 14px 18px;
+    background: rgba(241, 245, 249, 0.75);
+    border-radius: 14px;
+    border-left: 4px solid #10B981;
+    text-align: left;
+  }
+
+  .unfltrd-founder-signoff {
+    font-size: 17px;
+    font-weight: 800;
+    color: #475569;
+    font-style: italic;
+    margin-top: 20px;
+  }
+
+  /* =========================================================================
+     Mobile & Tablet Architecture - Exact UNFLTRD.IN Implementation
+     1. Outer wrapper uses clip-path: inset(0) to contain the fixed image
+     2. Image is position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+     3. As user scrolls, image stays 100% fixed in window while card moves
+     ========================================================================= */
+  @media (max-width: 991px) {
+    .unfltrd-founder-desktop-section {
+      display: none !important;
+    }
+
+    .unfltrd-founder-mobile-outer {
+      display: block !important;
+      position: relative !important;
+      clip-path: inset(0) !important;
+      -webkit-clip-path: inset(0) !important;
+      margin: 0 16px 24px 16px !important;
+      border-radius: 22px !important;
+      overflow: hidden !important;
+      background-color: #edf0f2 !important;
+    }
+
+    .unfltrd-founder-mobile-container {
+      position: relative !important;
+      width: 100% !important;
+      min-height: auto !important;
+      padding-top: 90px !important;
+      padding-bottom: 90px !important;
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+      border-radius: 22px !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+
+    .unfltrd-founder-fixed-img {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      height: 100lvh !important;
+      object-fit: cover !important;
+      object-position: center top !important;
+      pointer-events: none !important;
+      z-index: 1 !important;
+      max-height: none !important;
+    }
+
+    .unfltrd-founder-mobile-card-wrapper {
+      position: relative !important;
+      z-index: 2 !important;
+      width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+    }
+
+    .unfltrd-founder-mobile-card-wrapper .unfltrd-founder-card {
+      border-radius: 20px !important;
+      padding: 30px 18px !important;
+      background: rgba(255, 255, 255, 0.96) !important;
+      box-shadow: 0 15px 40px rgba(15, 23, 42, 0.20) !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
+      width: 100% !important;
+    }
+
+    .unfltrd-founder-header {
+      font-size: 18px !important;
+      margin-bottom: 12px !important;
+    }
+
+    .unfltrd-founder-body {
+      font-size: 13px !important;
+      line-height: 1.65 !important;
+    }
+
+    .unfltrd-founder-quote {
+      font-size: 13px !important;
+      padding: 10px 12px !important;
+      margin: 12px 0 !important;
+    }
+
+    .unfltrd-founder-signoff {
+      margin-top: 14px !important;
+      font-size: 15.5px !important;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .unfltrd-founder-mobile-outer {
+      margin: 0 10px 20px 10px !important;
+    }
+    .unfltrd-founder-header {
+      font-size: 16px !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Founder Parallax Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "founder_bg",
+      "label": "Founder Background Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Founder Parallax Section"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,392 @@
+{% assign footer_accent = section.settings.accent_color | default: '#10B981' %}
+
+<footer class="elementa-footer-01" id="contact" style="background: #ffffff; color: #09090b; border-top: 1px solid #e4e4e7; position: relative; overflow: hidden;">
+  <style>
+    .elementa-footer-01 {
+      font-family: inherit;
+    }
+    .ft-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 70px 24px 40px;
+    }
+    .ft-top-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    @media (min-width: 992px) {
+      .ft-top-grid {
+        grid-template-columns: 1.2fr 2fr;
+      }
+    }
+    .ft-brand-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 380px;
+    }
+    .ft-brand-link {
+      font-size: 24px;
+      font-weight: 900;
+      color: #09090b;
+      text-decoration: none;
+      letter-spacing: -0.6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ft-tagline {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #52525b;
+      margin: 0;
+    }
+    .ft-newsletter-form {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .ft-email-input {
+      flex: 1;
+      min-width: 0;
+      height: 44px;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid #e4e4e7;
+      background: #f4f4f5;
+      color: #09090b;
+      font-size: 13.5px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .ft-email-input:focus {
+      border-color: #09090b;
+      box-shadow: 0 0 0 3px rgba(9, 9, 11, 0.1);
+    }
+    .ft-submit-btn {
+      height: 44px;
+      width: 44px;
+      border-radius: 8px;
+      background: #09090b;
+      color: #ffffff;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .ft-submit-btn:hover {
+      background: #27272a;
+      transform: scale(1.04);
+    }
+    .ft-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    @media (min-width: 640px) {
+      .ft-nav-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    .ft-nav-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #09090b;
+      margin-bottom: 16px;
+      letter-spacing: 0.2px;
+    }
+    .ft-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ft-nav-link {
+      font-size: 13.5px;
+      color: #52525b;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .ft-nav-link:hover {
+      color: #09090b;
+    }
+    .ft-bottom-bar {
+      margin-top: 60px;
+      padding-top: 28px;
+      border-top: 1px solid #e4e4e7;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    @media (min-width: 640px) {
+      .ft-bottom-bar {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+    .ft-meta-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 13.5px;
+      color: #71717a;
+    }
+    @media (min-width: 640px) {
+      .ft-meta-info {
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+      }
+    }
+    /* Pulsing Live Status Dot */
+    .ft-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #71717a;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .ft-status-badge:hover {
+      color: #09090b;
+    }
+    .ft-status-dot-wrapper {
+      position: relative;
+      display: flex;
+      width: 8px;
+      height: 8px;
+      flex-shrink: 0;
+    }
+    .ft-status-halo {
+      position: absolute;
+      inset: 0;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.6);
+      animation: ft-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    .ft-status-dot {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background: #10B981;
+    }
+    @keyframes ft-ping {
+      75%, 100% {
+        transform: scale(2.2);
+        opacity: 0;
+      }
+    }
+    .ft-social-group {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .ft-social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      color: #52525b;
+      transition: all 0.2s ease;
+      background: transparent;
+      text-decoration: none;
+    }
+    .ft-social-btn:hover {
+      color: #09090b;
+      background: #f4f4f5;
+      transform: translateY(-2px);
+    }
+    .ft-social-btn.ft-social-instagram:hover {
+      color: #E1306C;
+      background: rgba(225, 48, 108, 0.1);
+    }
+    .ft-social-btn.ft-social-linkedin:hover {
+      color: #0A66C2;
+      background: rgba(10, 102, 194, 0.1);
+    }
+    .ft-social-btn.ft-social-whatsapp:hover {
+      color: #25D366;
+      background: rgba(37, 211, 102, 0.1);
+    }
+
+    /* Centered Logo Banner at Bottom */
+    .ft-logo-banner-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 36px 24px 44px;
+      border-top: 1px solid #e4e4e7;
+      background: #fafafa;
+    }
+    .ft-bottom-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    .ft-bottom-logo-img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+
+  <div class="ft-container">
+    <div class="ft-top-grid">
+      
+      <!-- Brand & Newsletter Column -->
+      <div class="ft-brand-col">
+        <a href="/" class="ft-brand-link">
+          {% if section.settings.footer_logo != blank %}
+            <img src="{{ section.settings.footer_logo | image_url: width: 300 }}" alt="{{ shop.name }}" style="height: 38px; width: auto;">
+          {% else %}
+            <img src="{{ 'elementa-logo.png' | asset_url }}" alt="Elementa Logo" style="height: 38px; width: auto; display: block;">
+          {% endif %}
+        </a>
+        <p class="ft-tagline">
+          {{ section.settings.tagline | default: 'A place to turn your ideas into something tangible: customized for you, your loved ones, or your buisness.' }}
+        </p>
+
+        <form class="ft-newsletter-form" onsubmit="handleFooter01Subscribe(event)">
+          <input id="ft01-email" type="email" required placeholder="you@company.com" autocomplete="email" class="ft-email-input">
+          <button type="submit" id="ft01-submit-btn" aria-label="Subscribe" class="ft-submit-btn">
+            <i class="fa-solid fa-arrow-right" style="font-size: 14px;"></i>
+          </button>
+        </form>
+        <p id="ft01-status" style="font-size: 12.5px; color: #10B981; display: none; font-weight: 600; margin: 0;"></p>
+      </div>
+
+      <!-- 3 Navigation Columns -->
+      <nav aria-label="Footer Navigation" class="ft-nav-grid">
+        <div>
+          <h3 class="ft-nav-title">Products</h3>
+          <ul class="ft-nav-list">
+            <li><a href="/pages/t-shirts" class="ft-nav-link">T-Shirts &amp; Apparel</a></li>
+            <li><a href="/products/custom-polo" class="ft-nav-link">Custom Polos</a></li>
+            <li><a href="/products/custom-oversized" class="ft-nav-link">Oversized Tees</a></li>
+            <li><a href="/pages/stickers" class="ft-nav-link">UV DTF Stickers</a></li>
+            <li><a href="/pages/gifts" class="ft-nav-link">Corporate Gifts</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="ft-nav-title">Company &amp; Contact</h3>
+          <ul class="ft-nav-list">
+            <li><a href="/pages/about-us" class="ft-nav-link">About Us</a></li>
+            <li><a href="mailto:contact@shopelementa.in" class="ft-nav-link"><i class="fa-solid fa-envelope" style="margin-right: 6px; color: #10B981;"></i>contact@shopelementa.in</a></li>
+            <li><a href="https://api.whatsapp.com/send?phone=919596681555&text=Hi%20Elementa%2C%20I%20have%20an%20inquiry" target="_blank" rel="noopener noreferrer" class="ft-nav-link"><i class="fa-brands fa-whatsapp" style="margin-right: 6px; color: #25D366;"></i>+91-9596681555</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="ft-nav-title">Legal</h3>
+          <ul class="ft-nav-list">
+            <li><a href="/policies/privacy-policy" class="ft-nav-link">Privacy Policy</a></li>
+            <li><a href="/policies/terms-of-service" class="ft-nav-link">Terms of Service</a></li>
+            <li><a href="/policies/shipping-policy" class="ft-nav-link">Shipping Policy</a></li>
+            <li><a href="/policies/refund-policy" class="ft-nav-link">Refund Policy</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="ft-bottom-bar">
+      <div class="ft-meta-info">
+        <span>© {{ 'now' | date: '%Y' }} Elementa Custom Studio, Inc. All rights reserved.</span>
+        <a href="mailto:contact@shopelementa.in" class="ft-status-badge">
+          <span class="ft-status-dot-wrapper">
+            <span class="ft-status-halo"></span>
+            <span class="ft-status-dot"></span>
+          </span>
+          <span>contact@shopelementa.in • +91-9596681555</span>
+        </a>
+      </div>
+
+      <div class="ft-social-group">
+        <a href="https://www.instagram.com/shop.elementa/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="ft-social-btn ft-social-instagram" title="Instagram">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com/company/shopelementa/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="ft-social-btn ft-social-linkedin" title="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=919596681555&text=Hi%20Elementa%2C%20I%20have%20an%20inquiry%20regarding%20custom%20products" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="ft-social-btn ft-social-whatsapp" title="WhatsApp (+91 9596681555)">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Centered Logo Banner at Bottom -->
+  <div class="ft-logo-banner-container">
+    {% if section.settings.footer_logo != blank %}
+      <img src="{{ section.settings.footer_logo | image_url: width: 400 }}" alt="{{ shop.name }}" class="ft-bottom-logo-img">
+    {% else %}
+      <img src="{{ 'elementa-logo.png' | asset_url }}" alt="Elementa Logo" class="ft-bottom-logo-img">
+    {% endif %}
+  </div>
+</footer>
+
+<script>
+  function handleFooter01Subscribe(e) {
+    e.preventDefault();
+    const btn = document.getElementById('ft01-submit-btn');
+    const input = document.getElementById('ft01-email');
+    const status = document.getElementById('ft01-status');
+    if (!btn || !input) return;
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+      btn.style.background = '#059669';
+      if (status) {
+        status.innerText = 'Thanks for joining! Your 15% discount code is: ELEMENTA15';
+        status.style.display = 'block';
+      }
+      input.value = '';
+    }, 600);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Footer 01",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Background Brand Text",
+      "default": "ELEMENTA"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Footer Tagline",
+      "default": "A place to turn your ideas into something tangible: customized for you, your loved ones, or your buisness."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer 01"
+    }
+  ]
+}
+{% endschema %}

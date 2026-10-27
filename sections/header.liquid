@@ -1,0 +1,508 @@
+<style>
+  /* ==========================================================================
+     Elementa Top Tagline Announcement Bar
+     ========================================================================== */
+  .elementa-tagline-bar {
+    background: linear-gradient(90deg, #0d2813 0%, #143d1c 45%, #184821 55%, #0d2813 100%);
+    color: #ffffff;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    z-index: 101;
+    font-family: var(--font-family, 'Poppins', 'Inter', sans-serif);
+    font-size: 13px;
+    line-height: 1.4;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .elementa-tagline-bar .tagline-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 24px;
+    padding: 0 40px;
+  }
+
+  .tagline-slider-viewport {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .tagline-slide {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tagline-slide.active {
+    display: inline-flex;
+    opacity: 1;
+    transform: translateY(0);
+    animation: taglineSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes taglineSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .tagline-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 2.5px 9px;
+    border-radius: 999px;
+    flex-shrink: 0;
+  }
+
+  .tagline-pill.pill-shipping {
+    background: rgba(168, 212, 176, 0.22);
+    color: #A8D4B0;
+    border: 1px solid rgba(168, 212, 176, 0.45);
+  }
+
+  .tagline-pill.pill-bulk {
+    background: rgba(245, 173, 114, 0.22);
+    color: #F5AD72;
+    border: 1px solid rgba(245, 173, 114, 0.45);
+  }
+
+  .tagline-message {
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 0.15px;
+  }
+
+  .tagline-message strong {
+    color: #A8D4B0;
+    font-weight: 800;
+  }
+
+  .tagline-link {
+    color: #F5AD72;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 3px;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .tagline-link:hover {
+    color: #ffb885;
+  }
+
+  .tagline-link i {
+    font-size: 11px;
+    transition: transform 0.2s ease;
+  }
+
+  .tagline-link:hover i {
+    transform: translateX(3px);
+  }
+
+  .tagline-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 2;
+  }
+
+  .tagline-arrow:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .tagline-arrow.prev {
+    left: 20px;
+  }
+
+  .tagline-arrow.next {
+    right: 20px;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .elementa-tagline-bar {
+      padding: 7px 0;
+      font-size: 12px;
+    }
+    .elementa-tagline-bar .tagline-container {
+      padding: 0 28px;
+    }
+    .tagline-slide {
+      gap: 6px;
+    }
+    .tagline-pill {
+      font-size: 9px;
+      padding: 2px 7px;
+    }
+    .tagline-arrow.prev {
+      left: 6px;
+    }
+    .tagline-arrow.next {
+      right: 6px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .elementa-tagline-bar {
+      padding: 6px 0;
+      font-size: 11.5px;
+    }
+    .elementa-tagline-bar .tagline-container {
+      padding: 0 10px;
+    }
+    .tagline-pill {
+      display: none;
+    }
+    .tagline-arrow {
+      display: none;
+    }
+    .tagline-slider-viewport {
+      padding: 0 4px;
+    }
+  }
+</style>
+
+<!-- Top Tagline Announcement Bar -->
+{% assign show_tagline = section.settings.show_tagline %}
+{% if show_tagline == nil or show_tagline == true %}
+<div class="elementa-tagline-bar" id="elementa-tagline-bar" role="region" aria-label="Store Announcement">
+  <div class="container tagline-container">
+    <button type="button" class="tagline-arrow prev" id="tagline-prev-btn" aria-label="Previous announcement">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="tagline-slider-viewport" id="tagline-slider-viewport">
+      <!-- Tagline 1: Free Delivery on Orders Above ₹1,999! -->
+      <div class="tagline-slide active" data-index="0">
+        <span class="tagline-pill pill-shipping">
+          <i class="fa-solid fa-truck-fast"></i>
+          <span>FREE SHIPPING</span>
+        </span>
+        <span class="tagline-message">
+          Free Delivery on Orders Above <strong>₹1,999!</strong>
+        </span>
+      </div>
+
+      <!-- Tagline 2: Bulk Discounts -->
+      <div class="tagline-slide" data-index="1">
+        <span class="tagline-pill pill-bulk">
+          <i class="fa-solid fa-percent"></i>
+          <span>BULK SAVINGS</span>
+        </span>
+        <span class="tagline-message">
+          Buy More, Save More! Enjoy Exclusive Bulk Order Discounts — 
+          <a href="{{ section.settings.tagline_2_link | default: '/pages/t-shirts' }}" class="tagline-link">
+            Check Our Product Pages <i class="fa-solid fa-arrow-right-long"></i>
+          </a>
+        </span>
+      </div>
+    </div>
+
+    <button type="button" class="tagline-arrow next" id="tagline-next-btn" aria-label="Next announcement">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+</div>
+{% endif %}
+
+<header class="header-main">
+  <div class="container header-container-flex">
+    <div class="header-logo-left">
+      <a href="/" class="brand-logo">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 300 }}" alt="{{ shop.name }}">
+        {% else %}
+          <img src="{{ 'elementa-logo.png' | asset_url }}" alt="Elementa Logo">
+        {% endif %}
+      </a>
+    </div>
+
+    {% assign header_menu = section.settings.menu | default: section.settings.main_menu %}
+    <nav class="header-nav-center">
+      <ul class="nav-links-list">
+        {% if header_menu != blank and linklists[header_menu].links.size > 0 %}
+          {% assign caps_present = false %}
+          {% assign about_present = false %}
+          {% for link in linklists[header_menu].links %}
+            {% assign link_title_lc = link.title | downcase %}
+            {% if link_title_lc contains 'cap' %}
+              {% assign caps_present = true %}
+            {% endif %}
+            {% if link_title_lc contains 'about' %}
+              {% assign about_present = true %}
+            {% endif %}
+          {% endfor %}
+
+          {% for link in linklists[header_menu].links %}
+            {% assign link_title_lc = link.title | downcase %}
+            {% assign is_active = false %}
+            {% if request.path == link.url %}
+              {% assign is_active = true %}
+            {% endif %}
+
+            {% assign link_target_url = link.url %}
+            {% if link_title_lc contains 'about' %}
+              {% assign link_target_url = '/pages/about-us' %}
+              {% if request.path contains 'about' %}
+                {% assign is_active = true %}
+              {% endif %}
+            {% endif %}
+
+            <li><a href="{{ link_target_url }}"{% if is_active %} class="active"{% endif %}>{{ link.title }}</a></li>
+
+            {% if caps_present == false and link_title_lc contains 'shirt' %}
+              {% assign is_caps_active = false %}
+              {% if request.path contains 'caps' %}
+                {% assign is_caps_active = true %}
+              {% endif %}
+              <li><a href="/products/caps"{% if is_caps_active %} class="active"{% endif %}>Caps</a></li>
+              {% assign caps_present = true %}
+            {% endif %}
+          {% endfor %}
+
+          {% if caps_present == false %}
+            {% assign is_caps_active = false %}
+            {% if request.path contains 'caps' %}
+              {% assign is_caps_active = true %}
+            {% endif %}
+            <li><a href="/products/caps"{% if is_caps_active %} class="active"{% endif %}>Caps</a></li>
+          {% endif %}
+
+          {% if about_present == false %}
+            {% assign is_about_active = false %}
+            {% if request.path contains 'about' %}
+              {% assign is_about_active = true %}
+            {% endif %}
+            <li><a href="/pages/about-us"{% if is_about_active %} class="active"{% endif %}>About Us</a></li>
+          {% endif %}
+        {% else %}
+          <li><a href="/" {% if request.path == '/' %}class="active"{% endif %}>Home</a></li>
+          <li><a href="/pages/stickers" {% if request.path contains 'stickers' %}class="active"{% endif %}>Stickers</a></li>
+          <li><a href="/pages/t-shirts" {% if request.path contains 't-shirts' %}class="active"{% endif %}>T-Shirts</a></li>
+          <li><a href="/products/caps" {% if request.path contains 'caps' %}class="active"{% endif %}>Caps</a></li>
+          <li><a href="/pages/gifts" {% if request.path contains 'gifts' %}class="active"{% endif %}>Gifts</a></li>
+          <li><a href="/pages/about-us" {% if request.path contains 'about' %}class="active"{% endif %}>About Us</a></li>
+          <li><a href="/pages/contact" {% if request.path contains 'contact' %}class="active"{% endif %}>Contact</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    <div class="header-actions-right">
+      <button class="action-icon-btn" id="search-toggle-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <a href="{{ routes.account_login_url | default: '/account/login' }}?return_to=/" class="action-icon-btn" title="Account / Login"><i class="fa-regular fa-user"></i></a>
+      <button class="action-icon-btn" id="header-cart-btn" title="Shopping Cart"><i class="fa-solid fa-bag-shopping"></i><span class="badge-count cart-badge-count">0</span></button>
+    </div>
+  </div>
+
+  <div class="header-search-overlay" id="search-overlay">
+    <div class="container">
+      <form class="search-overlay-form" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Search for custom products..." id="search-input">
+        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+        <button type="button" class="close-search-btn" id="close-search-btn">✕</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<script>
+  (function() {
+    function initElementaTagline() {
+      var bar = document.getElementById('elementa-tagline-bar');
+      if (!bar) return;
+
+      var slides = bar.querySelectorAll('.tagline-slide');
+      if (slides.length <= 1) return;
+
+      var prevBtn = document.getElementById('tagline-prev-btn');
+      var nextBtn = document.getElementById('tagline-next-btn');
+      var currentIndex = 0;
+      var timer = null;
+      var duration = 4000;
+
+      function showSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        currentIndex = index;
+
+        for (var i = 0; i < slides.length; i++) {
+          if (i === currentIndex) {
+            slides[i].classList.add('active');
+          } else {
+            slides[i].classList.remove('active');
+          }
+        }
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      function startTimer() {
+        stopTimer();
+        timer = setInterval(nextSlide, duration);
+      }
+
+      function stopTimer() {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          nextSlide();
+          startTimer();
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          prevSlide();
+          startTimer();
+        });
+      }
+
+      bar.addEventListener('mouseenter', stopTimer);
+      bar.addEventListener('mouseleave', startTimer);
+
+      var touchStartX = 0;
+      bar.addEventListener('touchstart', function(e) {
+        if (e.changedTouches && e.changedTouches[0]) {
+          touchStartX = e.changedTouches[0].screenX;
+        }
+        stopTimer();
+      }, { passive: true });
+
+      bar.addEventListener('touchend', function(e) {
+        if (e.changedTouches && e.changedTouches[0]) {
+          var touchEndX = e.changedTouches[0].screenX;
+          var diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 40) {
+            if (diff > 0) nextSlide();
+            else prevSlide();
+          }
+        }
+        startTimer();
+      }, { passive: true });
+
+      startTimer();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initElementaTagline);
+    } else {
+      initElementaTagline();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Top Tagline Announcement Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tagline",
+      "label": "Show Top Tagline Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "tagline_1",
+      "label": "Tagline 1 Message",
+      "default": "Free Delivery on Orders Above ₹1,999!"
+    },
+    {
+      "type": "text",
+      "id": "tagline_2",
+      "label": "Tagline 2 Message",
+      "default": "Buy More, Save More! Enjoy Exclusive Bulk Order Discounts — Check Our Product Pages."
+    },
+    {
+      "type": "url",
+      "id": "tagline_2_link",
+      "label": "Tagline 2 Link URL"
+    },
+    {
+      "type": "header",
+      "content": "Store Logo & Navigation"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Store Logo"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main Navigation Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "phone_text",
+      "label": "Phone Number",
+      "default": "+91-9596681555"
+    },
+    {
+      "type": "text",
+      "id": "email_text",
+      "label": "Email Address",
+      "default": "contact@shopelementa.in"
+    }
+  ]
+}
+{% endschema %}

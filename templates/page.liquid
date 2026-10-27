@@ -1,0 +1,16 @@
+{% if page.handle contains 'tshirt' or page.handle contains 't-shirt' %}
+  {% section 'main-product-tshirts' %}
+{% elsif page.handle contains 'sticker' %}
+  {% section 'main-product-stickers' %}
+{% elsif page.handle contains 'policy' or page.handle contains 'policies' or page.handle contains 'shipping' or page.handle contains 'privacy' or page.handle contains 'refund' or page.handle contains 'term' %}
+  {% render 'elementa-policies' %}
+{% else %}
+  <section class="page-default-section" style="padding: 60px 0;">
+    <div class="container">
+      <h1 style="font-size: 32px; font-weight: 800; margin-bottom: 20px;">{{ page.title }}</h1>
+      <div class="page-content-body" style="font-size: 15px; line-height: 1.8; color: var(--dark-main);">
+        {{ page.content }}
+      </div>
+    </div>
+  </section>
+{% endif %}

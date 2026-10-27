@@ -1,0 +1,815 @@
+
+<style>
+  @media (max-width: 767px) {
+    .gift-card-customize-btn {
+      display: none !important;
+    }
+    .gift-card-footer {
+      justify-content: center !important;
+      text-align: center !important;
+      width: 100% !important;
+    }
+    .gift-card-footer > div {
+      width: 100% !important;
+      text-align: center !important;
+      margin: 0 auto !important;
+    }
+    .gift-card-price {
+      display: block !important;
+      text-align: center !important;
+      margin: 0 auto !important;
+      width: 100% !important;
+    }
+  }
+</style>
+
+<!-- Hero Banner / Mode Toggle Header -->
+<section class="gift-hero-banner" style="background: {{ section.settings.banner_bg | default: '#B2B4B3' }}; padding: 35px 0 25px; border-bottom: 1px solid #94a3b8;">
+  <div class="container" style="text-align: center;">
+    <span style="background: {{ section.settings.badge_bg | default: '#A2D9F7' }}; color: #0c4a6e; padding: 6px 18px; border-radius: 999px; font-weight: 800; font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase; display: inline-block; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+      {{ section.settings.badge_text | default: 'PREMIUM CORPORATE & PERSONAL MERCH' }}
+    </span>
+    <h1 style="font-size: 34px; font-weight: 900; margin-bottom: 8px; color: #0f172a;">{{ section.settings.banner_title | default: 'Gift Set' }}</h1>
+    <p style="font-size: 15px; font-weight: 700; color: #1e293b; margin: 0;">{{ section.settings.banner_subtitle | default: 'Select from our executive corporate gift sets or customize your own with laser engraving' }}</p>
+  </div>
+</section>
+
+<!-- CATALOG VIEW: Executive Gift Products (Active by default) -->
+<div id="gift-catalog-view" class="active" style="display: block; padding: 40px 0 70px;">
+  <div class="container">
+    
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+      <div>
+        <h2 style="font-size: 24px; font-weight: 900; color: #0f172a; margin-bottom: 4px;">Executive Corporate & Personal Gift Collection</h2>
+        <p style="font-size: 14px; color: #64748b; margin: 0; font-weight: 600;">Click on any product to customize with laser-engraved text or your logo.</p>
+      </div>
+      <span style="background: #A2D9F7; color: #0c4a6e; padding: 6px 16px; border-radius: 999px; font-weight: 800; font-size: 13px;">
+        <i class="fa-solid fa-gift"></i> Executive Collection
+      </span>
+    </div>
+
+    <!-- Catalog Grid -->
+    <div class="inbuilt-products-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;">
+      
+      {% assign selected_collection = section.settings.collection %}
+      {% if selected_collection != blank and collections[selected_collection].products.size > 0 %}
+        {% for product in collections[selected_collection].products %}
+          {% assign display_price = product.price %}
+          {% if display_price < 3000 %}
+            {% assign p_lower = product.title | downcase %}
+            {% if p_lower contains "hangry" or p_lower contains "naruto" or p_lower contains "one piece" or p_lower contains "pink panther" or p_lower contains "999" %}
+  {% assign display_price = 99900 %}
+{% elsif p_lower contains "hoodie" or p_lower contains "sweatshirt" %}
+              {% assign display_price = 129900 %}
+            {% elsif p_lower contains "oversiz" %}
+              {% assign display_price = 79900 %}
+            {% elsif p_lower contains "graphic" or p_lower contains "organic" or p_lower contains "dtg" %}
+              {% assign display_price = 49900 %}
+            {% elsif p_lower contains "round" %}
+              {% assign display_price = 59900 %}
+            {% elsif p_lower contains "polo" %}
+              {% assign display_price = 62500 %}
+            {% elsif p_lower contains "sticker" or p_lower contains "dtf" %}
+              {% assign display_price = 15000 %}
+            {% elsif p_lower contains "cap" %}
+              {% assign display_price = 25000 %}
+            {% elsif p_lower contains "gift" %}
+              {% assign display_price = 24900 %}
+            {% else %}
+              {% assign display_price = 79900 %}
+            {% endif %}
+          {% endif %}
+          <div class="inbuilt-product-card tilt-card reveal-on-scroll" data-handle="{{ product.handle }}" data-id="{{ product.id }}" data-title="{{ product.title | escape }}" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+            <div class="inbuilt-card-media" onclick="openGiftProductStudio('{{ product.id }}', '{{ product.title | escape }}', {{ display_price | divided_by: 100 }}, {{ product.compare_at_price | default: display_price | divided_by: 100 }}, '{{ product.featured_image | image_url: width: 800 }}', '{{ product.featured_image | image_url: width: 800 }}')" style="position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6;">
+              <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+              <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3; cursor: pointer;" onclick="openGiftProductStudio('{{ product.id }}', '{{ product.title | escape }}', {{ display_price | divided_by: 100 }}, {{ product.compare_at_price | default: display_price | divided_by: 100 }}, '{{ product.featured_image | image_url: width: 800 }}', '{{ product.featured_image | image_url: width: 800 }}')">{{ product.title }}</h3>
+              <div class="gift-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+                <div>
+                  <strong class="gift-card-price" style="font-size: 18px; font-weight: 900; color: #0f172a;">{{ display_price | money }}</strong>
+                </div>
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="ProductVariantId-{{ section.id }}">
+<button type="button" class="gift-card-customize-btn" onclick="openGiftProductStudio('{{ product.id }}', '{{ product.title | escape }}', {{ display_price | divided_by: 100 }}, {{ product.compare_at_price | default: display_price | divided_by: 100 }}, '{{ product.featured_image | image_url: width: 800 }}', '{{ product.featured_image | image_url: width: 800 }}')" style="background: #A2D9F7; color: #0c4a6e; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                  Customize <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+
+      <!-- Product 1: 2 in 1 gift set (Keychain and pen comes with box) -->
+      <div class="inbuilt-product-card tilt-card reveal-on-scroll" data-id="1" data-handle="2-in-1-gift-set-keychain-and-pen" data-title="2 in 1 gift set (Keychain and pen comes with box)" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+        <div class="inbuilt-card-media" onclick="openGiftProductStudio('1', '2 in 1 gift set (Keychain and pen comes with box)', 249, 989, '{{ "gift-product-1-main.jpg" | asset_url }}', '{{ "gift-product-1-thumb.jpg" | asset_url }}', '{{ "gift-product-1-video.mp4" | asset_url }}', '{{ "gift-product-1-main.jpg" | asset_url }}')" style="position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6;">
+          <img src="{{ 'gift-product-1-main.jpg' | asset_url }}" alt="2 in 1 gift set (Keychain and pen comes with box)" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+          <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3; cursor: pointer;" onclick="openGiftProductStudio('1', '2 in 1 gift set (Keychain and pen comes with box)', 249, 989, '{{ "gift-product-1-main.jpg" | asset_url }}', '{{ "gift-product-1-thumb.jpg" | asset_url }}', '{{ "gift-product-1-video.mp4" | asset_url }}', '{{ "gift-product-1-main.jpg" | asset_url }}')">2 in 1 gift set (Keychain and pen comes with box)</h3>
+          <div class="gift-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+            <div>
+              <strong class="gift-card-price" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹249.00</strong>
+            </div>
+            <button type="button" class="gift-card-customize-btn" onclick="openGiftProductStudio('1', '2 in 1 gift set (Keychain and pen comes with box)', 249, 989, '{{ "gift-product-1-main.jpg" | asset_url }}', '{{ "gift-product-1-thumb.jpg" | asset_url }}', '{{ "gift-product-1-video.mp4" | asset_url }}', '{{ "gift-product-1-main.jpg" | asset_url }}')" style="background: #A2D9F7; color: #0c4a6e; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+              Customize <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3: 2 in 1 Gift Set (Card Holder and pen comes with box) -->
+      <div class="inbuilt-product-card tilt-card reveal-on-scroll" data-id="3" data-handle="2-in-1-gift-set-card-holder-and-pen" data-title="2 in 1 Gift Set (Card Holder and pen comes with box)" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+        <div class="inbuilt-card-media" onclick="openGiftProductStudio('3', '2 in 1 Gift Set (Card Holder and pen comes with box)', 399, 999, '{{ "gift-product-3-main.jpg" | asset_url }}', '{{ "gift-product-3-thumb.jpg" | asset_url }}', '{{ "gift-product-3-video.mp4" | asset_url }}', '{{ "gift-product-3-main.jpg" | asset_url }}')" style="position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6;">
+          <img src="{{ 'gift-product-3-main.jpg' | asset_url }}" alt="2 in 1 Gift Set (Card Holder and pen comes with box)" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+          <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3; cursor: pointer;" onclick="openGiftProductStudio('3', '2 in 1 Gift Set (Card Holder and pen comes with box)', 399, 999, '{{ "gift-product-3-main.jpg" | asset_url }}', '{{ "gift-product-3-thumb.jpg" | asset_url }}', '{{ "gift-product-3-video.mp4" | asset_url }}', '{{ "gift-product-3-main.jpg" | asset_url }}')">2 in 1 Gift Set (Card Holder and pen comes with box)</h3>
+          <div class="gift-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+            <div>
+              <strong class="gift-card-price" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹399.00</strong>
+            </div>
+            <button type="button" class="gift-card-customize-btn" onclick="openGiftProductStudio('3', '2 in 1 Gift Set (Card Holder and pen comes with box)', 399, 999, '{{ "gift-product-3-main.jpg" | asset_url }}', '{{ "gift-product-3-thumb.jpg" | asset_url }}', '{{ "gift-product-3-video.mp4" | asset_url }}', '{{ "gift-product-3-main.jpg" | asset_url }}')" style="background: #A2D9F7; color: #0c4a6e; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+              Customize <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4: 3 in 1 Card Holder, Keychain and Pen comes with box -->
+      <div class="inbuilt-product-card tilt-card reveal-on-scroll" data-id="4" data-handle="3-in-1-card-holder-keychain-and-pen" data-title="3 in 1 Card Holder, Keychain and Pen comes with box" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+        <div class="inbuilt-card-media" onclick="openGiftProductStudio('4', '3 in 1 Card Holder, Keychain and Pen comes with box', 525, 799, '{{ "gift-product-4-main.jpg" | asset_url }}', '{{ "gift-product-4-thumb.jpg" | asset_url }}', '{{ "gift-product-4-video.mp4" | asset_url }}', '{{ "gift-product-4-main.jpg" | asset_url }}')" style="position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6;">
+          <img src="{{ 'gift-product-4-main.jpg' | asset_url }}" alt="3 in 1 Card Holder, Keychain and Pen comes with box" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+          <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3; cursor: pointer;" onclick="openGiftProductStudio('4', '3 in 1 Card Holder, Keychain and Pen comes with box', 525, 799, '{{ "gift-product-4-main.jpg" | asset_url }}', '{{ "gift-product-4-thumb.jpg" | asset_url }}', '{{ "gift-product-4-video.mp4" | asset_url }}', '{{ "gift-product-4-main.jpg" | asset_url }}')">3 in 1 Card Holder, Keychain and Pen comes with box</h3>
+          <div class="gift-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+            <div>
+              <strong class="gift-card-price" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹525.00</strong>
+            </div>
+            <button type="button" class="gift-card-customize-btn" onclick="openGiftProductStudio('4', '3 in 1 Card Holder, Keychain and Pen comes with box', 525, 799, '{{ "gift-product-4-main.jpg" | asset_url }}', '{{ "gift-product-4-thumb.jpg" | asset_url }}', '{{ "gift-product-4-video.mp4" | asset_url }}', '{{ "gift-product-4-main.jpg" | asset_url }}')" style="background: #A2D9F7; color: #0c4a6e; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+              Customize <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 7: 4 in 1 gift set (Diary, Card holder, Keychain and pen comes with box) -->
+      <div class="inbuilt-product-card tilt-card reveal-on-scroll" data-id="7" data-handle="4-in-1-gift-set-diary-card-holder-keychain-and-pen" data-title="4 in 1 gift set (Diary, Card holder, Keychain and pen comes with box)" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+        <div class="inbuilt-card-media" onclick="openGiftProductStudio('7', '4 in 1 gift set (Diary, Card holder, Keychain and pen comes with box)', 799, 999, '{{ "gift-product-7-main.jpg" | asset_url }}', '{{ "gift-product-7-thumb.jpg" | asset_url }}', '{{ "gift-product-7-video.mp4" | asset_url }}', '{{ "gift-product-7-main.jpg" | asset_url }}')" style="position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6;">
+          <img src="{{ 'gift-product-7-main.jpg' | asset_url }}" alt="4 in 1 gift set (Diary, Card holder, Keychain and pen comes with box)" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+          <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3; cursor: pointer;" onclick="openGiftProductStudio('7', '4 in 1 gift set (Diary, Card holder, Keychain and pen comes with box)', 799, 999, '{{ "gift-product-7-main.jpg" | asset_url }}', '{{ "gift-product-7-thumb.jpg" | asset_url }}', '{{ "gift-product-7-video.mp4" | asset_url }}', '{{ "gift-product-7-main.jpg" | asset_url }}')">4 in 1 gift set (Diary, Card holder, Keychain and pen comes with box)</h3>
+          <div class="gift-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+            <div>
+              <strong class="gift-card-price" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</strong>
+              
+            </div>
+            <button type="button" class="gift-card-customize-btn" onclick="openGiftProductStudio('7', '4 in 1 gift set (Diary, Card holder, Keychain and pen comes with box)', 799, 999, '{{ "gift-product-7-main.jpg" | asset_url }}', '{{ "gift-product-7-thumb.jpg" | asset_url }}', '{{ "gift-product-7-video.mp4" | asset_url }}', '{{ "gift-product-7-main.jpg" | asset_url }}')" style="background: #A2D9F7; color: #0c4a6e; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+              Customize <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8: 4 in 1 gift set (Diary, Card Holder, Keychain and pen comes with box) -->
+      <div class="inbuilt-product-card tilt-card reveal-on-scroll" data-id="8" data-handle="4-in-1-gift-set-diary-card-holder-keychain-and-pen-large" data-title="4 in 1 gift set (Diary, Card Holder, Keychain and pen comes with box)" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+        <div class="inbuilt-card-media" onclick="openGiftProductStudio('8', '4 in 1 gift set (Diary, Card Holder, Keychain and pen comes with box)', 1099, 1599, '{{ "gift-product-8-main.jpg" | asset_url }}', '{{ "gift-product-8-thumb.jpg" | asset_url }}', '{{ "gift-product-8-video.mp4" | asset_url }}', '{{ "gift-product-8-main.jpg" | asset_url }}')" style="position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6;">
+          <img src="{{ 'gift-product-8-main.jpg' | asset_url }}" alt="4 in 1 gift set (Diary, Card Holder, Keychain and pen comes with box)" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+          <h3 style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3; cursor: pointer;" onclick="openGiftProductStudio('8', '4 in 1 gift set (Diary, Card Holder, Keychain and pen comes with box)', 1099, 1599, '{{ "gift-product-8-main.jpg" | asset_url }}', '{{ "gift-product-8-thumb.jpg" | asset_url }}', '{{ "gift-product-8-video.mp4" | asset_url }}', '{{ "gift-product-8-main.jpg" | asset_url }}')">4 in 1 gift set (Diary, Card Holder, Keychain and pen comes with box)</h3>
+          <div class="gift-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+            <div>
+              <strong class="gift-card-price" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹1,099.00</strong>
+              
+            </div>
+            <button type="button" class="gift-card-customize-btn" onclick="openGiftProductStudio('8', '4 in 1 gift set (Diary, Card Holder, Keychain and pen comes with box)', 1099, 1599, '{{ "gift-product-8-main.jpg" | asset_url }}', '{{ "gift-product-8-thumb.jpg" | asset_url }}', '{{ "gift-product-8-video.mp4" | asset_url }}', '{{ "gift-product-8-main.jpg" | asset_url }}')" style="background: #A2D9F7; color: #0c4a6e; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+              Customize <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+      </div>
+  </div>
+</div>
+
+<!-- CUSTOM STUDIO VIEW: Product Detail & Configurator (Opens when any product card is clicked) -->
+<div id="gift-custom-mode-view" class="sticker-mode-view" style="display: none; padding: 20px 0 70px;">
+  <div class="container">
+
+    <!-- DYNAMIC INTERACTIVE HERO SECTION (Fullscreen -> Shrunk Left on 10s timer or Scroll) -->
+    <style>
+      .gift-interactive-hero-container {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(50% - 50vw) !important;
+        margin-right: calc(50% - 50vw) !important;
+        background: linear-gradient(135deg, #B2B4B3 0%, #A2D9F7 100%) !important;
+        color: #0f172a;
+        position: relative;
+        overflow: hidden;
+        transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .gift-hero-fullscreen {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 99999 !important;
+        background: linear-gradient(135deg, #B2B4B3 0%, #A2D9F7 100%) !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding: 0 !important;
+      }
+      .gift-hero-fullscreen .gift-hero-video-card {
+        position: absolute;
+        inset: 0;
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0px !important;
+        box-shadow: none !important;
+        border: none !important;
+        z-index: 10;
+        overflow: hidden;
+        background-color: #0f172a;
+        transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    height 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-radius 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 1.4s ease;
+      }
+      .gift-hero-fullscreen .gift-hero-content-card {
+        opacity: 0 !important;
+        transform: translateX(180px) !important;
+        pointer-events: none !important;
+        position: absolute;
+        right: 5%;
+        z-index: 0;
+        transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .gift-hero-split {
+        position: relative !important;
+        inset: auto !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        margin-left: calc(50% - 50vw) !important;
+        margin-right: calc(50% - 50vw) !important;
+        min-height: 50vh !important;
+        height: auto !important;
+        z-index: 10 !important;
+        background: linear-gradient(135deg, #B2B4B3 0%, #A2D9F7 100%) !important;
+        padding: 2rem 4rem !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 3.5rem !important;
+        overflow: hidden !important;
+        border-radius: 0px !important;
+        margin-bottom: 2rem !important;
+        transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .gift-hero-split .gift-hero-video-card {
+        position: relative !important;
+        width: 58% !important;
+        height: 45vh !important;
+        min-height: 300px !important;
+        max-height: 360px !important;
+        border-radius: 2rem !important;
+        border: 2px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.3) !important;
+        z-index: 20 !important;
+        overflow: hidden;
+        transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    height 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    border-radius 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 1.4s ease;
+      }
+      .gift-hero-split .gift-hero-content-card {
+        position: relative !important;
+        opacity: 1 !important;
+        transform: translateX(0) !important;
+        pointer-events: auto !important;
+        width: 42% !important;
+        z-index: 20 !important;
+        transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s,
+                    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.25s;
+      }
+      .gift-hero-split #gift-hero-countdown-badge {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transition: opacity 0.4s ease;
+      }
+
+      @media (max-width: 991px) {
+        .gift-hero-split {
+          flex-direction: column !important;
+          padding: 2rem 1.5rem !important;
+          min-height: auto !important;
+          gap: 2rem !important;
+        }
+        .gift-hero-split .gift-hero-video-card {
+          width: 100% !important;
+          height: 35vh !important;
+          min-height: 220px !important;
+          border-radius: 1.25rem !important;
+        }
+        .gift-hero-split .gift-hero-content-card {
+          width: 100% !important;
+          transform: translateY(0) !important;
+          margin-top: 1rem !important;
+          text-align: center;
+        }
+      }
+    </style>
+
+    <section id="gift-interactive-hero-wrapper" class="gift-hero-fullscreen">
+      <!-- Ambient Glows -->
+      <div style="position: absolute; top: 15%; left: 15%; width: 22rem; height: 22rem; background: rgba(255, 255, 255, 0.35); border-radius: 9999px; filter: blur(70px); pointer-events: none;"></div>
+      <div style="position: absolute; bottom: 15%; right: 15%; width: 22rem; height: 22rem; background: rgba(255, 255, 255, 0.35); border-radius: 9999px; filter: blur(70px); pointer-events: none;"></div>
+
+      <!-- Video Card Container -->
+      <div id="gift-hero-video-card" class="gift-hero-video-card">
+        <video id="gift-hero-video-player" autoplay muted loop playsinline poster="{{ 'gift-product-1-main.jpg' | asset_url }}" style="width: 100%; height: 100%; object-fit: cover;">
+          <source id="gift-hero-video-src" src="{{ 'gift-video-1.mp4' | asset_url }}" type="video/mp4">
+          Your browser does not support HTML5 video player.
+        </video>
+
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(2, 6, 23, 0.75), rgba(2, 6, 23, 0.15), transparent); pointer-events: none;"></div>
+
+        <!-- Countdown Timer & Scroll-to-Skip Badge -->
+        <div id="gift-hero-countdown-badge" style="position: absolute; bottom: 1.5rem; left: 1.5rem; z-index: 30; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(56, 189, 248, 0.4); padding: 0.65rem 1.25rem; border-radius: 1.25rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.6); transition: opacity 0.5s ease;">
+          <div style="width: 2.5rem; height: 2.5rem; border-radius: 0.85rem; background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-weight: 900; font-size: 0.9375rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(56, 189, 248, 0.35);">
+            <span id="gift-hero-timer-num">10</span>s
+          </div>
+          <div>
+            <p style="font-size: 0.8125rem; font-weight: 800; color: #ffffff; margin: 0; line-height: 1.2;">Gift Reel Showcase</p>
+            <p style="font-size: 0.72rem; color: #94a3b8; margin: 0; font-weight: 600;">Scroll down or wait 10s to skip</p>
+          </div>
+          <button type="button" onclick="triggerGiftHeroShrink(true)" style="background: linear-gradient(to right, #0284c7, #38bdf8); color: #ffffff; border: none; padding: 0.45rem 0.9rem; border-radius: 0.75rem; font-weight: 800; font-size: 0.75rem; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 4px 12px rgba(2,132,199,0.3);">
+            Skip <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+
+        <!-- Mute/Unmute Control -->
+        <button type="button" onclick="toggleGiftHeroMute()" style="position: absolute; bottom: 1.5rem; right: 1.5rem; z-index: 30; width: 2.75rem; height: 2.75rem; border-radius: 0.85rem; background: rgba(15, 23, 42, 0.85); border: 1px solid #334155; color: #ffffff; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); cursor: pointer; box-shadow: 0 6px 16px rgba(0,0,0,0.4);">
+          <i id="gift-hero-mute-icon" class="fa-solid fa-volume-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Hero Content Card (Slides in from Right) -->
+      <div id="gift-hero-content-card" class="gift-hero-content-card">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.75); border: 1px solid #0284c7; color: #0284c7; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; width: max-content; margin-bottom: 1rem; backdrop-filter: blur(8px);">
+          <i class="fa-solid fa-circle-play" style="color: #0284c7;"></i>
+          <span>PRODUCT DEMONSTRATION</span>
+        </div>
+
+        <h2 style="font-size: 2.25rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 1rem;">
+          See Our Custom Gifts in Action
+        </h2>
+
+        <!-- Active Product Quick Summary Box -->
+        <div style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 1.25rem; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);">
+          <div>
+            <span style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 0.2rem;">Selected Item:</span>
+            <strong id="gift-hero-active-title" style="font-size: 1.125rem; font-weight: 800; color: #0f172a; display: block;">2 in 1 Gift Set</strong>
+            <span id="gift-hero-active-price" style="font-size: 1.25rem; font-weight: 900; color: #0284c7; display: block; margin-top: 0.2rem;">₹249.00</span>
+          </div>
+          <a href="#gift-studio-configurator-section" style="padding: 0.75rem 1.5rem; border-radius: 0.85rem; background: linear-gradient(135deg, #0284c7, #0369a1); color: #ffffff; font-weight: 900; font-size: 0.875rem; text-decoration: none; box-shadow: 0 8px 20px rgba(2, 132, 199, 0.35); display: inline-flex; align-items: center; gap: 0.5rem;">
+            <span>Customize Below</span>
+            <i class="fa-solid fa-arrow-down"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDIO CONFIGURATOR ANCHOR & BREADCRUMBS -->
+    <div id="gift-studio-configurator-section" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; flex-wrap: wrap; gap: 10px;">
+      <button type="button" onclick="switchGiftPageMode('catalog')" style="background: #e2e8f0; color: #0f172a; border: none; padding: 9px 18px; border-radius: 10px; font-weight: 800; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;">
+        <i class="fa-solid fa-arrow-left"></i> Back to All Gift Sets
+      </button>
+
+      <nav class="breadcrumb" style="font-size: 13.5px; color: #64748b;">
+        <a href="/" style="color: #64748b; text-decoration: none;">Home</a> / 
+        <a href="/pages/gifts" onclick="switchGiftPageMode('catalog'); return false;" style="color: #64748b; text-decoration: none;">Custom Gifts</a> / 
+        <strong style="color: #0f172a;">Studio Configurator</strong>
+      </nav>
+    </div>
+
+    <div class="product-detail-grid" style="display: flex; gap: 40px; flex-wrap: wrap;">
+      
+      <!-- Left Column: Product Photo Gallery -->
+      <div class="product-gallery-col" style="flex: 1.1; min-width: 320px; position: sticky; top: 90px; height: fit-content;">
+        
+        <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <!-- Gallery Thumbnails Wrapper -->
+          <div id="gift-gallery-thumbs-wrapper" style="display: flex; flex-direction: column; gap: 10px; width: 64px; flex-shrink: 0; margin-top: 0;"></div>
+
+          <!-- Product Photo Gallery View -->
+          <div class="main-image-container sticker-preview-wrapper active" id="gift-lifestyle-view" style="flex: 1; min-width: 0; padding: 0; min-height: 480px; position: relative; overflow: hidden; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-md);">
+            <img id="gift-main-product-img" src="{{ 'gift-product-1-main.jpg' | asset_url }}" alt="Gift Set Box" style="width: 100%; height: 100%; min-height: 480px; object-fit: cover; display: block;">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Product Configurator Form -->
+      <div class="product-info-col" style="flex: 1; min-width: 320px;">
+        
+        <!-- Dynamic Product Title -->
+        <h1 id="gift-product-title" style="font-size: 25px; font-weight: 900; line-height: 1.3; margin-bottom: 6px; color: #0f172a;">
+          3 in 1 Gift Set
+        </h1>
+        {% render 'judgeme-preview-badge', product: product %}
+
+
+        <!-- Top Price Card -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              
+              <strong id="gift-top-price-num" style="font-size: 28px; font-weight: 900; color: #0f172a;">₹249.00</strong>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- FINISH / TOP OPTION SELECTOR (Visible for Product 9: Visiting Card Holder) -->
+        <div id="gift-finish-option-box" class="config-step" style="display: none; margin-bottom: 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; box-shadow: var(--shadow-sm);">
+          <label class="step-label" style="font-size: 14.5px; font-weight: 800; color: #0f172a; display: block; margin-bottom: 12px;">
+            CHOOSE TOP FINISH OPTION:
+          </label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <button type="button" class="gift-finish-chip-btn active" id="finish-btn-black" onclick="switchGiftFinishOption('black', '{{ "gift-product-1.jpg" | asset_url }}', this)" style="display: flex; align-items: center; padding: 12px 14px; border: 2px solid #A2D9F7; background: #e0f2fe; border-radius: 10px; cursor: pointer; text-align: left;">
+              <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: #0f172a; border: 2px solid #94a3b8; margin-right: 10px; flex-shrink: 0;"></span>
+              <strong style="font-size: 13px; color: #0f172a;">Stainless steel with black top</strong>
+            </button>
+            <button type="button" class="gift-finish-chip-btn" id="finish-btn-brown" onclick="switchGiftFinishOption('brown', '{{ "gift-product-4.jpg" | asset_url }}', this)" style="display: flex; align-items: center; padding: 12px 14px; border: 2px solid #e2e8f0; background: #ffffff; border-radius: 10px; cursor: pointer; text-align: left;">
+              <span style="display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: #9a3412; border: 2px solid #94a3b8; margin-right: 10px; flex-shrink: 0;"></span>
+              <strong style="font-size: 13px; color: #0f172a;">Stainless steel with brown top</strong>
+            </button>
+          </div>
+        </div>
+
+        <!-- CONFIGURATOR STEP 1: QUANTITY & STYLISH BULK DISCOUNT TIERS -->
+        <div class="config-step" style="margin-bottom: 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
+          
+          <label class="step-label" style="font-size: 15px; font-weight: 900; color: #0f172a; display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+            <span>1. ENTER QUANTITY (PCS):</span>
+            <span id="gift-discount-active-badge" style="background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; padding: 4px 12px; border-radius: 999px; font-weight: 800; font-size: 12px; display: inline-flex; align-items: center; gap: 5px;">
+              <i class="fa-solid fa-tag"></i> Base Price (0% OFF)
+            </span>
+          </label>
+
+          <!-- Interactive Stepper & Custom Input Box -->
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 18px; flex-wrap: wrap;">
+            <div style="display: inline-flex; align-items: center; border: 2px solid #0c4a6e; border-radius: 12px; overflow: hidden; background: #ffffff; box-shadow: 0 2px 8px rgba(12,74,110,0.08);">
+              <button type="button" onclick="changeGiftInputQty(-1)" style="border: none; background: #f8fafc; width: 46px; height: 46px; font-weight: 900; font-size: 20px; cursor: pointer; color: #0f172a; transition: background 0.2s;" onmouseover="this.style.background='#e2e8f0';" onmouseout="this.style.background='#f8fafc';">-</button>
+              <input type="number" id="gift-qty-input-field" value="1" min="1" max="10000" style="width: 80px; border: none; text-align: center; font-weight: 900; font-size: 18px; outline: none; color: #0f172a;" oninput="onGiftQtyInput(this.value)">
+              <button type="button" onclick="changeGiftInputQty(1)" style="border: none; background: #f8fafc; width: 46px; height: 46px; font-weight: 900; font-size: 20px; cursor: pointer; color: #0f172a; transition: background 0.2s;" onmouseover="this.style.background='#e2e8f0';" onmouseout="this.style.background='#f8fafc';">+</button>
+            </div>
+
+            <!-- Live Unit Price Badge -->
+            <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 10px 16px; flex: 1; min-width: 160px; display: flex; flex-direction: column; justify-content: center;">
+              <span style="font-size: 11px; color: #64748b; font-weight: 700; display: block; text-transform: uppercase; letter-spacing: 0.5px;">Price Per Piece:</span>
+              <strong id="gift-live-unit-price" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹249.00 / pc</strong>
+            </div>
+          </div>
+
+          <!-- STYLISH BULK DISCOUNT TIERS TABLE -->
+          <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; overflow: hidden; margin-top: 14px; box-shadow: var(--shadow-sm);">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 11px 16px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; font-weight: 900; font-size: 12px; color: #475569; letter-spacing: 0.5px; text-transform: uppercase;">
+              <span>Quantity</span>
+              <span>Discount</span>
+            </div>
+
+            <div class="gift-discount-tiers-list" style="display: flex; flex-direction: column;">
+              <!-- Tier 1: 1-3 pcs -->
+              <div class="gift-tier-row active" id="gift-tier-1" onclick="setGiftQtyFromTier(1)" style="display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: all 0.2s ease; background: #f0fdf4; border-left: 4px solid #16a34a;">
+                <span style="font-size: 14px; font-weight: 800; color: #0f172a;">1–3 pcs</span>
+                <span class="gift-tier-discount-badge" style="font-size: 13px; font-weight: 900; color: #16a34a; background: #dcfce7; padding: 4px 12px; border-radius: 999px;">MRP (0%)</span>
+              </div>
+
+              <!-- Tier 2: 4-10 pcs -->
+              <div class="gift-tier-row" id="gift-tier-2" onclick="setGiftQtyFromTier(4)" style="display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: all 0.2s ease; background: #ffffff; border-left: 4px solid transparent;">
+                <span style="font-size: 14px; font-weight: 800; color: #0f172a;">4–10 pcs</span>
+                <span class="gift-tier-discount-badge" style="font-size: 13px; font-weight: 900; color: #0284c7; background: #e0f2fe; padding: 4px 12px; border-radius: 999px;">5% OFF</span>
+              </div>
+
+              <!-- Tier 3: 11-25 pcs -->
+              <div class="gift-tier-row" id="gift-tier-3" onclick="setGiftQtyFromTier(11)" style="display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: all 0.2s ease; background: #ffffff; border-left: 4px solid transparent;">
+                <span style="font-size: 14px; font-weight: 800; color: #0f172a;">11–25 pcs</span>
+                <span class="gift-tier-discount-badge" style="font-size: 13px; font-weight: 900; color: #0284c7; background: #e0f2fe; padding: 4px 12px; border-radius: 999px;">10% OFF</span>
+              </div>
+
+              <!-- Tier 4: 26-50 pcs -->
+              <div class="gift-tier-row" id="gift-tier-4" onclick="setGiftQtyFromTier(26)" style="display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; border-bottom: 1px solid #f1f5f9; cursor: pointer; transition: all 0.2s ease; background: #ffffff; border-left: 4px solid transparent;">
+                <span style="font-size: 14px; font-weight: 800; color: #0f172a;">26–50 pcs</span>
+                <span class="gift-tier-discount-badge" style="font-size: 13px; font-weight: 900; color: #7c3aed; background: #f3e8ff; padding: 4px 12px; border-radius: 999px;">20% OFF</span>
+              </div>
+
+              <!-- Tier 5: 51-100+ pcs -->
+              <div class="gift-tier-row" id="gift-tier-5" onclick="setGiftQtyFromTier(51)" style="display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; cursor: pointer; transition: all 0.2s ease; background: #ffffff; border-left: 4px solid transparent;">
+                <span style="font-size: 14px; font-weight: 800; color: #0f172a;">51–100+ pcs</span>
+                <span class="gift-tier-discount-badge" style="font-size: 13px; font-weight: 900; color: #dc2626; background: #fee2e2; padding: 4px 12px; border-radius: 999px;">32% OFF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONFIGURATOR STEP 2: CUSTOMIZATION TYPE SELECTOR (MULTI-SELECT TOGGLES) -->
+        <div class="config-step" style="margin-bottom: 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 20px; box-shadow: var(--shadow-sm);">
+          <label class="step-label" style="font-size: 14.5px; font-weight: 800; color: #0f172a; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
+            <span>CHOOSE CUSTOMIZATION TYPE:</span>
+            <span style="font-weight: 600; font-size: 12px; color: #0c4a6e; background: #e0f2fe; padding: 3px 10px; border-radius: 999px;">Select one or both</span>
+          </label>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            
+            <!-- Option 1: Upload your design / logo (Multi-select toggle) -->
+            <button type="button" class="gift-mode-chip-btn active" id="gift-chip-logo" onclick="toggleGiftCustomFeature('logo')">
+              <span class="chip-radio-icon"><i class="fa-solid fa-check"></i></span>
+              <div>
+                <strong style="display: block; font-size: 14px;">Upload your design / logo</strong>
+                <span style="font-size: 12px; color: #64748b; font-weight: 600;">Click to enable artwork / logo upload box</span>
+              </div>
+            </button>
+
+            <!-- Option 2: Write your text (Multi-select toggle) -->
+            <button type="button" class="gift-mode-chip-btn" id="gift-chip-text" onclick="toggleGiftCustomFeature('text')">
+              <span class="chip-radio-icon"><i class="fa-solid fa-check"></i></span>
+              <div>
+                <strong style="display: block; font-size: 14px;">Write your text</strong>
+                <span style="font-size: 12px; color: #64748b; font-weight: 600;">Click to enable custom text laser engraving box</span>
+              </div>
+            </button>
+
+            <!-- Option 3: don't want to add any text or logo (Resets both above options) -->
+            <button type="button" class="gift-mode-chip-btn" id="gift-chip-plain" onclick="toggleGiftCustomFeature('plain')">
+              <span class="chip-radio-icon"><i class="fa-solid fa-check"></i></span>
+              <div>
+                <strong style="display: block; font-size: 14px;">don't want to add any text or logo</strong>
+                <span style="font-size: 12px; color: #64748b; font-weight: 600;">Click to clear options and order plain gift set</span>
+              </div>
+            </button>
+
+          </div>
+        </div>
+
+        <!-- CONFIGURATOR STEP 3: DYNAMIC INPUT FIELDS BASED ON SELECTED OPTION -->
+        <div style="margin-bottom: 24px;">
+          
+          <!-- OPTION A BOX: FILE UPLOAD -->
+          <div id="gift-upload-option-box" style="display: block; background: #ffffff; border: 2px dashed #A2D9F7; border-radius: 14px; padding: 20px; text-align: center;">
+            <label style="font-size: 13.5px; font-weight: 800; color: #0f172a; display: block; margin-bottom: 8px;">
+              <i class="fa-solid fa-cloud-arrow-up" style="color: #0c4a6e; font-size: 20px;"></i> UPLOAD YOUR LOGO / DESIGN FILE
+            </label>
+            <p style="font-size: 12px; color: #64748b; margin-bottom: 14px;">High resolution PNG, JPG, AI, or PDF recommended</p>
+            
+            <input type="file" id="gift-file-input" accept="image/*" onchange="handleGiftFileUpload(this)" style="display: none;">
+            <button type="button" onclick="document.getElementById('gift-file-input').click()" style="background: #A2D9F7; color: #0c4a6e; border: none; padding: 12px 24px; border-radius: 999px; font-weight: 800; font-size: 13.5px; cursor: pointer; box-shadow: 0 4px 14px rgba(162,217,247,0.4);">
+              <i class="fa-solid fa-folder-open"></i> Browse / Drag & Drop File
+            </button>
+
+            <div id="gift-artwork-info-row" style="display: none; align-items: center; justify-content: space-between; background: #f0f9ff; border: 1px solid #A2D9F7; border-radius: 8px; padding: 10px 14px; margin-top: 14px;">
+              <span id="gift-artwork-file-name" style="font-size: 12px; font-weight: 800; color: #0c4a6e;"></span>
+              <button type="button" onclick="removeGiftUploadedArtwork()" style="background: #e2e8f0; color: #475569; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 11px; cursor: pointer;">Remove</button>
+            </div>
+
+            <!-- Design Authorization & Approval Tick Box (Shown when design is uploaded) -->
+            <div class="config-step" id="gift-auth-step-box" style="display: none; margin-top: 14px; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 12px; padding: 14px 16px; text-align: left;">
+              <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; user-select: none; font-size: 13px; font-weight: 700; color: #14532d; line-height: 1.5; margin: 0;">
+                <input type="checkbox" id="gift-auth-checkbox" onchange="updateGiftAddBtnState()" style="width: 20px; height: 20px; min-width: 20px; min-height: 20px; accent-color: #0c4a6e; margin-top: 1px; cursor: pointer;">
+                <span>I have authorization to use the design, I have reviewed and approved it.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- OPTION B BOX: WRITE CUSTOM TEXT -->
+          <div id="gift-text-option-box" style="display: none; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 14px; padding: 20px;">
+            <label style="font-size: 13.5px; font-weight: 800; color: #0f172a; display: block; margin-bottom: 8px;">
+              <i class="fa-solid fa-pen-nib" style="color: #0c4a6e;"></i> WRITE YOUR TEXT (NAME / COMPANY):
+            </label>
+            <input type="text" id="gift-text-input" placeholder="e.g. Elementa" oninput="updateGiftCustomText(this.value)" style="width: 100%; padding: 12px 16px; border: 2px solid #cbd5e1; border-radius: 10px; font-size: 14px; font-weight: 700; color: #0f172a;">
+          </div>
+
+          <!-- OPTION C BOX: PLAIN SET (NO LOGO/TEXT) -->
+          <div id="gift-plain-option-box" style="display: none; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 14px; padding: 16px; text-align: center;">
+            <p style="font-size: 13px; font-weight: 700; color: #475569; margin: 0;">
+              <i class="fa-solid fa-gift" style="color: #0c4a6e;"></i> Plain Gift Set selected. Ships directly in gift box without custom print.
+            </p>
+          </div>
+
+          <!-- OPTIONAL SPECIAL INSTRUCTIONS / SUGGESTIONS BOX -->
+          <div id="gift-instructions-option-box" style="margin-top: 14px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; box-shadow: var(--shadow-sm);">
+            <label for="gift-special-instructions" style="font-size: 13px; font-weight: 800; color: #0f172a; display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span><i class="fa-solid fa-comment-dots" style="color: #0c4a6e;"></i> SPECIAL INSTRUCTIONS / SUGGESTIONS:</span>
+              <span style="font-size: 11px; font-weight: 700; color: #64748b; background: #f1f5f9; padding: 2px 8px; border-radius: 999px;">OPTIONAL</span>
+            </label>
+            <textarea id="gift-special-instructions" rows="3" placeholder="Add any text or special instructions&#10;For example: a name on the pen, a company tagline on the diary, or any specific engraving details." oninput="updateGiftSpecialInstructions(this.value)" style="width: 100%; padding: 12px 14px; border: 1.5px solid #cbd5e1; border-radius: 10px; font-size: 13.5px; font-weight: 600; color: #0f172a; resize: vertical; font-family: inherit; transition: border-color 0.2s ease; outline: none;"></textarea>
+          </div>
+
+        </div>
+
+        <!-- REASSURANCE BANNER -->
+        <div style="background: #f0f9ff; border: 1px solid #A2D9F7; border-radius: 10px; padding: 12px 16px; margin-bottom: 24px; display: flex; align-items: center; gap: 10px;">
+          <i class="fa-solid fa-circle-check" style="color: #0c4a6e; font-size: 18px;"></i>
+          <span style="font-size: 13px; font-weight: 800; color: #0c4a6e;">We'll send design preview for approval after order is Placed/Confirmed.</span>
+        </div>
+
+        <!-- ADD TO CART BUTTON -->
+        <div>
+          <button type="button" id="btn-add-gift-cart" onclick="addGiftToCart()" disabled="disabled" style="width: 100%; background: #94a3b8; color: #ffffff; border: none; padding: 16px; border-radius: 14px; font-weight: 900; font-size: 16px; cursor: not-allowed; pointer-events: none; opacity: 0.45; filter: grayscale(0.6); box-shadow: none; transition: all 0.3s ease;">
+            <i class="fa-solid fa-cart-shopping"></i> Add Custom Gift Set to Cart • ₹249.00
+          </button>
+          <div id="gift-add-hint-text" style="font-size: 12px; font-weight: 700; color: #64748b; text-align: center; margin-top: 8px;">Please upload your design/logo image to enable Add to Cart</div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
+
+<!-- Order Process Timeline Banner Section -->
+<section class="order-process-banner-section reveal-on-scroll" style="background: linear-gradient(135deg, #B2B4B3 0%, #A2D9F7 100%); padding: 75px 0; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);">
+  <div class="container" style="text-align: center;">
+    <div style="max-width: 840px; margin: 0 auto; background: #ffffff; border-radius: 24px; padding: 50px 35px; box-shadow: 0 14px 40px rgba(0,0,0,0.14); border: 1px solid rgba(255,255,255,0.4);">
+      <img src="{{ 'order-process-timeline.jpg' | asset_url }}" alt="Order Process & Delivery Steps" style="width: 100%; height: auto; max-width: 760px; display: block; margin: 0 auto; border-radius: 14px;">
+    </div>
+  </div>
+</section>
+
+<!-- About The Brand Section -->
+<section class="about-brand-section reveal-on-scroll" style="background: #ffffff; padding: 70px 0 80px; border-top: 1px solid #e2e8f0;">
+  <div class="container">
+    <div class="section-header" style="text-align: center; margin-bottom: 50px;">
+      <span class="section-subtitle" style="background: #A2D9F7; color: #0c4a6e; padding: 6px 18px; border-radius: 999px; font-weight: 800; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; display: inline-block;">Our Story & Craftsmanship</span>
+      <h2 class="section-title" style="color: #0f172a; margin-top: 12px; font-size: 36px; font-weight: 900;">Premium Gift Collections</h2>
+      <p style="color: #64748b; font-size: 16px; max-width: 650px; margin: 10px auto 0; font-weight: 500;">Thoughtful gifts designed to impress clients, employees, and loved ones.</p>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 50px; max-width: 1100px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 40px; background: #f8fafc; border-radius: 20px; padding: 35px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-sm); flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 300px; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+          <img src="{{ 'gift-product-1-main.jpg' | asset_url }}" alt="Executive Corporate Gift Set" style="width: 100%; height: 320px; object-fit: cover; display: block;">
+        </div>
+        <div style="flex: 1.1; min-width: 300px;">
+          <span style="color: #0c4a6e; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 8px;">Executive Branding</span>
+          <h3 style="font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 14px; line-height: 1.3;">Crafted to Elevate Your Corporate Identity</h3>
+          <p style="font-size: 15px; color: #475569; line-height: 1.75; margin: 0; font-weight: 500;">Our custom gift sets combine utility and elegance. Featuring smooth-writing rollerball pens, engraved keychains, cardholders, and diaries housed inside premium padded boxes, each piece is precision-customized to represent your corporate brand.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Customer Reviews Section -->
+{% render 'judgeme-review-widget', product: product %}
+
+<script>
+  (function() {
+    function cleanStr(s) {
+      return (s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    }
+
+    function autoOpenGiftProductFromUrl() {
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const prodParam = (urlParams.get('product') || urlParams.get('open_product') || '').toLowerCase().trim();
+        const idParam = (urlParams.get('id') || '').trim();
+        const titleParam = (urlParams.get('title') || urlParams.get('open_title') || '').toLowerCase().trim();
+
+        if (!prodParam && !idParam && !titleParam) return;
+
+        const cards = Array.from(document.querySelectorAll('#gift-catalog-view .inbuilt-product-card'));
+        if (cards.length === 0) {
+          setTimeout(autoOpenGiftProductFromUrl, 150);
+          return;
+        }
+
+        const normProd = cleanStr(prodParam);
+        const normTitle = cleanStr(titleParam);
+
+        let matchedCard = null;
+
+        // 1. Try matching by ID first
+        if (idParam) {
+          matchedCard = cards.find(function(c) {
+            const cid = c.getAttribute('data-id');
+            const mediaOnclick = c.querySelector('.inbuilt-card-media')?.getAttribute('onclick') || '';
+            return (cid && cid === idParam) || mediaOnclick.includes("'" + idParam + "'") || mediaOnclick.includes('"' + idParam + '"');
+          });
+        }
+
+        // 2. Try matching by handle or title
+        if (!matchedCard) {
+          matchedCard = cards.find(function(c) {
+            const cardHandle = cleanStr(c.getAttribute('data-handle'));
+            const cardTitle = cleanStr(c.getAttribute('data-title') || c.querySelector('h3')?.textContent);
+
+            if (normProd && cardHandle && (cardHandle === normProd || cardHandle.includes(normProd) || normProd.includes(cardHandle))) return true;
+            if (normTitle && cardTitle && (cardTitle === normTitle || cardTitle.includes(normTitle) || normTitle.includes(cardTitle))) return true;
+            return false;
+          });
+        }
+
+        // 3. Fallback title keywords
+        if (!matchedCard && normTitle) {
+          matchedCard = cards.find(function(c) {
+            const cardText = cleanStr(c.textContent);
+            return cardText.includes(normTitle) || normTitle.includes(cardText.slice(0, 15));
+          });
+        }
+
+        if (matchedCard) {
+          setTimeout(function() {
+            const custBtn = matchedCard.querySelector('.gift-card-customize-btn') || matchedCard.querySelector('.inbuilt-card-media') || matchedCard.querySelector('h3');
+            if (custBtn) {
+              custBtn.click();
+              // Scroll to custom configurator studio smoothly
+              setTimeout(function() {
+                const studio = document.getElementById('gift-custom-mode-view') || document.getElementById('gift-studio-configurator-section');
+                if (studio) {
+                  studio.scrollIntoView({ behavior: 'smooth' });
+                }
+              }, 100);
+            }
+          }, 120);
+        }
+      } catch (err) {
+        console.warn('Auto-open gift error:', err);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(autoOpenGiftProductFromUrl, 250);
+      });
+    } else {
+      setTimeout(autoOpenGiftProductFromUrl, 250);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Main Product Gifts",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Gifts Collection",
+      "info": "Select a Shopify collection to dynamically pull products from Shopify Admin."
+    },
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "Hero Banner Title",
+      "default": "Gift Set"
+    },
+    {
+      "type": "text",
+      "id": "banner_subtitle",
+      "label": "Hero Banner Subtitle",
+      "default": "Select from our executive corporate gift sets or customize your own with laser engraving"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "PREMIUM CORPORATE & PERSONAL MERCH"
+    },
+    {
+      "type": "color",
+      "id": "banner_bg",
+      "label": "Banner Background Color",
+      "default": "#B2B4B3"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "Badge Background Color",
+      "default": "#A2D9F7"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Product Gifts"
+    }
+  ]
+}
+{% endschema %}

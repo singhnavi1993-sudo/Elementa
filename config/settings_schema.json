@@ -1,0 +1,38 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Elementa Theme",
+    "theme_version": "1.0.0",
+    "theme_author": "Antigravity Agent",
+    "theme_documentation_url": "https://shopify.dev",
+    "theme_support_url": "https://shopify.dev"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "primary_teal",
+        "label": "Primary Teal",
+        "default": "#00b894"
+      },
+      {
+        "type": "color",
+        "id": "accent_orange",
+        "label": "Accent Orange",
+        "default": "#ff5e15"
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32 x 32px"
+      }
+    ]
+  }
+]

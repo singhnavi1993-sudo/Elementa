@@ -1,0 +1,57 @@
+{% assign is_policy_route = false %}
+{% assign path_low = request.path | downcase %}
+{% if path_low contains '/policies/' or path_low contains 'shipping' or path_low contains 'privacy' or path_low contains 'refund' or path_low contains 'return' or path_low contains 'term' %}
+  {% assign is_policy_route = true %}
+{% endif %}
+
+{% if is_policy_route %}
+  {% render 'elementa-policies' %}
+{% else %}
+  <div id="elementa-404-block">
+    <script>
+      (function() {
+        var path = (window.location.pathname || '').toLowerCase();
+        // If user landed on any policy route, cancel 404 and show policy hub
+        if (path.indexOf('/policies/') !== -1 || path.indexOf('shipping') !== -1 || path.indexOf('privacy') !== -1 || path.indexOf('refund') !== -1 || path.indexOf('return') !== -1 || path.indexOf('term') !== -1) {
+          var block404 = document.getElementById('elementa-404-block');
+          if (block404) block404.style.display = 'none';
+          var policyFallback = document.getElementById('elementa-client-policy-block');
+          if (policyFallback) policyFallback.style.display = 'block';
+          return;
+        }
+
+        if (path.indexOf('/pages/caps') !== -1) {
+          window.location.replace('/products/caps');
+          return;
+        }
+
+        if (path.indexOf('login') !== -1 || path.indexOf('sign-in') !== -1 || path.indexOf('signin') !== -1) {
+          window.location.replace('/account/login?return_to=/');
+        } else {
+          setTimeout(function() {
+            window.location.replace('/');
+          }, 3000);
+        }
+      })();
+    </script>
+
+    <div class="page-404-container" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 60px 20px; background: #f8fafc;">
+      <div style="max-width: 520px; background: #ffffff; padding: 40px; border-radius: 20px; box-shadow: 0 15px 35px rgba(15,23,42,0.08); border: 1px solid #e2e8f0;">
+        <div style="font-size: 48px; color: #00b894; margin-bottom: 16px;">
+          <i class="fa-solid fa-compass-drafting"></i>
+        </div>
+        <h1 style="font-size: 28px; font-weight: 900; color: #0f172a; margin-bottom: 10px;">Page Not Found</h1>
+        <p style="font-size: 15px; color: #64748b; line-height: 1.6; margin-bottom: 24px;">
+          We couldn't find the exact page you were looking for. Redirecting to home...
+        </p>
+        <a href="{{ routes.root_url }}" class="btn-primary" style="display: inline-block; background: #00b894; color: #ffffff; padding: 12px 28px; border-radius: 10px; font-weight: 800; text-decoration: none; box-shadow: 0 4px 14px rgba(0,184,148,0.3);">
+          Go to Homepage
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="elementa-client-policy-block" style="display: none;">
+    {% render 'elementa-policies' %}
+  </div>
+{% endif %}

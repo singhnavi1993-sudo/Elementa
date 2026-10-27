@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customized Cotton Caps - Elementa Custom Merchandise Studio</title>
+  <meta name="description" content="Customized Cotton Caps with adjustable strap. High definition custom embroidery and print with live volume discount pricing matrix.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="shortcut icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Theme Stylesheet -->
+  <link rel="stylesheet" href="assets/main.css">
+  
+  <style>
+    .caps-hero-banner {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      padding: 42px 0 32px;
+      text-align: center;
+      color: #ffffff;
+      box-shadow: inset 0 -10px 25px rgba(0,0,0,0.06);
+    }
+    .cap-thumb-photo-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .cap-color-swatch-btn {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .cap-color-swatch-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+    }
+    .cap-method-tab {
+      transition: all 0.2s ease;
+    }
+    .elementa-milestone-node {
+      cursor: pointer;
+    }
+    /* Sticky desktop layout parity */
+    @media (min-width: 992px) {
+      .cap-studio-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 36px !important;
+      }
+      .cap-gallery-col {
+        flex: 1.05 !important;
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 90px !important;
+        height: fit-content !important;
+        align-self: flex-start !important;
+        z-index: 15 !important;
+      }
+      .cap-info-col {
+        flex: 1.25 !important;
+      }
+    }
+    @media (max-width: 991px) {
+      .cap-studio-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important;
+      }
+      .cap-gallery-col {
+        position: relative !important;
+        top: auto !important;
+        width: 100% !important;
+      }
+      .cap-info-col {
+        width: 100% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Bar Section -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span><i class="fa-solid fa-phone"></i> +91-9596681555</span>
+        <span><i class="fa-solid fa-envelope"></i> contact@shopelementa.in</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="about.html">About Us</a>
+        <a href="index.html#contact">Contact</a>
+        <span><i class="fa-solid fa-truck-fast"></i> Free Shipping on Bulk Orders</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Main Navigation Bar -->
+  <header class="header-main">
+    <div class="container header-container-flex">
+      <div class="header-logo-left">
+        <a href="index.html" class="brand-logo">
+          <img src="assets/elementa-logo.png" alt="Elementa Logo">
+        </a>
+      </div>
+
+      <nav class="header-nav-center">
+        <ul class="nav-links-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="stickers.html">Stickers</a></li>
+          <li><a href="tshirts.html">T-Shirts</a></li>
+          <li><a href="caps.html" class="active">Caps</a></li>
+          <li><a href="gifts.html">Gifts</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions-right">
+        <button class="action-icon-btn" id="search-toggle-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <a href="login.html" class="action-icon-btn" title="Account / Login"><i class="fa-regular fa-user"></i></a>
+        <a href="javascript:void(0);" class="action-icon-btn" id="header-wishlist-btn" title="Wishlist"><i class="fa-regular fa-heart"></i><span class="badge-count wishlist-badge-count">0</span></a>
+        <button class="action-icon-btn" id="header-cart-btn" title="Shopping Cart"><i class="fa-solid fa-bag-shopping"></i><span class="badge-count cart-badge-count">0</span></button>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="header-search-overlay" id="search-overlay">
+      <div class="container">
+        <form class="search-overlay-form" onsubmit="event.preventDefault();">
+          <input type="text" placeholder="Search caps, stickers, t-shirts, gifts..." id="search-input">
+          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+          <button type="button" class="close-search-btn" id="close-search-btn">✕</button>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    
+    <!-- Hero Banner Section -->
+    <section class="caps-hero-banner">
+      <div class="container">
+        <span style="background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(8px); padding: 5px 16px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; display: inline-block; margin-bottom: 12px;">
+          PREMIUM APPAREL &amp; HEADWEAR
+        </span>
+        <h1 style="font-size: clamp(28px, 4.5vw, 42px); font-weight: 900; margin: 0 0 10px; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.15);">
+          Customized Cotton Caps
+        </h1>
+        <p style="font-size: 15px; font-weight: 600; opacity: 0.95; margin: 0 auto; max-width: 600px; color: #f0fdf4;">
+          100% Cotton with adjustable brass buckle strap. Upload your brand logo or write custom text with tiered bulk discounts.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Configurator Studio Section -->
+    <div class="product-configurator-section caps-configurator-page" style="background: #f8fafc; padding: 30px 0 60px;">
+      <div class="container">
+        
+        <!-- Breadcrumb Navigation Bar -->
+        <div class="elementa-breadcrumb" style="margin-bottom: 22px; font-size: 13px; font-weight: 700; color: #64748b;">
+          <a href="index.html" style="color: #64748b; text-decoration: none;">Home</a>
+          <span style="margin: 0 8px; color: #cbd5e1;">/</span>
+          <a href="caps.html" style="color: #64748b; text-decoration: none;">Custom Merchandise</a>
+          <span style="margin: 0 8px; color: #cbd5e1;">/</span>
+          <span style="color: #0f172a; font-weight: 800;">Customized Cotton Caps</span>
+        </div>
+
+        <!-- Main Configurator Studio Grid (Left Gallery / Right Customizer) -->
+        <div class="product-detail-grid cap-studio-grid" style="align-items: start;">
+          
+          <!-- LEFT COLUMN: Product Photo Gallery -->
+          <div class="product-gallery-col cap-gallery-col">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+              
+              <!-- View Header Info Bar -->
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px;">
+                <div style="font-size: 13.5px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px;">
+                  <i class="fa-solid fa-images" style="color: #0284c7;"></i> Product Photo Gallery
+                </div>
+                <span style="font-size: 11.5px; font-weight: 700; color: #10B981; background: #ecfdf5; padding: 3px 10px; border-radius: 999px;">
+                  <i class="fa-solid fa-shield-check"></i> HD Embroidery Grade
+                </span>
+              </div>
+
+              <!-- Main Cap Stage Image / Video Container -->
+              <div id="cap-photo-stage-container" style="position: relative; width: 100%; aspect-ratio: 1/1; background: #ffffff; border-radius: 16px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid #e2e8f0; box-shadow: inset 0 2px 8px rgba(0,0,0,0.02);">
+                <img id="cap-photo-stage-img" src="assets/cap-image-1.png" alt="Customized Cotton Caps Overview" style="width: 100%; height: 100%; object-fit: contain; transition: opacity 0.2s ease;">
+                
+                <div id="cap-video-wrapper" style="display: none; width: 100%; height: 100%; position: absolute; inset: 0; background: #000000; align-items: center; justify-content: center; z-index: 5;">
+                  <video id="cap-photo-stage-video" playsinline controls loop preload="metadata" poster="assets/caps-video-poster.jpg" style="width: 100%; height: 100%; object-fit: contain;">
+                    <source src="assets/caps-new-video16_9.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+
+              <!-- 4 Gallery Thumbnails Grid (Images + Video) -->
+              <div style="margin-top: 14px;">
+                <div style="font-size: 12px; font-weight: 800; color: #475569; margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+                  <span>Select Product Media:</span>
+                  <span style="font-size: 11px; font-weight: 700; color: #0284c7;"><i class="fa-solid fa-circle-play"></i> Video Available</span>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;" id="cap-gallery-thumbs-container">
+                  
+                  <!-- Thumb 1: Image 1 Banner -->
+                  <div class="cap-thumb-photo-card active" onclick="switchCapSimplePhoto('assets/cap-image-1.png', this)" title="Overview Showcase" style="border: 2.5px solid #0284c7; border-radius: 12px; padding: 4px; background: #ffffff; cursor: pointer; aspect-ratio: 1/1; overflow: hidden; transition: all 0.2s ease;">
+                    <img src="assets/cap-image-1.png" alt="Customized Caps Overview" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                  </div>
+
+                  <!-- Thumb 2: Image 2 Colors -->
+                  <div class="cap-thumb-photo-card" onclick="switchCapSimplePhoto('assets/cap-image-2.jpg', this)" title="Color Options Grid" style="border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 4px; background: #ffffff; cursor: pointer; aspect-ratio: 1/1; overflow: hidden; transition: all 0.2s ease;">
+                    <img src="assets/cap-image-2.jpg" alt="Cap Colors Grid" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                  </div>
+
+                  <!-- Thumb 3: Image 3 Details -->
+                  <div class="cap-thumb-photo-card" onclick="switchCapSimplePhoto('assets/cap-image-3.jpg', this)" title="Fabric & Angle Details" style="border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 4px; background: #ffffff; cursor: pointer; aspect-ratio: 1/1; overflow: hidden; transition: all 0.2s ease;">
+                    <img src="assets/cap-image-3.jpg" alt="Fabric & Structure Details" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                  </div>
+
+                  <!-- Thumb 4: Video Showcase -->
+                  <div class="cap-thumb-photo-card cap-thumb-video-card" onclick="switchCapToVideo(this)" title="Watch Product Video" style="position: relative; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 4px; background: #0f172a; cursor: pointer; aspect-ratio: 1/1; overflow: hidden; transition: all 0.2s ease;">
+                    <img src="assets/caps-video-poster.jpg" alt="Caps Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px; filter: brightness(0.85);">
+                    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; pointer-events: none; z-index: 2;">
+                      <div style="width: 26px; height: 26px; border-radius: 50%; background: #00b894; color: #ffffff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+                        <i class="fa-solid fa-play" style="font-size: 10px; margin-left: 2px;"></i>
+                      </div>
+                      <span style="font-size: 9.5px; font-weight: 800; color: #ffffff; background: rgba(15,23,42,0.85); padding: 1px 5px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Video</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Cap Customization & Dynamic Price Configurator Form -->
+          <div class="product-info-col cap-info-col">
+            
+            <!-- Header Info Card -->
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 22px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-bottom: 18px;">
+              <h1 style="font-size: 26px; font-weight: 900; color: #0f172a; margin: 0 0 8px; line-height: 1.2;">CUSTOMIZED COTTON CAPS</h1>
+              
+              <!-- Star Rating Preview Badge -->
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                <div style="color: #f59e0b; font-size: 14px;">
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <span style="font-size: 13px; font-weight: 800; color: #0f172a;">5.0</span>
+                <span style="font-size: 12.5px; color: #64748b; font-weight: 600;">(42 verified reviews)</span>
+              </div>
+
+              <p style="font-size: 13.5px; color: #64748b; margin: 0 0 16px; font-weight: 500;">Premium Cotton Caps with Adjustable Strap &amp; Custom Artwork</p>
+
+              <!-- Key Features Bullet List -->
+              <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 14px; margin-bottom: 18px;">
+                <strong style="display: block; text-transform: uppercase; font-size: 12px; font-weight: 800; color: #0f172a; margin-bottom: 8px; letter-spacing: 0.5px;">Key Features:</strong>
+                <ul style="list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px; font-weight: 700; color: #334155;">
+                  <li>✓ Premium Cotton Fabric</li>
+                  <li>✓ Comfortable everyday wear</li>
+                  <li>✓ Customize with text, logo, or artwork</li>
+                  <li>✓ Max. print area: 2.5 × 2.5 inches</li>
+                </ul>
+              </div>
+
+              <!-- Color Selection Section (Black, White, Navy Blue, Red) -->
+              <div>
+                <label style="font-size: 13px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 10px;">
+                  CHOOSE CAP COLOR: <span id="selected-cap-color-name" style="color: #0284c7; font-weight: 900;">BLACK</span>
+                </label>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                  <!-- Black Swatch -->
+                  <button type="button" class="cap-color-swatch-btn active" data-color="Black" data-hex="#18181b" onclick="selectCapColor('Black', '#18181b', this)" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 2px solid #0284c7; background: #ffffff; cursor: pointer; font-weight: 800; font-size: 13px; box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+                    <span style="width: 18px; height: 18px; border-radius: 50%; background: #18181b; border: 1px solid rgba(0,0,0,0.2);"></span> Black
+                  </button>
+                  <!-- White Swatch -->
+                  <button type="button" class="cap-color-swatch-btn" data-color="White" data-hex="#ffffff" onclick="selectCapColor('White', '#ffffff', this)" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid #cbd5e1; background: #ffffff; cursor: pointer; font-weight: 800; font-size: 13px;">
+                    <span style="width: 18px; height: 18px; border-radius: 50%; background: #ffffff; border: 1px solid #cbd5e1;"></span> White
+                  </button>
+                  <!-- Navy Blue Swatch -->
+                  <button type="button" class="cap-color-swatch-btn" data-color="Navy Blue" data-hex="#1e3a8a" onclick="selectCapColor('Navy Blue', '#1e3a8a', this)" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid #cbd5e1; background: #ffffff; cursor: pointer; font-weight: 800; font-size: 13px;">
+                    <span style="width: 18px; height: 18px; border-radius: 50%; background: #1e3a8a;"></span> Navy Blue
+                  </button>
+                  <!-- Red Swatch -->
+                  <button type="button" class="cap-color-swatch-btn" data-color="Red" data-hex="#dc2626" onclick="selectCapColor('Red', '#dc2626', this)" style="display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 999px; border: 1.5px solid #cbd5e1; background: #ffffff; cursor: pointer; font-weight: 800; font-size: 13px;">
+                    <span style="width: 18px; height: 18px; border-radius: 50%; background: #dc2626;"></span> Red
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- QUANTITY-BASED PRICING & VOLUME SAVINGS WIDGET CARD -->
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-bottom: 18px;">
+              
+              <!-- Header Bar with Full Discount Table Toggle Button -->
+              <div class="elementa-tracker-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                <div class="elementa-tracker-title-wrap" style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; margin: 0; display: flex; align-items: center; gap: 6px;">
+                  <i class="fa-solid fa-chart-line" style="color: #0284c7;"></i> VOLUME DISCOUNT SLABS MATRIX:
+                </div>
+                <button type="button" class="elementa-discount-table-btn" onclick="toggleCapDiscountTable()" style="background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; padding: 5px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                  <i class="fa-solid fa-table"></i> Full Price Slabs Table
+                </button>
+              </div>
+
+              <!-- 7-Node Volume Discount Tracker Line -->
+              <div class="elementa-milestones-track-wrapper" style="overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 4px 0 14px; margin: 15px 0 25px;">
+                <div style="position: relative; padding: 0 10px; min-width: 520px;">
+                  <!-- Background Track Line -->
+                  <div style="position: absolute; top: 13px; left: 16px; right: 16px; height: 6px; background: #e2e8f0; border-radius: 999px; z-index: 1;"></div>
+                  <!-- Active Fill Line -->
+                  <div id="cap-tracker-progress-fill" style="position: absolute; top: 13px; left: 16px; width: 0%; height: 6px; background: linear-gradient(90deg, #A8D4B0 0%, #22c55e 100%); border-radius: 999px; z-index: 2; transition: width 0.4s ease;"></div>
+
+                  <!-- 7 Milestone Nodes Row -->
+                  <div style="position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: center;">
+                    
+                    <!-- Node 0: 2–4 pcs (₹250) -->
+                    <div class="elementa-milestone-node active" onclick="selectCapDiscountTier(2)" title="2–4 Pcs: ₹250 / cap">
+                      <div class="node-circle">✓</div>
+                      <span class="node-range">2–4 pcs</span>
+                      <span class="node-discount">0%</span>
+                      <span class="node-price" data-cap-node-index="0">₹250</span>
+                    </div>
+
+                    <!-- Node 1: 5–9 pcs (12% OFF) -->
+                    <div class="elementa-milestone-node" onclick="selectCapDiscountTier(5)" title="5–9 Pcs: ₹220 / cap (12% OFF)">
+                      <div class="node-circle">12%</div>
+                      <span class="node-range">5–9 pcs</span>
+                      <span class="node-discount">12% OFF</span>
+                      <span class="node-price" data-cap-node-index="1">₹220</span>
+                    </div>
+
+                    <!-- Node 2: 10–24 pcs (18% OFF) -->
+                    <div class="elementa-milestone-node" onclick="selectCapDiscountTier(10)" title="10–24 Pcs: ₹205 / cap (18% OFF)">
+                      <div class="node-circle">18%</div>
+                      <span class="node-range">10–24 pcs</span>
+                      <span class="node-discount">18% OFF</span>
+                      <span class="node-price" data-cap-node-index="2">₹205</span>
+                    </div>
+
+                    <!-- Node 3: 25–49 pcs (25% OFF) -->
+                    <div class="elementa-milestone-node" onclick="selectCapDiscountTier(25)" title="25–49 Pcs: ₹188 / cap (25% OFF)">
+                      <div class="node-circle">25%</div>
+                      <span class="node-range">25–49 pcs</span>
+                      <span class="node-discount">25% OFF</span>
+                      <span class="node-price" data-cap-node-index="3">₹188</span>
+                    </div>
+
+                    <!-- Node 4: 50–99 pcs (32% OFF) -->
+                    <div class="elementa-milestone-node" onclick="selectCapDiscountTier(50)" title="50–99 Pcs: ₹170 / cap (32% OFF)">
+                      <div class="node-circle">32%</div>
+                      <span class="node-range">50–99 pcs</span>
+                      <span class="node-discount">32% OFF</span>
+                      <span class="node-price" data-cap-node-index="4">₹170</span>
+                    </div>
+
+                    <!-- Node 5: 100–149 pcs (41% OFF) -->
+                    <div class="elementa-milestone-node" onclick="selectCapDiscountTier(100)" title="100–149 Pcs: ₹148 / cap (41% OFF)">
+                      <div class="node-circle">41%</div>
+                      <span class="node-range">100–149</span>
+                      <span class="node-discount">41% OFF</span>
+                      <span class="node-price" data-cap-node-index="5">₹148</span>
+                    </div>
+
+                    <!-- Node 6: 150–200 pcs (45% OFF MAX) -->
+                    <div class="elementa-milestone-node" onclick="selectCapDiscountTier(150)" title="150–200 Pcs: ₹138 / cap (45% OFF MAX)">
+                      <div class="node-circle">45%</div>
+                      <span class="node-range">150–200</span>
+                      <span class="node-discount">🔥 45% MAX</span>
+                      <span class="node-price" data-cap-node-index="6">₹138</span>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- CUSTOM ORDER QUANTITY INPUT BAR -->
+              <div class="elementa-custom-qty-bar" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 12px 18px; margin-top: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+                <div class="elementa-custom-qty-info" style="display: flex; align-items: center; gap: 10px;">
+                  <div class="elementa-custom-qty-icon" style="width: 36px; height: 36px; border-radius: 10px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
+                    <i class="fa-solid fa-calculator"></i>
+                  </div>
+                  <div class="elementa-custom-qty-text">
+                    <strong class="elementa-custom-qty-title" style="font-size: 13.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Custom Order Quantity</strong>
+                    <span class="elementa-custom-qty-subtitle" style="font-size: 11.5px; color: #64748b; font-weight: 600;">Type or adjust exact quantity to calculate slab discount</span>
+                  </div>
+                </div>
+                
+                <div class="elementa-custom-qty-stepper-wrap" style="display: inline-flex; align-items: center; gap: 8px;">
+                  <div style="display: inline-flex; align-items: center; border: 2px solid #0f172a; border-radius: 10px; overflow: hidden; background: #ffffff;">
+                    <button type="button" onclick="adjustCustomCapTotalQuantity(-1)" style="border: none; background: #f1f5f9; width: 38px; height: 38px; font-weight: 900; font-size: 18px; cursor: pointer; color: #0f172a;">−</button>
+                    <input type="number" id="elementa-custom-cap-qty-input" value="2" min="2" max="1000" oninput="onCustomCapTotalQtyChange(this.value)" style="width: 65px; border: none; text-align: center; font-weight: 900; font-size: 16px; outline: none; color: #0f172a; -moz-appearance: textfield;">
+                    <button type="button" onclick="adjustCustomCapTotalQuantity(1)" style="border: none; background: #f1f5f9; width: 38px; height: 38px; font-weight: 900; font-size: 18px; cursor: pointer; color: #0f172a;">+</button>
+                  </div>
+                  <span style="font-size: 13.5px; font-weight: 800; color: #0f172a;">Pcs</span>
+                </div>
+              </div>
+
+              <!-- Expandable Full Discount Table Dropdown -->
+              <div id="cap-discount-table-expand" style="display: none; margin-top: 15px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 12px; overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 12.5px; text-align: left;">
+                  <thead>
+                    <tr style="background: #f8fafc; border-bottom: 1px solid #e2e8f0; color: #475569;">
+                      <th style="padding: 8px 12px;">Quantity Slab</th>
+                      <th style="padding: 8px 12px;">Discount</th>
+                      <th style="padding: 8px 12px;">Unit Price</th>
+                      <th style="padding: 8px 12px;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                      <td style="padding: 8px 12px; font-weight: 700;">2–4 Pcs</td>
+                      <td style="padding: 8px 12px; color: #64748b;">Base Price (0%)</td>
+                      <td style="padding: 8px 12px; font-weight: 800; color: #166534;">₹250 / cap</td>
+                      <td style="padding: 8px 12px;"><button type="button" onclick="selectCapDiscountTier(2)" style="background: #e0f2fe; color: #0284c7; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; cursor: pointer;">Select 2</button></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                      <td style="padding: 8px 12px; font-weight: 700;">5–9 Pcs</td>
+                      <td style="padding: 8px 12px; color: #0284c7; font-weight: 700;">12% OFF</td>
+                      <td style="padding: 8px 12px; font-weight: 800; color: #166534;">₹220 / cap</td>
+                      <td style="padding: 8px 12px;"><button type="button" onclick="selectCapDiscountTier(5)" style="background: #e0f2fe; color: #0284c7; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; cursor: pointer;">Select 5</button></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                      <td style="padding: 8px 12px; font-weight: 700;">10–24 Pcs</td>
+                      <td style="padding: 8px 12px; color: #0284c7; font-weight: 700;">18% OFF</td>
+                      <td style="padding: 8px 12px; font-weight: 800; color: #166534;">₹205 / cap</td>
+                      <td style="padding: 8px 12px;"><button type="button" onclick="selectCapDiscountTier(10)" style="background: #e0f2fe; color: #0284c7; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; cursor: pointer;">Select 10</button></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                      <td style="padding: 8px 12px; font-weight: 700;">25–49 Pcs</td>
+                      <td style="padding: 8px 12px; color: #0284c7; font-weight: 700;">25% OFF</td>
+                      <td style="padding: 8px 12px; font-weight: 800; color: #166534;">₹188 / cap</td>
+                      <td style="padding: 8px 12px;"><button type="button" onclick="selectCapDiscountTier(25)" style="background: #e0f2fe; color: #0284c7; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; cursor: pointer;">Select 25</button></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                      <td style="padding: 8px 12px; font-weight: 700;">50–99 Pcs</td>
+                      <td style="padding: 8px 12px; color: #0284c7; font-weight: 700;">32% OFF</td>
+                      <td style="padding: 8px 12px; font-weight: 800; color: #166534;">₹170 / cap</td>
+                      <td style="padding: 8px 12px;"><button type="button" onclick="selectCapDiscountTier(50)" style="background: #e0f2fe; color: #0284c7; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; cursor: pointer;">Select 50</button></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                      <td style="padding: 8px 12px; font-weight: 700;">100–149 Pcs</td>
+                      <td style="padding: 8px 12px; color: #0284c7; font-weight: 700;">41% OFF</td>
+                      <td style="padding: 8px 12px; font-weight: 800; color: #166534;">₹148 / cap</td>
+                      <td style="padding: 8px 12px;"><button type="button" onclick="selectCapDiscountTier(100)" style="background: #e0f2fe; color: #0284c7; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; cursor: pointer;">Select 100</button></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f1f5f9;">
+                      <td style="padding: 8px 12px; font-weight: 700;">150–200 Pcs</td>
+                      <td style="padding: 8px 12px; color: #0284c7; font-weight: 700;">45% OFF MAX</td>
+                      <td style="padding: 8px 12px; font-weight: 800; color: #166534;">₹138 / cap</td>
+                      <td style="padding: 8px 12px;"><button type="button" onclick="selectCapDiscountTier(150)" style="background: #e0f2fe; color: #0284c7; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; cursor: pointer;">Select 150</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Dynamic Upsell Nudge Bar -->
+              <div id="cap-upsell-nudge-bar" style="margin-top: 14px; background: #fff7ed; border: 1.5px solid #ffedd5; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                <span id="cap-nudge-text" style="font-size: 12.5px; font-weight: 700; color: #c2410c;">Add 3 more caps to lower your price to ₹220/cap!</span>
+                <button type="button" id="cap-nudge-btn" onclick="addCapNudgeQuantity()" style="background: #f97316; color: #ffffff; border: none; padding: 4px 12px; border-radius: 6px; font-weight: 800; font-size: 11.5px; cursor: pointer;">+ Add 3 More</button>
+              </div>
+            </div>
+
+            <!-- CUSTOMIZATION METHOD SELECTOR CARD (Upload Design vs Add Text) -->
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-bottom: 18px;">
+              <label style="font-size: 13px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 12px;">
+                <i class="fa-solid fa-paintbrush" style="color: #0284c7;"></i> CHOOSE CUSTOMIZATION OPTION:
+              </label>
+
+              <!-- Method Tabs -->
+              <div style="display: flex; gap: 10px; margin-bottom: 16px;">
+                <button type="button" class="cap-method-tab active" id="cap-method-btn-upload" onclick="switchCapCustomMethod('upload', this)" style="flex: 1; padding: 10px 14px; border-radius: 10px; border: 2px solid #0284c7; background: #e0f2fe; color: #0284c7; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                  <i class="fa-solid fa-cloud-arrow-up"></i> Upload Design / Logo
+                </button>
+                <button type="button" class="cap-method-tab" id="cap-method-btn-text" onclick="switchCapCustomMethod('text', this)" style="flex: 1; padding: 10px 14px; border-radius: 10px; border: 1.5px solid #cbd5e1; background: #ffffff; color: #475569; font-weight: 800; font-size: 13px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                  <i class="fa-solid fa-font"></i> Add Custom Text
+                </button>
+              </div>
+
+              <!-- OPTION 1: Upload Your Design / Logo Box -->
+              <div id="cap-upload-method-box" style="display: block;">
+                <div id="cap-dropzone" style="background: #f8fafc; border: 2px dashed #0284c7; border-radius: 14px; padding: 18px; text-align: center; cursor: pointer; transition: all 0.2s ease;" onclick="document.getElementById('cap-file-input').click()">
+                  <i class="fa-solid fa-cloud-arrow-up fa-2xl" style="color: #0284c7; margin-bottom: 8px; display: block;"></i>
+                  <strong style="font-size: 14px; color: #0f172a; display: block;">Click or Drag &amp; Drop to Upload Logo</strong>
+                  <span style="font-size: 12px; color: #64748b; display: block; margin-top: 4px;">PNG, SVG, AI, PSD, JPG, JPEG (Max. 2.5" × 2.5" print area)</span>
+                  <input type="file" id="cap-file-input" accept="image/*,.jpg,.jpeg,.png,.ai,.psd,.pdf,.svg" style="display: none;" onchange="handleCapFileUpload(this)">
+                </div>
+
+                <!-- Uploaded File Details Card -->
+                <div id="cap-uploaded-file-card" style="display: none; margin-top: 14px; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 12px; padding: 14px;">
+                  <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <img id="cap-thumb-preview" src="" alt="Cap Design Thumb" style="width: 44px; height: 44px; object-fit: contain; background: #ffffff; border-radius: 8px; border: 1px solid #cbd5e1; padding: 2px;">
+                      <div>
+                        <strong id="cap-file-name-text" style="font-size: 13px; color: #0f172a; display: block;">my-logo.png</strong>
+                        <span style="font-size: 11px; color: #16a34a; font-weight: 700;"><i class="fa-solid fa-circle-check"></i> File attached for order approval</span>
+                      </div>
+                    </div>
+                    <button type="button" onclick="removeCapUploadedFile()" style="background: #fee2e2; color: #ef4444; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 11.5px; cursor: pointer;">
+                      <i class="fa-solid fa-trash"></i> Remove
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Design Authorization & Approval Tick Box -->
+                <div class="config-step" id="cap-auth-step-box" style="display: none; margin-top: 14px; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 12px; padding: 14px 16px; text-align: left;">
+                  <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; user-select: none; font-size: 13px; font-weight: 700; color: #14532d; line-height: 1.5; margin: 0;">
+                    <input type="checkbox" id="cap-auth-checkbox" onchange="updateCapAddBtnState()" style="width: 20px; height: 20px; min-width: 20px; min-height: 20px; accent-color: #143d1c; margin-top: 1px; cursor: pointer;">
+                    <span>I have authorization to use the design, I have reviewed and approved it.</span>
+                  </label>
+                </div>
+
+                <!-- Notice if text already entered -->
+                <div id="cap-upload-text-notice" style="display: none; margin-top: 10px; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 10px; padding: 10px 14px; font-size: 12.5px; color: #166534; font-weight: 700;">
+                  <i class="fa-solid fa-circle-check"></i> Custom Text: "<span id="cap-upload-text-notice-val"></span>" (both your text AND logo will be included!)
+                </div>
+              </div>
+
+              <!-- OPTION 2: Add Your Text Box -->
+              <div id="cap-text-method-box" style="display: none;">
+                <!-- Notice if file already uploaded -->
+                <div id="cap-text-file-notice" style="display: none; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 10px; padding: 10px 14px; margin-bottom: 12px; font-size: 12.5px; color: #166534; font-weight: 700;">
+                  <i class="fa-solid fa-circle-check"></i> Logo Attached: <span id="cap-text-file-notice-name"></span> (both your logo AND this text will be included!)
+                </div>
+
+                <label style="font-size: 12.5px; font-weight: 800; color: #0f172a; display: block; margin-bottom: 6px;">ENTER YOUR TEXT FOR CAP CROWN:</label>
+                <input type="text" id="cap-custom-text-input" placeholder="Type text here (e.g., ELEMENTA)" oninput="updateCapCustomText(this.value)" style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 10px 14px; font-size: 14px; font-weight: 800; outline: none; margin-bottom: 12px; color: #0f172a;">
+                
+                <!-- Text Color Picker -->
+                <label style="font-size: 12px; font-weight: 800; color: #0f172a; display: block; margin-bottom: 6px;">PREFERRED TEXT COLOR:</label>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+                  <button type="button" class="cap-text-color-btn active" onclick="updateCapTextColor('#ffffff', this)" style="width: 28px; height: 28px; border-radius: 50%; background: #ffffff; border: 2px solid #0284c7; cursor: pointer; transition: all 0.2s;" title="White"></button>
+                  <button type="button" class="cap-text-color-btn" onclick="updateCapTextColor('#18181b', this)" style="width: 28px; height: 28px; border-radius: 50%; background: #18181b; border: 1.5px solid #cbd5e1; cursor: pointer; transition: all 0.2s;" title="Black"></button>
+                  <button type="button" class="cap-text-color-btn" onclick="updateCapTextColor('#eab308', this)" style="width: 28px; height: 28px; border-radius: 50%; background: #eab308; border: 1.5px solid #cbd5e1; cursor: pointer; transition: all 0.2s;" title="Gold Yellow"></button>
+                  <button type="button" class="cap-text-color-btn" onclick="updateCapTextColor('#dc2626', this)" style="width: 28px; height: 28px; border-radius: 50%; background: #dc2626; border: 1.5px solid #cbd5e1; cursor: pointer; transition: all 0.2s;" title="Red"></button>
+                  <button type="button" class="cap-text-color-btn" onclick="updateCapTextColor('#1e3a8a', this)" style="width: 28px; height: 28px; border-radius: 50%; background: #1e3a8a; border: 1.5px solid #cbd5e1; cursor: pointer; transition: all 0.2s;" title="Navy Blue"></button>
+                  
+                  <!-- Custom Color Circle Button + Hex Input -->
+                  <div style="display: inline-flex; align-items: center; gap: 6px; margin-left: 2px;">
+                    <div id="cap-custom-color-circle" class="cap-text-color-btn" style="width: 28px; height: 28px; border-radius: 50%; background: conic-gradient(from 180deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000); border: 1.5px solid #cbd5e1; cursor: pointer; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1);" title="Custom Color Picker">
+                      <input type="color" id="cap-custom-color-picker" value="#ff0000" onchange="onCustomCapColorPickerChange(this.value)" oninput="onCustomCapColorPickerChange(this.value)" style="position: absolute; top: -10px; left: -10px; width: 48px; height: 48px; opacity: 0; cursor: pointer;">
+                      <i class="fa-solid fa-plus" id="cap-custom-color-plus-icon" style="font-size: 10px; color: #ffffff; text-shadow: 0 0 2px rgba(0,0,0,0.9); pointer-events: none;"></i>
+                    </div>
+                    <div style="display: inline-flex; align-items: center; position: relative;">
+                      <span style="position: absolute; left: 8px; font-size: 11px; font-weight: 800; color: #94a3b8; pointer-events: none;">#</span>
+                      <input type="text" id="cap-custom-color-hex" placeholder="HEX" maxlength="6" oninput="onCustomCapHexInput(this.value)" style="width: 76px; height: 28px; padding: 2px 6px 2px 18px; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 11.5px; font-weight: 800; text-transform: uppercase; color: #0f172a; outline: none; background: #ffffff;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SPECIAL INSTRUCTIONS BOX -->
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-bottom: 18px;">
+              <label for="cap-special-instructions" style="font-size: 13px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 8px;">
+                <i class="fa-solid fa-pen-nib" style="color: #A8D4B0;"></i> Any special instructions?
+              </label>
+              <textarea id="cap-special-instructions" placeholder="For example: Print position, custom text placement, font preferences..." oninput="updateCapSpecialInstructions(this.value)" style="width: 100%; height: 75px; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 10px 14px; font-size: 13px; font-weight: 600; outline: none; color: #0f172a; resize: none;"></textarea>
+            </div>
+
+            <!-- Reassurance Trust Badge Box -->
+            <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; padding: 12px 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-circle-check" style="color: #16a34a; font-size: 18px;"></i>
+              <span style="font-size: 13px; font-weight: 700; color: #15803d;">We'll Send Design for Approval After Order is Placed/Confirmed</span>
+            </div>
+
+            <!-- DYNAMIC PRICE & SUMMARY BANNER + ACTION BUTTONS -->
+            <div style="background: #ffffff; border: 1.5px solid #0f172a; border-radius: 18px; padding: 20px; box-shadow: 0 6px 25px rgba(0,0,0,0.06);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px;">
+                <div>
+                  <span style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Unit Price:</span>
+                  <span id="cap-summary-unit-price" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹250 / cap</span>
+                </div>
+                <div style="text-align: right;">
+                  <span style="font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; display: block;">Total Price:</span>
+                  <span id="cap-summary-total-price" style="font-size: 22px; font-weight: 900; color: #166534;">₹500 Total</span>
+                </div>
+              </div>
+
+              <div>
+                <button type="button" id="btn-add-cap-cart" onclick="addCapToCart()" disabled="disabled" style="width: 100%; background: #94a3b8; color: #ffffff; border: none; padding: 16px; border-radius: 14px; font-size: 15px; font-weight: 900; cursor: not-allowed; pointer-events: none; opacity: 0.45; filter: grayscale(0.6); display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: none; transition: all 0.3s ease;">
+                  <i class="fa-solid fa-cart-shopping"></i> Add Customized Caps to Cart • ₹500
+                </button>
+                <div id="cap-add-hint-text" style="font-size: 12px; font-weight: 700; color: #64748b; text-align: center; margin-top: 8px;">Please upload your design/logo image to enable Add to Cart</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Customer Reviews Section -->
+    <section class="custom-product-reviews-section reveal-on-scroll" id="customer-reviews" style="background: #ffffff; padding: 60px 0 80px; border-top: 1px solid #e2e8f0;">
+      <div class="container" style="max-width: 1240px; margin: 0 auto; padding: 0 20px;">
+        <div style="text-align: center; margin-bottom: 30px;">
+          <span style="background: #f1f5f9; color: #0f172a; padding: 6px 18px; border-radius: 999px; font-weight: 800; font-size: 13px; letter-spacing: 0.5px; text-transform: uppercase; display: inline-block; margin-bottom: 12px;">Customer Feedback</span>
+          <h2 style="font-size: 32px; font-weight: 900; color: #0f172a; margin-bottom: 8px;">Customer Reviews</h2>
+          <p style="font-size: 15px; color: #64748b; margin: 0 0 20px;">Real reviews &amp; ratings from verified customers across India</p>
+
+          <!-- Overall Rating Summary Card -->
+          <div style="display: inline-flex; align-items: center; gap: 16px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 14px 28px; border-radius: 16px; margin-bottom: 24px;">
+            <div style="font-size: 38px; font-weight: 900; color: #0f172a; line-height: 1;">5.0</div>
+            <div style="text-align: left;">
+              <div style="color: #f59e0b; font-size: 16px; margin-bottom: 4px;">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <span style="font-size: 12px; font-weight: 700; color: #64748b;">Based on 42 verified orders</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Reviews Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+          <!-- Review Card 1 -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <div style="color: #f59e0b; font-size: 14px;">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <span style="font-size: 12px; color: #94a3b8; font-weight: 600;">2 days ago</span>
+            </div>
+            <h4 style="font-size: 15px; font-weight: 800; color: #0f172a; margin: 0 0 6px;">Flawless stitching and fabric quality</h4>
+            <p style="font-size: 13.5px; color: #475569; line-height: 1.6; margin: 0 0 14px;">"Ordered 50 navy blue caps for our tech startup offsite. The embroidery was sharp and exact to our vector logo. The brass buckle on back feels super premium."</p>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <strong style="font-size: 13px; color: #0f172a;">Aman R.</strong>
+              <span style="font-size: 11px; font-weight: 700; color: #16a34a; background: #dcfce7; padding: 2px 8px; border-radius: 6px;"><i class="fa-solid fa-check"></i> Verified Buyer</span>
+            </div>
+          </div>
+
+          <!-- Review Card 2 -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <div style="color: #f59e0b; font-size: 14px;">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <span style="font-size: 12px; color: #94a3b8; font-weight: 600;">1 week ago</span>
+            </div>
+            <h4 style="font-size: 15px; font-weight: 800; color: #0f172a; margin: 0 0 6px;">Super fast digital approval proof</h4>
+            <p style="font-size: 13.5px; color: #475569; line-height: 1.6; margin: 0 0 14px;">"Loved the approval mockup sent right after ordering. The black cap with white embroidered text turned out looking identical to the digital preview. Will reorder soon!"</p>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <strong style="font-size: 13px; color: #0f172a;">Pooja K.</strong>
+              <span style="font-size: 11px; font-weight: 700; color: #16a34a; background: #dcfce7; padding: 2px 8px; border-radius: 6px;"><i class="fa-solid fa-check"></i> Verified Buyer</span>
+            </div>
+          </div>
+
+          <!-- Review Card 3 -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <div style="color: #f59e0b; font-size: 14px;">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <span style="font-size: 12px; color: #94a3b8; font-weight: 600;">2 weeks ago</span>
+            </div>
+            <h4 style="font-size: 15px; font-weight: 800; color: #0f172a; margin: 0 0 6px;">Unbeatable bulk pricing</h4>
+            <p style="font-size: 13.5px; color: #475569; line-height: 1.6; margin: 0 0 14px;">"Getting 100 customized cotton caps at ₹148 each is incredible value. Everyone at our college fest loved them. Delivered securely in 4 business days."</p>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <strong style="font-size: 13px; color: #0f172a;">Karan M.</strong>
+              <span style="font-size: 11px; font-weight: 700; color: #16a34a; background: #dcfce7; padding: 2px 8px; border-radius: 6px;"><i class="fa-solid fa-check"></i> Verified Buyer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="brand-logo">
+            <img src="assets/elementa-logo-white.png" alt="Elementa Logo" style="height: 48px; width: auto; display: block; margin-bottom: 20px;">
+          </a>
+          <p>Elementa is a premier custom merchandise &amp; printing studio providing high definition apparel, stickers, caps, and corporate gift sets.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="caps.html">Custom Caps</a></li>
+            <li><a href="tshirts.html">Custom T-Shirts</a></li>
+            <li><a href="stickers.html">Custom Stickers</a></li>
+            <li><a href="gifts.html">Custom Gifts</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="caps.html">Customized Cotton Caps</a></li>
+            <li><a href="tshirts.html">T-Shirts &amp; Apparel</a></li>
+            <li><a href="stickers.html">Stickers &amp; Labels</a></li>
+            <li><a href="gifts.html">Executive Gift Sets</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p>Subscribe to receive 15% off your first custom printing order.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed to Elementa newsletter!');">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Elementa Studio. All rights reserved.</p>
+        <div>
+          <i class="fa-brands fa-cc-visa fa-xl" style="margin-right: 10px;"></i>
+          <i class="fa-brands fa-cc-mastercard fa-xl" style="margin-right: 10px;"></i>
+          <i class="fa-brands fa-cc-paypal fa-xl"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Shopping Cart Drawer Overlay & Drawer -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 style="font-size: 18px; font-weight: 700; color: #1e272e;">Your Shopping Cart</h3>
+      <button id="close-cart-btn" style="font-size: 20px; color: #636e72; background: none; border: none; cursor: pointer;">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="cart-drawer-items"></div>
+    <div class="cart-drawer-footer">
+      <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 16px; margin-bottom: 15px;">
+        <span>Subtotal:</span>
+        <span id="cart-subtotal-price" style="color: #ff5e15;">₹0</span>
+      </div>
+      <button class="btn-primary" style="width: 100%; text-align: center;" onclick="alert('Proceeding to Checkout!');">Checkout Now</button>
+    </div>
+  </div>
+
+  <!-- Wishlist Drawer -->
+  <div class="cart-drawer-overlay" id="wishlist-drawer-overlay"></div>
+  <div class="cart-drawer" id="wishlist-drawer">
+    <div class="cart-drawer-header">
+      <h3 style="font-size: 18px; font-weight: 700; color: #1e272e;"><i class="fa-solid fa-heart" style="color: #ff4757; margin-right: 6px;"></i> My Saved Wishlist</h3>
+      <button id="close-wishlist-btn" style="font-size: 20px; color: #636e72; background: none; border: none; cursor: pointer;">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="wishlist-drawer-items"></div>
+  </div>
+
+  <!-- Main JavaScript -->
+  <script src="assets/main.js"></script>
+</body>
+
+</html>

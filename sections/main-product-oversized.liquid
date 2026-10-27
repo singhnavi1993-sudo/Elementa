@@ -1,0 +1,1019 @@
+<script>
+  window.shopifyProductTitle = {{ product.title | default: "" | json }};
+  window.shopifyProductHandle = {{ product.handle | default: "" | json }};
+  window.shopifyProductVariants = {{ product.variants | json }};
+  window.shopifyProductOptions = {{ product.options_with_values | json }};
+  window.shopifyAssetMap = {
+    'roundneck-white.jpg': {{ 'roundneck-white.jpg' | asset_url | json }},
+    'roundneck-black.jpg': {{ 'roundneck-black.jpg' | asset_url | json }},
+    'roundneck-navy.jpg': {{ 'roundneck-navy.jpg' | asset_url | json }},
+    'roundneck-grey.jpg': {{ 'roundneck-grey.jpg' | asset_url | json }},
+    'roundneck-red.jpg': {{ 'roundneck-red.jpg' | asset_url | json }},
+    'oversized-white.png': {{ 'oversized-white.png' | asset_url | json }},
+    'oversized-black.png': {{ 'oversized-black.png' | asset_url | json }},
+    'oversized-red.png': {{ 'oversized-red.png' | asset_url | json }},
+    'oversized-navy.png': {{ 'oversized-navy.png' | asset_url | json }},
+    'polo-black.jpg': {{ 'polo-black.jpg' | asset_url | json }},
+    'polo-white.jpg': {{ 'polo-white.jpg' | asset_url | json }},
+    'polo-navy.jpg': {{ 'polo-navy.jpg' | asset_url | json }},
+    'polo-red.jpg': {{ 'polo-red.jpg' | asset_url | json }},
+    'polo-green.jpg': {{ 'polo-green.jpg' | asset_url | json }},
+    'polo-grey.jpg': {{ 'polo-grey.jpg' | asset_url | json }},
+    'size-chart-roundneck.png': {{ 'size-chart-roundneck.png' | asset_url | json }},
+    'size-chart-oversized.png': {{ 'size-chart-oversized.png' | asset_url | json }},
+    'size-chart-polo.png': {{ 'size-chart-polo.png' | asset_url | json }}
+  };
+</script>
+
+<!-- Hero Banner Section -->
+<section class="stickers-hero-banner" style="background: #F5AD72; padding: 45px 0 35px; text-align: center; color: #1e272e;">
+  <div class="container">
+    <h1 style="font-size: 38px; font-weight: 900; margin-bottom: 8px; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.12);">T-Shirts</h1>
+    <p style="font-size: 16px; font-weight: 600; opacity: 0.95; margin-bottom: 25px; color: #ffffff;">Shop Our Designs or Customize Your Own</p>
+
+    <!-- Mode Selector Bar -->
+    <div class="sticker-mode-bar" style="display: inline-flex; background: rgba(255, 255, 255, 0.95); padding: 6px; border-radius: 999px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); gap: 6px;">
+      <button type="button" class="mode-tab-btn" id="btn-mode-inbuilt" onclick="switchTshirtPageMode('inbuilt')" style="padding: 12px 28px; border-radius: 999px; font-weight: 800; font-size: 14px; border: none; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--dark-main);">
+        <i class="fa-solid fa-shirt"></i> In-Built Products
+      </button>
+      <button type="button" class="mode-tab-btn active" id="btn-mode-custom" onclick="switchTshirtPageMode('custom')" style="padding: 12px 28px; border-radius: 999px; font-weight: 800; font-size: 14px; border: none; cursor: pointer; transition: all 0.3s ease; background: #A8D4B0; color: #143d1c;">
+        <i class="fa-solid fa-sliders"></i> Customized Products
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- DEDICATED SINGLE PRODUCT VIEW (Opens directly on the page when product card is clicked) -->
+<div class="sticker-mode-view" id="single-product-mode-view" style="display: none; padding: 40px 0 80px; background: #ffffff;">
+  <div class="container">
+    <!-- Back Button Bar & Breadcrumb -->
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 16px;">
+      <button type="button" onclick="backToTshirtCatalog()" style="background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; padding: 10px 20px; border-radius: 12px; font-weight: 800; font-size: 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease;" onmouseover="this.style.background='#e2e8f0';" onmouseout="this.style.background='#f1f5f9';">
+        <i class="fa-solid fa-arrow-left"></i> Back to All T-Shirts
+      </button>
+      <nav class="breadcrumb" style="font-size: 13.5px; color: #64748b;">
+        <a href="/" style="color: #64748b; text-decoration: none;">Home</a> / 
+        <a href="#" onclick="backToTshirtCatalog(); return false;" style="color: #64748b; text-decoration: none;">T-Shirts</a> / 
+        <strong id="tshirt-single-breadcrumb-title" style="color: #0f172a;">Product Details</strong>
+      </nav>
+    </div>
+
+    <div class="product-detail-grid" style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start;">
+      <!-- Left Column: Product Image Gallery Card -->
+      <div class="product-gallery-col" style="flex: 1 1 420px; min-width: 0; position: sticky; top: 90px;">
+        <div style="background: #fdfaf6; border-radius: 20px; padding: 30px; border: 1px solid #e2e8f0; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+          <img id="tshirt-single-main-img" src="" alt="T-Shirt Preview" style="width: 100%; max-height: 480px; object-fit: contain; border-radius: 12px; display: block; margin: 0 auto; transition: opacity 0.2s ease;">
+        </div>
+        <!-- Thumbnails Gallery Row -->
+        <div id="tshirt-single-thumbs-container" style="display: flex; gap: 12px; margin-top: 16px; justify-content: center; flex-wrap: wrap;"></div>
+      </div>
+
+      <!-- Right Column: Title, Price, Description, Size, Quantity & Accordions -->
+      <div class="product-info-col" style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+        <div>
+          <span id="tshirt-single-category" style="background: #e0f2fe; color: #0284c7; padding: 6px 16px; border-radius: 999px; font-weight: 800; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.5px; display: inline-block; margin-bottom: 12px;">OVERSIZED T-SHIRT</span>
+          <h1 id="tshirt-single-title" style="font-size: 30px; font-weight: 900; color: #0f172a; margin: 0 0 12px; line-height: 1.25;">Product Title</h1>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div style="color: #f59e0b; font-size: 16px;">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <span style="font-size: 14px; color: #64748b; font-weight: 700;">(4.9 ★ • 24 reviews)</span>
+          </div>
+        </div>
+
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px 20px; display: flex; align-items: baseline; gap: 12px;">
+          <strong id="tshirt-single-price" style="font-size: 32px; font-weight: 900; color: #0f172a;">₹799.00</strong>
+          
+        </div>
+
+        <!-- Description Box -->
+        <div style="background: #ffffff; border-radius: 14px; padding: 18px; border: 1px solid #e2e8f0; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+          <h4 style="font-size: 13.5px; font-weight: 900; color: #0f172a; margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+            <i class="fa-solid fa-circle-info" style="color: #A8D4B0;"></i> DESCRIPTION
+          </h4>
+          <ul style="margin: 0; padding: 0; font-size: 14px; color: #334155; line-height: 1.85; font-weight: 700; list-style: none;">
+            <li>✓ 180 GSM</li>
+            <li>✓ Relaxed oversized fit</li>
+            <li>✓ Soft & breathable</li>
+            <li>✓ Made for everyday wear</li>
+          </ul>
+        </div>
+
+        <!-- Size Selector -->
+        <div>
+          <label style="font-size: 13.5px; font-weight: 900; color: #0f172a; display: block; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">SELECT SIZE:</label>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <button type="button" class="single-tshirt-size-chip" onclick="selectSingleSize('S', this)" style="padding: 10px 20px; border-radius: 10px; border: 2px solid #cbd5e1; background: #ffffff; color: #334155; font-weight: 800; font-size: 14px; cursor: pointer; transition: all 0.2s ease;">S</button>
+            <button type="button" class="single-tshirt-size-chip" onclick="selectSingleSize('M', this)" style="padding: 10px 20px; border-radius: 10px; border: 2px solid #A8D4B0; background: #A8D4B0; color: #143d1c; font-weight: 800; font-size: 14px; cursor: pointer; transition: all 0.2s ease;">M</button>
+            <button type="button" class="single-tshirt-size-chip" onclick="selectSingleSize('L', this)" style="padding: 10px 20px; border-radius: 10px; border: 2px solid #cbd5e1; background: #ffffff; color: #334155; font-weight: 800; font-size: 14px; cursor: pointer; transition: all 0.2s ease;">L</button>
+            <button type="button" class="single-tshirt-size-chip" onclick="selectSingleSize('XL', this)" style="padding: 10px 20px; border-radius: 10px; border: 2px solid #cbd5e1; background: #ffffff; color: #334155; font-weight: 800; font-size: 14px; cursor: pointer; transition: all 0.2s ease;">XL</button>
+          </div>
+        </div>
+
+        <!-- Quantity Selector -->
+        <div>
+          <label style="font-size: 13.5px; font-weight: 900; color: #0f172a; display: block; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">QUANTITY:</label>
+          <div style="display: inline-flex; align-items: center; border: 2px solid #0f172a; border-radius: 12px; overflow: hidden; background: #ffffff;">
+            <button type="button" onclick="changeSingleTshirtQty(-1)" style="border: none; background: #f1f5f9; width: 44px; height: 44px; font-weight: 900; font-size: 20px; cursor: pointer; color: #0f172a;">-</button>
+            <input type="number" id="single-tshirt-qty-input" value="1" min="1" max="100" style="width: 65px; border: none; text-align: center; font-weight: 900; font-size: 17px; outline: none; color: #0f172a;">
+            <button type="button" onclick="changeSingleTshirtQty(1)" style="border: none; background: #f1f5f9; width: 44px; height: 44px; font-weight: 900; font-size: 20px; cursor: pointer; color: #0f172a;">+</button>
+          </div>
+        </div>
+
+        <!-- Hidden Variant Input -->
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" id="ProductVariantId-{{ section.id }}">
+        <!-- Add to Cart CTA Button -->
+        <button type="button" onclick="addSingleTshirtToCart()" style="width: 100%; background: #A8D4B0; color: #143d1c; border: none; padding: 18px 32px; border-radius: 14px; font-weight: 900; font-size: 17px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 6px 20px rgba(168,212,176,0.5); transition: all 0.3s ease; margin-top: 6px;" onmouseover="this.style.transform='translateY(-2px)';" onmouseout="this.style.transform='translateY(0)';">
+          <i class="fa-solid fa-cart-shopping" style="font-size: 18px;"></i> ADD TO CART
+        </button>
+
+        <!-- Accordions below Checkout / Add to Cart -->
+        <div class="inbuilt-tshirt-accordions" style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+          <!-- Accordion 1: Wash Guide -->
+          <details style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px 18px; cursor: pointer;">
+            <summary style="font-size: 14.5px; font-weight: 800; color: #0f172a; display: flex; align-items: center; justify-content: space-between; outline: none; list-style: none;">
+              <span style="display: flex; align-items: center; gap: 10px;">Wash Guide</span>
+              <span style="font-size: 13px; color: #64748b;">▼</span>
+            </summary>
+            <div style="margin-top: 12px; font-size: 13.5px; color: #475569; line-height: 1.65; font-weight: 500; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+              Treat your tee like a favourite. Wash it inside out in cold water, keep bleach far, far away, and please don’t iron directly over the print.
+            </div>
+          </details>
+
+          <!-- Accordion 2: About the Print -->
+          <details style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px 18px; cursor: pointer;">
+            <summary style="font-size: 14.5px; font-weight: 800; color: #0f172a; display: flex; align-items: center; justify-content: space-between; outline: none; list-style: none;">
+              <span style="display: flex; align-items: center; gap: 10px;">About the Print</span>
+              <span style="font-size: 13px; color: #64748b;">▼</span>
+            </summary>
+            <div style="margin-top: 12px; font-size: 13.5px; color: #475569; line-height: 1.65; font-weight: 500; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+              What you see is what we print. Your tee will come with the design shown above, made especially for you once you place your order. No surprises, just a really good tee.
+            </div>
+          </details>
+
+          <!-- Accordion 3: Disclaimer -->
+          <details style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 14px 18px; cursor: pointer;">
+            <summary style="font-size: 14.5px; font-weight: 800; color: #0f172a; display: flex; align-items: center; justify-content: space-between; outline: none; list-style: none;">
+              <span style="display: flex; align-items: center; gap: 10px;">Disclaimer</span>
+              <span style="font-size: 13px; color: #64748b;">▼</span>
+            </summary>
+            <div style="margin-top: 12px; font-size: 13.5px; color: #475569; line-height: 1.65; font-weight: 500; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+              Screens can be dramatic. Colours may look slightly different in person depending on your screen settings and lighting. Minor size variations (up to 1 inch) are normal.
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODE 1: In-Built Catalog View -->
+<div class="sticker-mode-view" id="inbuilt-mode-view" style="display: none;">
+  <section class="inbuilt-products-section" style="padding: 50px 0 80px; background: #fdfaf6;">
+    <div class="container">
+      <div class="inbuilt-filter-bar">
+        <button class="inbuilt-filter-btn active" onclick="filterTshirtCatalog('all', this)">All T-Shirts</button>
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            {% if block.type == 'category_filter' %}
+              <button class="inbuilt-filter-btn" {{ block.shopify_attributes }} onclick="filterTshirtCatalog('{{ block.settings.filter_tag | default: block.settings.title | handleize }}', this)">
+                {{ block.settings.title }}
+              </button>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="inbuilt-products-grid" id="inbuilt-tshirt-catalog-grid">
+        <!-- Product: Be Weird Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'be-weird-oversized-tee.png' | asset_url }}" alt="Be Weird Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Be Weird Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'be-weird-tee-799', name: 'Be Weird Oversized Tee', price: '₹799.00', img: '{{ 'be-weird-oversized-tee.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Flow Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-flow.png' | asset_url }}" alt="Flow Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Flow Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'flow-oversized-tee-799', name: 'Flow Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-flow.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Hangry Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-hangry.png' | asset_url }}" alt="Hangry Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Hangry Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹999.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'hangry-oversized-tee-999', name: 'Hangry Oversized Tee', price: '₹999.00', img: '{{ 'tshirt-hangry.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Heart Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-heart.png' | asset_url }}" alt="Heart Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Heart Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'heart-oversized-tee-799', name: 'Heart Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-heart.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Hot Wheels Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-hotwheels.png' | asset_url }}" alt="Hot Wheels Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Hot Wheels Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'hot-wheels-oversized-tee-799', name: 'Hot Wheels Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-hotwheels.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Majnu Bhai Painting Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-majnu.png' | asset_url }}" alt="Majnu Bhai Painting Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Majnu Bhai Painting Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'majnu-bhai-painting-tee-799', name: 'Majnu Bhai Painting Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-majnu.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Marg and Music Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-marg-music.png' | asset_url }}" alt="Marg and Music Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Marg and Music Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'marg-music-oversized-tee-799', name: 'Marg and Music Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-marg-music.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Marvel Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-marvel.png' | asset_url }}" alt="Marvel Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Marvel Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'marvel-oversized-tee-799', name: 'Marvel Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-marvel.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Naruto Oversized Tee Black Color -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-naruto-black.png' | asset_url }}" alt="Naruto Oversized Tee Black Color" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Naruto Oversized Tee Black Color</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹999.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'naruto-oversized-tee-black-999', name: 'Naruto Oversized Tee Black Color', price: '₹999.00', img: '{{ 'tshirt-naruto-black.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Naruto Oversized Tee White Color -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-naruto-white.png' | asset_url }}" alt="Naruto Oversized Tee White Color" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Naruto Oversized Tee White Color</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹999.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'naruto-oversized-tee-white-999', name: 'Naruto Oversized Tee White Color', price: '₹999.00', img: '{{ 'tshirt-naruto-white.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Not a Morning Person Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-not-morning.png' | asset_url }}" alt="Not a Morning Person Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Not a Morning Person Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'not-morning-person-tee-799', name: 'Not a Morning Person Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-not-morning.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: One Piece Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-onepiece.png' | asset_url }}" alt="One Piece Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">One Piece Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹999.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'one-piece-oversized-tee-999', name: 'One Piece Oversized Tee', price: '₹999.00', img: '{{ 'tshirt-onepiece.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Peep Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-peep.png' | asset_url }}" alt="Peep Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Peep Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'peep-oversized-tee-799', name: 'Peep Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-peep.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Pink Panther Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-pink-panther.png' | asset_url }}" alt="Pink Panther Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Pink Panther Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹999.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'pink-panther-oversized-tee-999', name: 'Pink Panther Oversized Tee', price: '₹999.00', img: '{{ 'tshirt-pink-panther.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Plot Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-plot.png' | asset_url }}" alt="Plot Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Plot Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'plot-oversized-tee-799', name: 'Plot Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-plot.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Sip And Yap Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-sip-yap.png' | asset_url }}" alt="Sip And Yap Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Sip And Yap Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'sip-and-yap-oversized-tee-799', name: 'Sip And Yap Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-sip-yap.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Spicy Life Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-spicy-life.png' | asset_url }}" alt="Spicy Life Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Spicy Life Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'spicy-life-oversized-tee-799', name: 'Spicy Life Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-spicy-life.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Sushi Lover Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-sushi-lover.png' | asset_url }}" alt="Sushi Lover Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Sushi Lover Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'sushi-lover-oversized-tee-799', name: 'Sushi Lover Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-sushi-lover.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Tequila Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-tequila.png' | asset_url }}" alt="Tequila Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Tequila Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'tequila-oversized-tee-799', name: 'Tequila Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-tequila.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product: Too Pretty For a Job Oversized Tee -->
+        <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="oversized" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+          <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+            
+            <img src="{{ 'tshirt-too-pretty.png' | asset_url }}" alt="Too Pretty For a Job Oversized Tee" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+            <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">Oversized T-Shirt</span>
+            <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">Too Pretty For a Job Oversized Tee</h3>
+            <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+              <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">₹799.00</div>
+              <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: 'too-pretty-for-job-tee-799', name: 'Too Pretty For a Job Oversized Tee', price: '₹799.00', img: '{{ 'tshirt-too-pretty.png' | asset_url }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        {% assign sel_col = section.settings.collection %}
+        {% assign target_col = nil %}
+
+        {% if sel_col != blank and sel_col.products.size > 0 %}
+          {% assign target_col = sel_col %}
+        {% elsif collections['in-built-t-shirts'] != blank and collections['in-built-t-shirts'].products.size > 0 %}
+          {% assign target_col = collections['in-built-t-shirts'] %}
+        {% elsif collections['in-built-t-shirt'] != blank and collections['in-built-t-shirt'].products.size > 0 %}
+          {% assign target_col = collections['in-built-t-shirt'] %}
+        {% elsif collections['t-shirts'] != blank and collections['t-shirts'].products.size > 0 %}
+          {% assign target_col = collections['t-shirts'] %}
+        {% endif %}
+
+        {% if target_col != nil and target_col.products.size > 0 %}
+          {% for product in target_col.products %}
+            <div onclick="openTshirtProductStudio(this)" class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="{{ product.type | handleize | default: 'oversized' }}" style="cursor: pointer; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column;">
+              <div class="inbuilt-card-media" onclick="openTshirtProductStudio(this)" style="cursor: pointer; position: relative; height: 280px; overflow: hidden; cursor: pointer; background: #fdfaf6">
+                
+                <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title | escape }}" style="width: 100%; height: 100%; object-fit: contain;">
+              </div>
+              <div class="inbuilt-card-body" style="padding: 18px; display: flex; flex-direction: column; flex: 1;">
+                <span class="inbuilt-card-category" style="font-size: 12px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 4px;">{{ product.type | default: 'T-Shirt' }}</span>
+                <h3 class="inbuilt-card-title" onclick="openTshirtProductStudio(this)" style="cursor: pointer; font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 8px; line-height: 1.3">{{ product.title }}</h3>
+                <div class="inbuilt-card-footer" style="margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 10px; border-top: 1px solid #f1f5f9;">
+                  {% assign display_price = product.price %}
+{% if display_price < 3000 %}
+  {% assign p_lower = product.title | downcase %}
+  {% if p_lower contains "hangry" or p_lower contains "naruto" or p_lower contains "one piece" or p_lower contains "pink panther" or p_lower contains "999" %}
+  {% assign display_price = 99900 %}
+{% elsif p_lower contains "hoodie" or p_lower contains "sweatshirt" %}
+    {% assign display_price = 129900 %}
+  {% elsif p_lower contains "oversiz" %}
+    {% assign display_price = 79900 %}
+  {% elsif p_lower contains "graphic" or p_lower contains "organic" or p_lower contains "dtg" %}
+    {% assign display_price = 49900 %}
+  {% elsif p_lower contains "round" %}
+    {% assign display_price = 59900 %}
+  {% elsif p_lower contains "polo" %}
+    {% assign display_price = 62500 %}
+  {% elsif p_lower contains "sticker" or p_lower contains "dtf" %}
+    {% assign display_price = 15000 %}
+  {% elsif p_lower contains "cap" %}
+    {% assign display_price = 25000 %}
+  {% elsif p_lower contains "gift" %}
+    {% assign display_price = 24900 %}
+  {% else %}
+    {% assign display_price = 79900 %}
+  {% endif %}
+{% endif %}
+                  <div class="inbuilt-price-tag" style="font-size: 18px; font-weight: 900; color: #0f172a;">{{ display_price | money }}</div>
+                  <button type="button" class="inbuilt-btn-add" onclick="event.stopPropagation(); handleAddToCart({ id: '{{ product.variants.first.id }}', name: '{{ product.title | escape }}', price: '{{ display_price | money }}', img: '{{ product.featured_image | image_url: width: 800 }}', quantity: 1 })" style="background: #A8D4B0; color: #143d1c; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 800; cursor: pointer;">
+                    Add to Cart <i class="fa-solid fa-cart-shopping"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- MODE 2: Customized Oversized Configurator View -->
+<div class="sticker-mode-view active" id="custom-mode-view" style="display: block;">
+  <!-- Garment Style Sub-Header Bar -->
+  <div class="tshirt-style-subheader-wrapper" style="background: #fdfaf6; padding: 20px 0 10px; text-align: center;">
+    <div class="container">
+      <div class="sticker-mode-bar tshirt-fit-selector-bar" style="display: inline-flex; background: #ffffff; padding: 6px; border-radius: 999px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; gap: 6px; flex-wrap: wrap; justify-content: center;">
+        <button type="button" class="mode-tab-btn tshirt-fit-sub-btn" onclick="selectTshirtFit('Polo T Shirts', this)" style="padding: 10px 26px; border-radius: 999px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--dark-main);">
+          <i class="fa-solid fa-shirt"></i> Polo T-Shirts
+        </button>
+        <button type="button" class="mode-tab-btn tshirt-fit-sub-btn active" onclick="selectTshirtFit('Oversized T-Shirts', this)" style="padding: 10px 26px; border-radius: 999px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s ease; background: #A8D4B0; color: #143d1c;">
+          <i class="fa-solid fa-vest"></i> Oversized T-Shirts
+        </button>
+        <button type="button" class="mode-tab-btn tshirt-fit-sub-btn" onclick="selectTshirtFit('Rounded Neck', this)" style="padding: 10px 26px; border-radius: 999px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--dark-main);">
+          <i class="fa-solid fa-shirt"></i> Round Neck T-Shirts
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section class="product-page-section" style="padding: 20px 0 80px; background: #ffffff;">
+    <div class="container" style="max-width: 1720px; width: 100%;">
+      <nav class="breadcrumb" style="font-size: 14px; color: var(--text-muted); margin-bottom: 25px;">
+        <a href="/" style="color: var(--text-muted);">Home</a> <span style="margin: 0 8px;">/</span>
+        <a href="/pages/t-shirts#custom" style="color: var(--text-muted);">Custom T-Shirts</a> <span style="margin: 0 8px;">/</span>
+        <span style="color: var(--dark-main); font-weight: 600;">Custom Oversized Configurator</span>
+      </nav>
+
+      <div class="custom-studio-card-container" style="background: transparent; border: none; padding: 0; box-shadow: none; margin-bottom: 30px;">
+        <div class="product-detail-grid" style="display: flex; align-items: flex-start; gap: 40px; width: 100%;">
+        <!-- Left Column: Gallery & Live Studio Canvas -->
+        <div class="product-gallery-col oversized-roundneck-zoom" style="flex: 1; position: sticky; top: 90px; height: fit-content; align-self: flex-start; z-index: 20;">
+          <div class="gallery-view-switcher" style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <button type="button" class="gallery-view-btn active" id="tshirt-view-btn-lifestyle" onclick="switchTshirtGalleryViewMode('lifestyle')">
+              <i class="fa-solid fa-camera"></i> Lifestyle Photos
+            </button>
+            <button type="button" class="gallery-view-btn" id="tshirt-view-btn-canvas" onclick="switchTshirtGalleryViewMode('canvas')">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Live Studio Canvas
+            </button>
+          </div>
+
+          <!-- VIEW 1: Lifestyle Photos -->
+          <div class="main-image-container active" id="tshirt-lifestyle-view" style="display: block; padding: 0; min-height: 540px; position: relative; overflow: hidden; cursor: default;">
+            <div class="sticker-shine-overlay"></div>
+            <span class="product-badge" id="tshirt-material-badge" style="background: var(--primary-teal); z-index: 10;">OVERSIZED STREETWEAR</span>
+            <img id="tshirt-main-product-img" src="{{ 'oversized-white.png' | asset_url }}" alt="Custom Oversized T-Shirt" style="width: 100%; height: 100%; min-height: 540px; object-fit: cover; display: block;">
+            <div class="product-gallery-dots" id="tshirt-gallery-dots-container">
+              <div class="gallery-dot active" onclick="changeTshirtImageIndex(0)"></div>
+              <div class="gallery-dot" onclick="changeTshirtImageIndex(1)"></div>
+              <div class="gallery-dot" onclick="changeTshirtImageIndex(2)"></div>
+              <div class="gallery-dot" onclick="changeTshirtImageIndex(3)"></div>
+            </div>
+          </div>
+
+          <!-- VIEW 2: Interactive Live Canvas -->
+          <div class="tshirt-live-canvas-wrapper" id="tshirt-canvas-view" style="display: none; position: relative; overflow: hidden; background: radial-gradient(circle at center, #ffffff 0%, #f1f5f9 100%); width: 100%; max-width: 540px; margin: 0 auto; aspect-ratio: 1 / 1; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: var(--shadow-md);">
+            <div class="tshirt-stage-lighting"></div>
+
+            <div class="tshirt-canvas-view-toggle-bar">
+              <span class="tshirt-view-label"><i class="fa-solid fa-sliders"></i> View:</span>
+              <button type="button" class="canvas-control-btn btn-front-only" onclick="updateTshirtViewSlider(0)">👈 Front Only</button>
+              <input type="range" id="tshirt-view-split-slider" min="0" max="100" value="50" oninput="updateTshirtViewSlider(this.value)">
+              <button type="button" class="canvas-control-btn btn-back-only" onclick="updateTshirtViewSlider(100)">Back Only 👉</button>
+              <span id="tshirt-view-slider-val-text">Both Views (50%)</span>
+            </div>
+
+            <div class="tshirt-photo-canvas-container" id="tshirt-photo-canvas-container" style="position: relative; width: 100%; height: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 0;">
+              <div id="tshirt-canvas-stage-wrapper" style="position: relative; width: 100%; height: 100%; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; transform: scale(1) translateX(0%); transform-origin: center center;">
+                <img id="tshirt-canvas-bg-img" src="{{ 'oversized-white.png' | asset_url }}" alt="Live Oversized Shirt Canvas" style="width: 100%; height: 100%; aspect-ratio: 1 / 1; object-fit: fill; display: block; filter: drop-shadow(0 14px 30px rgba(0,0,0,0.2));">
+
+                <div class="tshirt-draggable-logo-container" id="tshirt-draggable-logo-container" onclick="setActiveEditLogo(1, event)" style="position: absolute; top: 47%; left: 29.35%; transform: translate(-50%, -50%); cursor: pointer; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; user-select: none; touch-action: none;">
+                  <span class="tshirt-drag-badge" id="tshirt-front-print-badge" style="position: absolute; top: -22px; left: 50%; transform: translateX(-50%); font-size: 10px; font-weight: 800; background: #00b894; color: #ffffff; padding: 2px 8px; border-radius: 999px; white-space: nowrap; pointer-events: none; opacity: 1 !important; transition: opacity 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 20;">
+                    <i class="fa-solid fa-ruler-combined"></i> 12" × 12" Front Print Area
+                  </span>
+                  <div class="tshirt-print-box-4x4" id="tshirt-print-box-4x4" style="width: 144px; height: 175px; min-width: 144px; min-height: 175px; border: 2px dashed #00b894; background: rgba(0, 184, 148, 0.08); border-radius: 5px; overflow: hidden !important; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: inset 0 0 8px rgba(0,0,0,0.15);">
+                    <img id="tshirt-canvas-logo-img" src="" alt="Uploaded Logo 1" style="display: none; object-fit: contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); image-rendering: -webkit-optimize-contrast; max-width: none; max-height: none;">
+                  </div>
+                </div>
+
+                <div class="tshirt-draggable-logo-container" id="tshirt-draggable-logo-container-2" onclick="setActiveEditLogo(2, event)" style="position: absolute; top: 47%; left: 71.48%; transform: translate(-50%, -50%); cursor: grab; z-index: 11; display: none; flex-direction: column; align-items: center; justify-content: center; user-select: none; padding: 4px; touch-action: none; box-sizing: border-box !important;">
+                  <span class="tshirt-drag-badge" id="tshirt-back-print-badge" style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; font-weight: 800; background: #0284c7; color: #ffffff; padding: 2px 8px; border-radius: 999px; white-space: nowrap; pointer-events: none; opacity: 1 !important; transition: opacity 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
+                    <i class="fa-solid fa-ruler-combined"></i> 12" × 12" Back Print Area
+                  </span>
+                  <div class="tshirt-print-box-4x4" id="tshirt-print-box-12x12" style="width: 140px; height: 173px; min-width: 140px; min-height: 173px; border: 2px dashed #0284c7; background: rgba(2, 132, 199, 0.08); border-radius: 5px; overflow: hidden !important; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: inset 0 0 8px rgba(0,0,0,0.15); box-sizing: border-box !important;">
+                    <img id="tshirt-canvas-logo-img-2" src="" alt="Uploaded Logo 2" style="display: none; max-width: 100% !important; max-height: 100% !important; object-fit: contain !important; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); image-rendering: -webkit-optimize-contrast; pointer-events: auto; overflow: hidden !important;">
+                  </div>
+                </div>
+
+                <div class="tshirt-draggable-text-container" id="tshirt-draggable-text-container" onclick="setActiveEditLogo('text', event)" style="position: absolute; top: 62%; left: 35%; transform: translate(-50%, -50%); cursor: grab; z-index: 12; display: none; flex-direction: column; align-items: center; justify-content: center; user-select: none; padding: 4px; touch-action: none;">
+                  <span class="tshirt-drag-badge" style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); font-size: 10px; font-weight: 800; background: #e11d48; color: #ffffff; padding: 2px 8px; border-radius: 999px; white-space: nowrap; pointer-events: none; opacity: 1 !important; transition: opacity 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.3);">
+                    <i class="fa-solid fa-font"></i> Drag Custom Text
+                  </span>
+                  <div id="tshirt-canvas-text-display" class="tshirt-canvas-text-display" style="font-size: 16px; font-weight: 800; color: #ffffff; text-shadow: 0 2px 6px rgba(0,0,0,0.9); text-align: center; white-space: pre-wrap; font-family: 'Outfit', sans-serif; cursor: grab;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="canvas-controls-bar" style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 15; background: rgba(15, 23, 42, 0.88); padding: 8px 18px; border-radius: 999px; display: flex; align-items: center; gap: 8px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15); font-size: 12px; color: #e2e8f0; white-space: nowrap;">
+              <span style="font-weight: 700; color: #38bdf8;"><i class="fa-solid fa-arrows-up-down-left-right"></i> Drag Logos & Custom Text Anywhere On T-Shirt</span>
+            </div>
+          </div>
+
+          <!-- Polo T-Shirt Color Thumbnails Slider Strip below Main Image & Live Studio Canvas -->
+          <div class="product-gallery-thumbs-wrapper" style="position: relative; margin-top: 14px; margin-bottom: 15px; display: flex; align-items: center; background: #ffffff; padding: 6px 12px; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+            <button type="button" class="thumb-slider-nav-btn thumb-prev" onclick="scrollTshirtThumbnails(-1)" title="Previous Colors">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="product-gallery-thumbs-container" id="tshirt-gallery-thumbs-container">
+              <!-- Dynamically populated with all Polo T-Shirt color thumbnails -->
+            </div>
+
+            <button type="button" class="thumb-slider-nav-btn thumb-next" onclick="scrollTshirtThumbnails(1)" title="Next Colors">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Product Info & Configurator -->
+        <div class="product-info-col" style="flex: 1.25; min-width: 0;">
+          <h1 class="product-title-main" id="tshirt-product-title-main" style="font-size: 24px; font-weight: 800; line-height: 1.3; margin-bottom: 6px;">CUSTOMIZED OVERSIZED TSHIRT WITH YOUR DESIGN</h1>
+          {% render 'judgeme-preview-badge', product: product %}
+
+          <div class="tshirt-top-price-card" style="background: #f3f4f6; border-radius: 12px; padding: 14px 18px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <strike id="tshirt-top-mrp-num" style="font-size: 16px; color: #9ca3af; font-weight: 600;">₹1,010.00</strike>
+                <strong id="tshirt-top-price-num" style="font-size: 26px; font-weight: 900; color: #111827;">₹899.00</strong>
+                <span id="tshirt-top-save-badge" style="background: #f97316; color: #ffffff; font-size: 12px; font-weight: 900; padding: 4px 8px; border-radius: 6px;">SAVE 11%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tshirt-specs-desc-box" style="margin-bottom: 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+            <strong style="display: block; text-transform: uppercase; font-size: 14px; font-weight: 800; color: #1e272e; margin-bottom: 8px; text-align: center; letter-spacing: 0.5px;">Description</strong>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 14px; font-weight: 600; color: #475569; text-align: center; line-height: 1.8;">
+              <li>✓ Premium 180 GSM Fabric</li>
+              <li>✓ Lightweight &amp; Breathable</li>
+              <li>✓ Relaxed Oversized Fit</li>
+              <li>✓ Perfect for Everyday Wear</li>
+            </ul>
+          </div>
+
+          <!-- Step 1: Color Selection (Strictly 4 Oversized Colors) -->
+          <div class="configurator-box">
+            <div class="config-step">
+              <label class="step-label">1. COLOR: <span id="selected-tshirt-color-label" style="color: var(--primary-teal); font-weight: 800;">WHITE</span></label>
+              <div class="tshirt-color-grid" id="tshirt-color-grid-container" style="display: flex; flex-direction: row; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 10px; margin-top: 10px; padding-bottom: 8px;">
+                <button type="button" class="color-swatch-card active" data-color="White" data-hex="#ffffff" data-fits="polo,oversized,round" onclick="selectTshirtColor('White', '#ffffff', this)">
+                  <span class="swatch-circle" style="background: #ffffff; border: 1px solid #ccc;"></span>
+                  <span class="swatch-name">White</span>
+                </button>
+                <button type="button" class="color-swatch-card" data-color="Black" data-hex="#0f172a" data-fits="polo,oversized,round" onclick="selectTshirtColor('Black', '#0f172a', this)">
+                  <span class="swatch-circle" style="background: #0f172a;"></span>
+                  <span class="swatch-name">Black</span>
+                </button>
+                <button type="button" class="color-swatch-card" data-color="Red" data-hex="#dc2626" data-fits="polo,oversized,round" onclick="selectTshirtColor('Red', '#dc2626', this)">
+                  <span class="swatch-circle" style="background: #dc2626;"></span>
+                  <span class="swatch-name">Red</span>
+                </button>
+                <button type="button" class="color-swatch-card" data-color="Navy Blue" data-hex="#1e3a8a" data-fits="polo,oversized,round" onclick="selectTshirtColor('Navy Blue', '#1e3a8a', this)">
+                  <span class="swatch-circle" style="background: #1e3a8a;"></span>
+                  <span class="swatch-name">Navy Blue</span>
+                </button>
+              </div>
+              <script>
+                (function() {
+                  function syncSwatchesImmediate() {
+                    var activeBtn = document.querySelector('.tshirt-fit-sub-btn.active');
+                    var fit = activeBtn ? (activeBtn.textContent || '').trim() : 'Oversized T-Shirts';
+                    if (typeof window.updateTshirtColorSwatchesForFit === 'function') {
+                      window.updateTshirtColorSwatchesForFit(fit);
+                    }
+                  }
+                  if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', syncSwatchesImmediate);
+                  } else {
+                    syncSwatchesImmediate();
+                  }
+                })();
+              </script>
+            </div>
+
+            <!-- Step 2: Custom Quantity & Size Chart Guide -->
+            <div class="config-step">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;">
+                <label class="step-label" style="margin: 0;">2. QUANTITY: <span id="tshirt-qty-header-label" style="color: var(--primary-teal); font-weight: 800;">CUSTOM QTY</span></label>
+                <button type="button" onclick="toggleSizeChartCard()" style="background: #e0f2fe; color: #0284c7; border: 1px solid #bae6fd; padding: 5px 14px; border-radius: 999px; font-weight: 800; font-size: 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+                  <i class="fa-solid fa-ruler-horizontal"></i> View Size Chart Guide
+                </button>
+              </div>
+
+              <!-- Expandable Size Chart Card -->
+              <div id="size-chart-expand-box" style="display: none; margin-top: 12px; margin-bottom: 15px; background: #ffffff; border: 2px dashed #0284c7; border-radius: 14px; padding: 14px; text-align: center; box-shadow: 0 6px 18px rgba(0,0,0,0.08);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                  <strong id="size-chart-card-title" style="font-size: 14px; font-weight: 800; color: #0f172a;"><i class="fa-solid fa-ruler-combined" style="color: #0284c7;"></i> Oversized T-Shirt Size Chart Guide (Inches)</strong>
+                  <button type="button" onclick="toggleSizeChartCard()" style="background: #fee2e2; color: #ef4444; border: none; padding: 4px 10px; border-radius: 6px; font-weight: 800; font-size: 11px; cursor: pointer;">✕ Close</button>
+                </div>
+                <img id="size-chart-expand-img" src="{{ 'size-chart-oversized.png' | asset_url }}" alt="Oversized Size Chart Guide" style="width: 100%; max-width: 520px; height: auto; border-radius: 10px; display: block; margin: 0 auto; box-shadow: var(--shadow-sm);">
+              </div>
+
+              <!-- Custom Quantity Input Only -->
+              <div class="custom-qty-wrapper-oversized" style="display: flex; align-items: center; gap: 10px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 16px; border-radius: 12px; margin-top: 6px;">
+                <label for="tshirt-custom-qty-input" style="font-weight: 800; font-size: 14px; color: #1e293b; display: flex; align-items: center; gap: 6px; margin: 0;">
+                  <i class="fa-solid fa-pen-to-square" style="color: var(--primary-teal);"></i> Custom Qty:
+                </label>
+                <input type="number" id="tshirt-custom-qty-input" min="1" max="10000" value="1" placeholder="Enter Qty" oninput="handleCustomTshirtQtyInput(this.value)" style="width: 110px; padding: 8px 12px; border-radius: 8px; border: 2px solid var(--primary-teal); font-weight: 800; font-size: 15px; text-align: center; color: var(--dark-main); outline: none; background: #ffffff;">
+                <span style="font-weight: 800; font-size: 14px; color: var(--dark-main);">Pcs</span>
+              </div>
+            </div>
+
+            <!-- Step 3: Logo Upload & Custom Text -->
+            <div class="config-step">
+              <label class="step-label">3. UPLOAD YOUR LOGO / ARTWORK</label>
+              <div class="tshirt-upload-box" onclick="document.getElementById('tshirt-file-input-1').click()" style="border: 2px dashed #cbd5e1; border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; background: #f8fafc; transition: all 0.2s ease; margin-top: 10px;">
+                <i class="fa-solid fa-cloud-arrow-up" style="font-size: 32px; color: var(--primary-teal); margin-bottom: 8px;"></i>
+                <div style="font-size: 14px; font-weight: 700; color: #1e293b;">Click to Upload Logo 1 (Front Print)</div>
+                <div style="font-size: 12px; color: #64748b; margin-top: 4px;">Supports PNG, JPG, SVG, AI, PDF (Max 25MB)</div>
+                <input type="file" id="tshirt-file-input-1" accept="image/*" style="display: none;" onchange="handleTshirtFileUploadNum(1, this)">
+              </div>
+            </div>
+
+            <!-- Step 4: Authorization & Approval (Shown after adding logo in front or back) -->
+            <div class="config-step" id="tshirt-auth-step-box" style="display: none; margin-top: 18px; background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 14px 16px;">
+              <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; user-select: none; font-size: 13px; font-weight: 700; color: #1e293b; line-height: 1.5;">
+                <input type="checkbox" id="tshirt-auth-checkbox" onchange="toggleTshirtAddToCartState()" style="width: 20px; height: 20px; min-width: 20px; min-height: 20px; accent-color: #143d1c; margin-top: 1px; cursor: pointer;">
+                <span>I have authorization to use the design, I have reviewed and approved it.</span>
+              </label>
+            </div>
+
+            <!-- Add to Cart CTA -->
+            <div class="config-step" style="margin-top: 25px;">
+              <button type="button" id="btn-add-tshirt-cart" onclick="addTshirtToCart()" disabled="disabled" style="width: 100%; padding: 16px 24px; background: #94a3b8; color: #ffffff; border: none; border-radius: 999px; font-size: 16px; font-weight: 800; cursor: not-allowed; pointer-events: none; opacity: 0.45; filter: grayscale(0.6); transition: all 0.3s ease;">
+                <i class="fa-solid fa-cart-shopping"></i> Add Custom Oversized T-Shirts to Cart • ₹899.00
+              </button>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Customer Reviews Section -->
+  {% render 'judgeme-review-widget', product: product %}
+</div>
+
+{% schema %}
+{
+  "name": "Oversized T-Shirts",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "In-Built Products Collection"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category_filter",
+      "name": "Category Filter Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Name",
+          "default": "Oversized T-Shirts"
+        },
+        {
+          "type": "text",
+          "id": "filter_tag",
+          "label": "Filter Tag / Keyword",
+          "default": "oversized",
+          "info": "Keyword to filter products by (e.g. oversized, graphic, polo, etc.)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Oversized T-Shirts"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  let currentSingleTshirtSize = 'M';
+  let currentSingleProductData = null;
+
+      window.openTshirtProductStudio = function(cardElem) {
+    if (!cardElem) return;
+    const card = cardElem.closest ? (cardElem.closest('.inbuilt-product-card') || cardElem) : cardElem;
+    const title = card.querySelector('.inbuilt-card-title')?.textContent.trim() || 'Custom T-Shirt';
+    const price = card.querySelector('.inbuilt-price-tag')?.textContent.trim() || '₹799.00';
+    const category = card.querySelector('.inbuilt-card-category')?.textContent.trim() || 'Oversized T-Shirt';
+    const imgSrc = card.querySelector('.inbuilt-card-media img')?.src || card.querySelector('img')?.src || '';
+
+    const productData = { title, price, category, imgSrc };
+    window.currentSingleProductData = productData;
+    if (typeof currentSingleProductData !== 'undefined') {
+      currentSingleProductData = productData;
+    }
+
+    const titleEl = document.getElementById('tshirt-single-title');
+    const breadTitleEl = document.getElementById('tshirt-single-breadcrumb-title');
+    const priceEl = document.getElementById('tshirt-single-price');
+    const catEl = document.getElementById('tshirt-single-category');
+    const imgEl = document.getElementById('tshirt-single-main-img');
+    const qtyEl = document.getElementById('single-tshirt-qty-input');
+
+    if (titleEl) titleEl.textContent = title;
+    if (breadTitleEl) breadTitleEl.textContent = title;
+    if (priceEl) priceEl.textContent = price;
+    if (catEl) catEl.textContent = category;
+    if (imgEl) imgEl.src = imgSrc;
+    if (qtyEl) qtyEl.value = 1;
+
+    const heroBanner = document.querySelector('.stickers-hero-banner');
+    const inbuiltMode = document.getElementById('inbuilt-mode-view');
+    const customMode = document.getElementById('custom-mode-view');
+    const singleView = document.getElementById('single-product-mode-view');
+    const extraSections = document.querySelectorAll('.size-chart-banner-section, .order-process-banner-section, .about-brand-section, .related-products-section');
+
+    if (heroBanner) heroBanner.style.display = 'none';
+    if (inbuiltMode) {
+      inbuiltMode.style.display = 'none';
+      inbuiltMode.classList.remove('active');
+    }
+    if (customMode) {
+      customMode.style.display = 'none';
+      customMode.classList.remove('active');
+    }
+    extraSections.forEach(sec => sec.style.display = 'none');
+
+    if (singleView) {
+      singleView.style.display = 'block';
+      singleView.classList.add('active');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+window.backToTshirtCatalog = function() {
+    const heroBanner = document.querySelector('.stickers-hero-banner');
+    const inbuiltMode = document.getElementById('inbuilt-mode-view');
+    const customMode = document.getElementById('custom-mode-view');
+    const singleView = document.getElementById('single-product-mode-view');
+    const extraSections = document.querySelectorAll('.size-chart-banner-section, .order-process-banner-section, .about-brand-section, .related-products-section');
+
+    if (heroBanner) heroBanner.style.display = 'block';
+    if (singleView) {
+      singleView.style.display = 'none';
+      singleView.classList.remove('active');
+    }
+    if (customMode) {
+      customMode.style.display = 'none';
+      customMode.classList.remove('active');
+    }
+    extraSections.forEach(sec => sec.style.display = 'block');
+
+    if (inbuiltMode) {
+      inbuiltMode.style.display = 'block';
+      inbuiltMode.classList.add('active');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  window.selectSingleSize = function(size, btnElem) {
+    currentSingleTshirtSize = size;
+    document.querySelectorAll('.single-tshirt-size-chip').forEach(b => {
+      b.style.background = '#ffffff';
+      b.style.color = '#334155';
+      b.style.borderColor = '#cbd5e1';
+    });
+    if (btnElem) {
+      btnElem.style.background = '#A8D4B0';
+      btnElem.style.color = '#143d1c';
+      btnElem.style.borderColor = '#A8D4B0';
+    }
+  };
+
+  window.changeSingleTshirtQty = function(delta) {
+    const input = document.getElementById('single-tshirt-qty-input');
+    if (!input) return;
+    let val = parseInt(input.value) || 1;
+    val = Math.max(1, val + delta);
+    input.value = val;
+  };
+
+  window.addSingleTshirtToCart = function() {
+    if (!currentSingleProductData) return;
+    const qty = parseInt(document.getElementById('single-tshirt-qty-input').value) || 1;
+    const p = currentSingleProductData;
+
+    if (typeof handleAddToCart === 'function') {
+      handleAddToCart({
+        id: (document.querySelector('input[name="id"]')?.value || p.variantId || p.variants?.[0]?.id || '52875689427076'),
+        name: `${p.title} (${currentSingleTshirtSize})`,
+        price: p.price,
+        img: p.imgSrc,
+        quantity: qty
+      });
+    }
+  };
+</script>

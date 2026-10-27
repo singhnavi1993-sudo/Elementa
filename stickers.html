@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Die-Cut Vinyl Stickers - Elementa Studio</title>
+  <meta name="description" content="Order high resolution custom die-cut vinyl stickers. Waterproof, UV resistant, dishwasher safe with free online proofing and 2-day turnaround.">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Theme Stylesheet -->
+    <!-- Elementa Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="shortcut icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="assets/main.css">
+</head>
+
+<body>
+
+  <!-- Top Bar & Header Section -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <span><i class="fa-solid fa-phone"></i> +91-9596681555</span>
+        <span><i class="fa-solid fa-envelope"></i> contact@shopelementa.in</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#contact">Contact</a>
+        <span><i class="fa-solid fa-globe"></i> USD $</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="header-main">
+    <div class="container header-container-flex">
+      <div class="header-logo-left">
+        <a href="index.html" class="brand-logo">
+          <img src="assets/elementa-logo.png" alt="Elementa Logo">
+        </a>
+      </div>
+
+      <nav class="header-nav-center">
+        <ul class="nav-links-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="stickers.html" class="active">Stickers</a></li>
+          <li><a href="tshirts.html">T-Shirts</a></li>
+          <li><a href="caps.html">Caps</a></li>
+          <li><a href="gifts.html">Gifts</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions-right">
+        <button class="action-icon-btn" id="search-toggle-btn" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <a href="/account/login" class="action-icon-btn" title="Account / Login"><i class="fa-regular fa-user"></i></a>
+        <a href="javascript:void(0);" class="action-icon-btn" id="header-wishlist-btn" title="Wishlist"><i class="fa-regular fa-heart"></i><span class="badge-count wishlist-badge-count">0</span></a>
+        <button class="action-icon-btn" id="header-cart-btn" title="Shopping Cart"><i class="fa-solid fa-bag-shopping"></i><span class="badge-count cart-badge-count">0</span></button>
+      </div>
+    </div>
+
+    <div class="header-search-overlay" id="search-overlay">
+      <div class="container">
+        <form class="search-overlay-form" onsubmit="event.preventDefault();">
+          <input type="text" placeholder="Search for custom products..." id="search-input">
+          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+          <button type="button" class="close-search-btn" id="close-search-btn">✕</button>
+        </form>
+      </div>
+    </div>
+  </header>  <main class="main-content">
+    <!-- Hero Banner Section (#F5AD72 Background matching T-Shirts Studio layout) -->
+    <section class="stickers-hero-banner" style="background: #F5AD72; padding: 45px 0 35px; text-align: center; color: #1e272e;">
+      <div class="container">
+        <h1 style="font-size: 38px; font-weight: 900; margin-bottom: 8px; color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.12);">Custom Vinyl Stickers Studio</h1>
+        <p style="font-size: 16px; font-weight: 600; opacity: 0.95; margin-bottom: 25px; color: #ffffff;">Shop our Design or Customize your own</p>
+
+        <!-- Mode Selector Bar (#A8D4B0 highlight when active) -->
+        <div class="sticker-mode-bar" style="display: inline-flex; background: rgba(255, 255, 255, 0.95); padding: 6px; border-radius: 999px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); gap: 6px;">
+          <button type="button" class="mode-tab-btn active" id="tab-btn-inbuilt" onclick="switchStickerMode('inbuilt')" style="padding: 12px 28px; border-radius: 9999px; font-weight: 800; font-size: 14px; border: none; cursor: pointer; transition: all 0.3s ease; background: #A8D4B0; color: #143d1c;">
+            <i class="fa-solid fa-boxes-packing"></i> In-Built Products
+          </button>
+          <button type="button" class="mode-tab-btn" id="tab-btn-custom" onclick="switchStickerMode('custom')" style="padding: 12px 28px; border-radius: 9999px; font-weight: 800; font-size: 14px; border: none; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--dark-main);">
+            <i class="fa-solid fa-sliders"></i> Customized Products
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sub-Header Category Filter Bar (Clean Centered Container matching T-Shirts page structure) -->
+    <div class="tshirt-style-subheader-wrapper" style="background: #fdfaf6; padding: 20px 0 10px; text-align: center;">
+      <div class="container">
+        <div class="sticker-mode-bar" style="display: inline-flex; background: #ffffff; padding: 6px; border-radius: 999px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; gap: 6px; flex-wrap: wrap; justify-content: center;">
+          <button type="button" class="mode-tab-btn inbuilt-chip-btn active" onclick="filterInbuiltCategory('all', this)" style="padding: 10px 24px; border-radius: 9999px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s ease; background: #A8D4B0; color: #143d1c;">
+            <i class="fa-solid fa-layer-group"></i> All Collections
+          </button>
+          <button type="button" class="mode-tab-btn inbuilt-chip-btn" onclick="filterInbuiltCategory('dev', this)" style="padding: 10px 24px; border-radius: 9999px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--dark-main);">
+            <i class="fa-solid fa-code"></i> Dev & Tech
+          </button>
+          <button type="button" class="mode-tab-btn inbuilt-chip-btn" onclick="filterInbuiltCategory('anime', this)" style="padding: 10px 24px; border-radius: 9999px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--dark-main);">
+            <i class="fa-solid fa-dragon"></i> Anime & Pop
+          </button>
+          <button type="button" class="mode-tab-btn inbuilt-chip-btn" onclick="filterInbuiltCategory('aesthetic', this)" style="padding: 10px 24px; border-radius: 9999px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--dark-main);">
+            <i class="fa-solid fa-sparkles"></i> Aesthetic & Neon
+          </button>
+          <button type="button" class="mode-tab-btn inbuilt-chip-btn" onclick="filterInbuiltCategory('quotes', this)" style="padding: 10px 24px; border-radius: 9999px; font-weight: 800; font-size: 13px; border: none; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--dark-main);">
+            <i class="fa-solid fa-quote-left"></i> Quotes & Badges
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODE 1: In-Built Products Catalog View -->
+    <div class="sticker-mode-view active" id="inbuilt-mode-view" style="display: block;">
+
+      <!-- Inline Video Showcase Hero Banner (Expanded Left Video Width) -->
+      <section class="sticker-hero-static-banner" style="background: linear-gradient(135deg, #F5AD72 0%, #A8D4B0 100%); padding: 2.2rem 2rem; margin-bottom: 2rem; position: relative; overflow: hidden; border-radius: 0px;">
+        <!-- Ambient Glows -->
+        <div style="position: absolute; top: 15%; left: 15%; width: 22rem; height: 22rem; background: rgba(255, 255, 255, 0.35); border-radius: 9999px; filter: blur(70px); pointer-events: none;"></div>
+        <div style="position: absolute; bottom: 15%; right: 15%; width: 22rem; height: 22rem; background: rgba(255, 255, 255, 0.35); border-radius: 9999px; filter: blur(70px); pointer-events: none;"></div>
+
+        <div class="container" style="max-width: 1440px; width: 100%; margin: 0 auto; padding: 0;">
+          <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 2.5rem; flex-wrap: wrap;">
+            <!-- Left Side: Video Player Card (Expanded to 65% width to cover left space) -->
+            <div style="flex: 1 1 680px; min-width: 320px; max-width: 65%; width: 65%;">
+              <div style="position: relative; width: 100%; height: 380px; min-height: 320px; max-height: 400px; border-radius: 2rem; overflow: hidden; border: 2px solid rgba(255, 255, 255, 0.8); box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.3); background: #0f172a;">
+                <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                  <source src="assets/sticker-product-1-video.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video player.
+                </video>
+                <div style="position: absolute; bottom: 1.25rem; left: 1.25rem; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); border: 1px solid rgba(168, 212, 176, 0.4); color: #ffffff; padding: 0.5rem 1.25rem; border-radius: 9999px; font-size: 0.8125rem; font-weight: 800; display: flex; align-items: center; gap: 0.5rem; z-index: 10;">
+                  <i class="fa-solid fa-circle-play" style="color: #A8D4B0;"></i>
+                  <span>Sticker Showcase Video</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Content Card -->
+            <div style="flex: 1 1 360px; min-width: 280px; max-width: 32%; width: 32%;">
+              <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.9rem; border-radius: 9999px; background: rgba(255, 255, 255, 0.85); border: 1px solid #143d1c; color: #143d1c; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; width: max-content; margin-bottom: 1rem; backdrop-filter: blur(8px);">
+                <i class="fa-solid fa-circle-play" style="color: #143d1c;"></i>
+                <span>IN-BUILT STICKER SHOWCASE</span>
+              </div>
+
+              <h2 style="font-size: 2.1rem; font-weight: 900; color: #0f172a; letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 1rem;">
+                Ready-to-Ship Premium UV DTF Stickers
+              </h2>
+
+              <div style="background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.9); border-radius: 1.25rem; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);">
+                <div>
+                  <span style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase; display: block; margin-bottom: 0.2rem;">Featured Collection:</span>
+                  <strong style="font-size: 1.125rem; font-weight: 800; color: #0f172a; display: block;">UV DTF Waterproof Transfer Sheets</strong>
+                  <span style="font-size: 1.25rem; font-weight: 900; color: #143d1c; display: block; margin-top: 0.2rem;">Starting ₹150</span>
+                </div>
+                <a href="#inbuilt-catalog-grid" style="padding: 0.75rem 1.5rem; border-radius: 0.85rem; background: linear-gradient(135deg, #A8D4B0, #143d1c); color: #ffffff; font-weight: 900; font-size: 0.875rem; text-decoration: none; box-shadow: 0 8px 20px rgba(20, 61, 28, 0.35); display: inline-flex; align-items: center; gap: 0.5rem;">
+                  <span>Browse Collection Below</span>
+                  <i class="fa-solid fa-arrow-down"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+          <!-- Inbuilt Products Catalog Grid -->
+          <div class="inbuilt-products-grid" id="inbuilt-catalog-grid">
+            <!-- Card 1 -->
+            <div class="inbuilt-product-card tilt-card reveal-on-scroll" data-category="dev">
+              <div class="inbuilt-card-media">
+                <span class="inbuilt-badge-tag">BEST SELLER</span>
+                <img src="assets/sticker-paper-cardboard.jpg" alt="Dev & Coder Sticker Pack">
+              </div>
+              <div class="inbuilt-card-body">
+                <span class="inbuilt-card-category">Dev & Tech</span>
+                <h3 class="inbuilt-card-title">DevOps & Coder Sticker Pack</h3>
+                <div class="inbuilt-rating-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  <span>(48 reviews)</span>
+                </div>
+                <div class="inbuilt-pack-selector" data-baseprice="299">
+                  <div class="inbuilt-pack-opt active" onclick="selectInbuiltPack(this, 299)">5 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 499)">10 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 899)">25 Pack</div>
+                </div>
+                <div class="inbuilt-card-footer">
+                  <div class="inbuilt-price-tag">₹<span class="card-price-num">299</span> <strike>₹499</strike></div>
+                  <button type="button" class="inbuilt-btn-add" onclick="addInbuiltCardToCart(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="inbuilt-product-card tilt-card reveal-on-scroll reveal-delay-1" data-category="aesthetic">
+              <div class="inbuilt-card-media">
+                <span class="inbuilt-badge-tag" style="background: var(--accent-orange);">HOT TREND</span>
+                <img src="assets/sticker-transparent-bottle.jpg" alt="Cyberpunk Neon Badge Pack">
+              </div>
+              <div class="inbuilt-card-body">
+                <span class="inbuilt-card-category">Aesthetic & Neon</span>
+                <h3 class="inbuilt-card-title">Cyberpunk Neon Badge Pack</h3>
+                <div class="inbuilt-rating-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  <span>(35 reviews)</span>
+                </div>
+                <div class="inbuilt-pack-selector" data-baseprice="349">
+                  <div class="inbuilt-pack-opt active" onclick="selectInbuiltPack(this, 349)">5 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 599)">10 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 999)">25 Pack</div>
+                </div>
+                <div class="inbuilt-card-footer">
+                  <div class="inbuilt-price-tag">₹<span class="card-price-num">349</span> <strike>₹599</strike></div>
+                  <button type="button" class="inbuilt-btn-add" onclick="addInbuiltCardToCart(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="inbuilt-product-card tilt-card reveal-on-scroll reveal-delay-2" data-category="anime">
+              <div class="inbuilt-card-media">
+                <span class="inbuilt-badge-tag" style="background: #8b5cf6;">NEW ARRIVAL</span>
+                <img src="assets/sticker-paper-hand.jpg" alt="Anime Chibi Hero Collection">
+              </div>
+              <div class="inbuilt-card-body">
+                <span class="inbuilt-card-category">Anime & Pop</span>
+                <h3 class="inbuilt-card-title">Anime Chibi Hero Collection</h3>
+                <div class="inbuilt-rating-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  <span>(62 reviews)</span>
+                </div>
+                <div class="inbuilt-pack-selector" data-baseprice="279">
+                  <div class="inbuilt-pack-opt active" onclick="selectInbuiltPack(this, 279)">5 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 449)">10 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 799)">25 Pack</div>
+                </div>
+                <div class="inbuilt-card-footer">
+                  <div class="inbuilt-price-tag">₹<span class="card-price-num">279</span> <strike>₹450</strike></div>
+                  <button type="button" class="inbuilt-btn-add" onclick="addInbuiltCardToCart(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="inbuilt-product-card tilt-card reveal-on-scroll reveal-delay-3" data-category="aesthetic">
+              <div class="inbuilt-card-media">
+                <span class="inbuilt-badge-tag">POPULAR</span>
+                <img src="assets/sticker-paper-redbox.jpg" alt="Minimalist Botanical Pack">
+              </div>
+              <div class="inbuilt-card-body">
+                <span class="inbuilt-card-category">Aesthetic & Neon</span>
+                <h3 class="inbuilt-card-title">Minimalist Botanical Floral Set</h3>
+                <div class="inbuilt-rating-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                  <span>(29 reviews)</span>
+                </div>
+                <div class="inbuilt-pack-selector" data-baseprice="249">
+                  <div class="inbuilt-pack-opt active" onclick="selectInbuiltPack(this, 249)">5 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 399)">10 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 749)">25 Pack</div>
+                </div>
+                <div class="inbuilt-card-footer">
+                  <div class="inbuilt-price-tag">₹<span class="card-price-num">249</span> <strike>₹399</strike></div>
+                  <button type="button" class="inbuilt-btn-add" onclick="addInbuiltCardToCart(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="inbuilt-product-card tilt-card reveal-on-scroll reveal-delay-1" data-category="quotes">
+              <div class="inbuilt-card-media">
+                <span class="inbuilt-badge-tag" style="background: #ec4899;">MUST HAVE</span>
+                <img src="assets/sticker-paper-hand.jpg" alt="Motivational Hustle Quote Badges">
+              </div>
+              <div class="inbuilt-card-body">
+                <span class="inbuilt-card-category">Quotes & Badges</span>
+                <h3 class="inbuilt-card-title">Motivational Hustle Quote Badges</h3>
+                <div class="inbuilt-rating-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  <span>(41 reviews)</span>
+                </div>
+                <div class="inbuilt-pack-selector" data-baseprice="199">
+                  <div class="inbuilt-pack-opt active" onclick="selectInbuiltPack(this, 199)">5 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 349)">10 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 699)">25 Pack</div>
+                </div>
+                <div class="inbuilt-card-footer">
+                  <div class="inbuilt-price-tag">₹<span class="card-price-num">199</span> <strike>₹349</strike></div>
+                  <button type="button" class="inbuilt-btn-add" onclick="addInbuiltCardToCart(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="inbuilt-product-card tilt-card reveal-on-scroll reveal-delay-2" data-category="quotes">
+              <div class="inbuilt-card-media">
+                <span class="inbuilt-badge-tag" style="background: #06b6d4;">CLASSIC</span>
+                <img src="assets/sticker-paper-cardboard.jpg" alt="Retro Vintage Brand Label Set">
+              </div>
+              <div class="inbuilt-card-body">
+                <span class="inbuilt-card-category">Quotes & Badges</span>
+                <h3 class="inbuilt-card-title">Retro Vintage Brand Label Set</h3>
+                <div class="inbuilt-rating-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                  <span>(19 reviews)</span>
+                </div>
+                <div class="inbuilt-pack-selector" data-baseprice="299">
+                  <div class="inbuilt-pack-opt active" onclick="selectInbuiltPack(this, 299)">5 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 499)">10 Pack</div>
+                  <div class="inbuilt-pack-opt" onclick="selectInbuiltPack(this, 849)">25 Pack</div>
+                </div>
+                <div class="inbuilt-card-footer">
+                  <div class="inbuilt-price-tag">₹<span class="card-price-num">299</span> <strike>₹499</strike></div>
+                  <button type="button" class="inbuilt-btn-add" onclick="addInbuiltCardToCart(this)"><i class="fa-solid fa-cart-shopping"></i> Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODE 2: Customized Products Configurator View -->
+      <div class="sticker-mode-view" id="custom-mode-view" style="display: none;">
+        <section class="product-page-section" style="padding: 20px 0 80px; background: #ffffff;">
+          <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" style="font-size: 14px; color: var(--text-muted); margin-bottom: 25px;">
+              <a href="index.html" style="color: var(--text-muted);">Home</a> <span style="margin: 0 8px;">/</span>
+              <a href="stickers.html" style="color: var(--text-muted);">Stickers Studio</a> <span style="margin: 0 8px;">/</span>
+              <span style="color: var(--dark-main); font-weight: 600;">Custom Die-Cut Vinyl Configurator</span>
+            </nav>
+
+
+          <div class="product-detail-grid">
+            <!-- Left Column: Gallery & Interactive Live Studio Preview -->
+            <div class="product-gallery-col">
+              <!-- Mode Switcher Tabs -->
+              <div class="gallery-view-switcher" style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <button type="button" class="gallery-view-btn active" id="view-btn-lifestyle" onclick="switchGalleryViewMode('lifestyle')">
+                  <i class="fa-solid fa-camera"></i> Lifestyle Photos
+                </button>
+                <button type="button" class="gallery-view-btn" id="view-btn-canvas" onclick="switchGalleryViewMode('canvas')">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Live Studio Canvas
+                </button>
+              </div>
+
+              <div style="display: flex; gap: 16px; align-items: flex-start;">
+                <!-- Visual Image Thumbnails Column (Left Side) -->
+                <div class="sticker-gallery-thumbs-wrapper" id="gallery-dots-container" style="display: flex; flex-direction: column; gap: 10px; width: 64px; flex-shrink: 0; margin-top: 0;">
+                  <div class="sticker-gallery-thumb-btn active" onclick="changeMainImageIndex(0)" style="width: 64px; height: 64px; border-radius: 12px; border: 2px solid #00b894; overflow: hidden; cursor: pointer; background: #ffffff; transition: all 0.2s ease; box-shadow: 0 0 0 2px rgba(0, 184, 148, 0.3);">
+                    <img src="assets/sticker-transparent-bottle.jpg" alt="Thumbnail 1" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                  </div>
+                  <div class="sticker-gallery-thumb-btn" onclick="changeMainImageIndex(1)" style="width: 64px; height: 64px; border-radius: 12px; border: 2px solid #e2e8f0; overflow: hidden; cursor: pointer; background: #ffffff; transition: all 0.2s ease;">
+                    <img src="assets/sticker-transparent-hand-elementa.jpg" alt="Thumbnail 2" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                  </div>
+                  <div class="sticker-gallery-thumb-btn" onclick="changeMainImageIndex(2)" style="width: 64px; height: 64px; border-radius: 12px; border: 2px solid #e2e8f0; overflow: hidden; cursor: pointer; background: #ffffff; transition: all 0.2s ease;">
+                    <img src="assets/sticker-transparent-bamboo-candle.jpg" alt="Thumbnail 3" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                  </div>
+                  <div class="sticker-gallery-thumb-btn" onclick="changeMainImageIndex(3)" style="width: 64px; height: 64px; border-radius: 12px; border: 2px solid #e2e8f0; overflow: hidden; cursor: pointer; background: #ffffff; transition: all 0.2s ease;">
+                    <img src="assets/sticker-vinyl-shapecut-funny.jpg" alt="Thumbnail 4" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                  </div>
+                </div>
+
+                <!-- VIEW 1: Lifestyle Mockup Gallery View (Shown by default) -->
+                <div class="main-image-container sticker-preview-wrapper active" id="sticker-lifestyle-view" style="flex: 1; min-width: 0; display: block;">
+                  <div class="sticker-shine-overlay"></div>
+                  <div class="sticker-transparent-bg-mesh"></div>
+                  <div class="sticker-emboss-shader"></div>
+                  <img id="main-product-img" src="assets/sticker-transparent-bottle.jpg" alt="Custom Stickers">
+                </div>
+              </div>
+
+              <!-- VIEW 2: Interactive Live Studio Canvas View (Shown when toggled or artwork uploaded) -->
+              <div class="sticker-live-canvas-wrapper" id="sticker-canvas-view" style="display: none;">
+                <!-- Particle Beam / Shimmer Ray Layer -->
+                <div class="material-sweep-ray" id="material-sweep-layer"></div>
+                <div class="sticker-shine-overlay"></div>
+
+                <!-- Dimension Callouts -->
+                <div class="dimension-guide dimension-top" id="dimension-top-label">3.0"</div>
+                <div class="dimension-guide dimension-left" id="dimension-left-label">3.0"</div>
+
+                <!-- Studio Stage Backdrop Badge -->
+                <span class="product-badge" id="product-material-badge" style="background: var(--primary-teal); z-index: 10;">CUSTOM STICKERS</span>
+
+                <!-- Die-Cut Sticker Object Container -->
+                <div class="sticker-die-cut-object finish-vinyl shape-circle" id="sticker-die-cut-object">
+                  <!-- Material Surface Texture Shader -->
+                  <div class="sticker-texture-overlay"></div>
+                  <!-- Cut Contour Outer Edge Outline -->
+                  <div class="sticker-cut-contour-line"></div>
+                  
+                  <!-- Artwork / Logo Image Container -->
+                  <div class="sticker-artwork-container" id="sticker-artwork-container">
+                    <img id="sticker-artwork-img" src="assets/elementa-logo.png" alt="Uploaded Artwork Preview">
+                  </div>
+
+                  <!-- Specular Reflection Layer -->
+                  <div class="sticker-specular-sheen"></div>
+                </div>
+
+                <!-- Canvas Control Quick Bar -->
+                <div class="canvas-controls-bar">
+                  <button type="button" class="canvas-control-btn" title="Toggle Grid Background" onclick="toggleCanvasGrid(this)">
+                    <i class="fa-solid fa-table-cells-large"></i> Grid
+                  </button>
+                  <button type="button" class="canvas-control-btn" title="Reset Rotation / Scale" onclick="resetCanvasTransform()">
+                    <i class="fa-solid fa-rotate-right"></i> Reset
+                  </button>
+                  <span class="canvas-status-hint" id="canvas-status-hint"><i class="fa-solid fa-eye"></i> Real-time preview with material physics</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Product Form & Configurator -->
+            <div class="product-info-col">
+              <h1 class="product-title-main" id="product-title-main">Custom Stickers</h1>
+
+              <p class="product-summary-desc" id="product-summary-desc">
+                <strong>Custom Stickers for Every Project and Business</strong><br>
+                Bring your ideas to life with high-quality custom stickers made for both home and commercial use. Whether you are running a business, leveling up your product packaging, organising your kitchen, or personalising your gear, we turn your designs into premium stickers. Upload your artwork, choose your material, and let us handle the rest.
+              </p>
+
+              <!-- Configurator Steps -->
+              <div class="configurator-box">
+                <!-- Step 1: Material / Finish -->
+                <div class="config-step">
+                  <label class="step-label">1. Choose Finish / Material: <span style="font-weight: 500; font-size: 13px; color: var(--accent-orange);">(Click to select)</span></label>
+                  <div class="finish-options-grid">
+                    <button type="button" class="finish-btn" data-finish="Standard Paper" onclick="selectFinish(this)" onmouseenter="triggerHyperTextEffect(this)">
+                      <strong>STANDARD PAPER</strong>
+                    </button>
+                    <button type="button" class="finish-btn" data-finish="Vinyl" onclick="selectFinish(this)" onmouseenter="triggerHyperTextEffect(this)">
+                      <strong>VINYL</strong>
+                    </button>
+                    <button type="button" class="finish-btn" data-finish="Transparent" onclick="selectFinish(this)" onmouseenter="triggerHyperTextEffect(this)">
+                      <strong>TRANSPARENT</strong>
+                    </button>
+                    <button type="button" class="finish-btn" data-finish="UV DTF (transfer stickers)" onclick="selectFinish(this)" onmouseenter="triggerHyperTextEffect(this)">
+                      <strong>UV DTF TRANSFER</strong>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 2: Shape / Sheet Selection -->
+                <div class="config-step" id="step-shape-container">
+                  <label class="step-label" id="step-shape-label">2. SHAPE:</label>
+
+                  <!-- Standard Shapes (Shown for Standard Paper, Vinyl, Transparent) -->
+                  <div class="shape-options-flex" id="standard-shapes-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(105px, 1fr)); gap: 10px;">
+                    <button type="button" class="shape-btn" data-shape="Circle" onclick="selectShape(this)">
+                      <i class="fa-regular fa-circle" style="font-size: 18px; margin-bottom: 4px; display: block; color: var(--primary-teal);"></i>
+                      <strong>CIRCLE</strong>
+                    </button>
+                    <button type="button" class="shape-btn" data-shape="Rectangle" onclick="selectShape(this)">
+                      <i class="fa-regular fa-square" style="font-size: 18px; margin-bottom: 4px; display: block; color: var(--primary-teal);"></i>
+                      <strong>RECTANGLE</strong>
+                    </button>
+                    <button type="button" class="shape-btn" data-shape="Square" onclick="selectShape(this)">
+                      <i class="fa-solid fa-square-full" style="font-size: 18px; margin-bottom: 4px; display: block; color: var(--primary-teal);"></i>
+                      <strong>SQUARE</strong>
+                    </button>
+                    <button type="button" class="shape-btn" data-shape="Oval" onclick="selectShape(this)">
+                      <i class="fa-solid fa-egg" style="font-size: 18px; margin-bottom: 4px; display: block; color: var(--primary-teal);"></i>
+                      <strong>OVAL</strong>
+                    </button>
+                    <button type="button" class="shape-btn" data-shape="Shape Cut Sticker" onclick="selectShape(this)">
+                      <i class="fa-solid fa-scissors" style="font-size: 18px; margin-bottom: 4px; display: block; color: var(--primary-teal);"></i>
+                      <strong>SHAPE CUT</strong>
+                    </button>
+                  </div>
+
+                  <!-- UV DTF Sheet Options (Shown ONLY for UV DTF) -->
+                  <div class="shape-options-flex" id="uvdtf-sheets-grid" style="display: none; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                    <button type="button" class="shape-btn" data-uvsheet="A3" onclick="selectUvSheet('A3', this)">
+                      <i class="fa-solid fa-file-lines" style="font-size: 20px; margin-bottom: 4px; display: block; color: var(--primary-teal);"></i>
+                      <strong>A3 SHEET</strong>
+                    </button>
+                    <button type="button" class="shape-btn" data-uvsheet="A4" onclick="selectUvSheet('A4', this)">
+                      <i class="fa-solid fa-file" style="font-size: 20px; margin-bottom: 4px; display: block; color: var(--primary-teal);"></i>
+                      <strong>A4 SHEET</strong>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step 3: Custom Manual Size -->
+                <div class="config-step">
+                  <label class="step-label">3. SIZE: <span id="size-max-hint-span" style="font-weight: 500; font-size: 13px; color: var(--text-muted);">(Max 16" Length × Max 10" Width)</span></label>
+                  <div class="custom-size-input-wrapper" style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap; background: #f8fafc; padding: 14px 18px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="font-weight: 700; font-size: 14px; color: var(--dark-main);">Length:</span>
+                      <input type="number" id="sticker-length-input" min="0.5" max="16" step="0.5" value="3" oninput="updateCustomSize()" style="width: 85px; padding: 8px 12px; border: 2px solid var(--primary-teal); border-radius: var(--radius-sm); font-weight: 800; font-size: 15px; text-align: center; color: var(--dark-main); outline: none;">
+                      <span style="font-size: 13px; font-weight: 700; color: var(--text-muted);">in</span>
+                    </div>
+                    <span style="font-weight: 800; color: var(--text-muted); font-size: 18px;">✕</span>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="font-weight: 700; font-size: 14px; color: var(--dark-main);">Width:</span>
+                      <input type="number" id="sticker-width-input" min="0.5" max="10" step="0.5" value="3" oninput="if(stickerState.shape==='Square'){this.value=document.getElementById('sticker-length-input').value;} updateCustomSize();" onkeydown="if(stickerState.shape==='Square') event.preventDefault();" onpaste="if(stickerState.shape==='Square') event.preventDefault();" style="width: 85px; padding: 8px 12px; border: 2px solid var(--primary-teal); border-radius: var(--radius-sm); font-weight: 800; font-size: 15px; text-align: center; color: var(--dark-main); outline: none;">
+                      <span style="font-size: 13px; font-weight: 700; color: var(--text-muted);">in</span>
+                      <span id="square-locked-indicator" style="display: none; align-items: center; gap: 4px; font-size: 11px; font-weight: 800; color: #ea580c; background: #fff7ed; border: 1px solid #fed7aa; padding: 3px 8px; border-radius: 6px;">
+                        <i class="fa-solid fa-lock"></i> Auto-matched
+                      </span>
+                    </div>
+                  </div>
+                    <div class="size-presets-quick" style="margin-top: 10px; display: flex; align-items: center; gap: 8px;">
+                      <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Quick picks:</span>
+                      <button type="button" class="size-preset-chip" onclick="setQuickSize(2, 2)">2"x2"</button>
+                      <button type="button" class="size-preset-chip" onclick="setQuickSize(3, 3)">3"x3"</button>
+                      <button type="button" class="size-preset-chip" onclick="setQuickSize(4, 4)">4"x4"</button>
+                      <button type="button" class="size-preset-chip" onclick="setQuickSize(5, 5)">5"x5"</button>
+                    </div>
+
+                    <!-- CALCULATOR: Number of stickers in one sheet -->
+                    <div class="sheet-calculator-card" style="margin-top: 18px; background: #fffdf9; border: 2px solid #ffeaa7; border-radius: var(--radius-sm); padding: 16px; position: relative;">
+                      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
+                        <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 13px; color: var(--dark-main);">
+                          <i class="fa-solid fa-calculator" style="color: var(--accent-orange);"></i>
+                          <span>CALCULATOR: Number of stickers in one sheet</span>
+                        </div>
+                      </div>
+
+                      <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px; background: #ffffff; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid #fef08a;">
+                        <div>
+                          <span style="font-size: 11px; color: var(--text-muted); display: block;">Yield Per Sheet:</span>
+                          <strong id="calc-stickers-per-sheet" style="font-size: 20px; font-weight: 900; color: var(--accent-orange);">17 Stickers per Sheet</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <!-- Step 4: Quantity (Sheets) -->
+                <div class="config-step">
+                  <label class="step-label">4. QUANTITY:</label>
+                  <div class="quantity-sheets-grid" id="quantity-sheets-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;">
+                    <button type="button" class="sheet-qty-btn" data-sheets="1" onclick="selectSheetQty(1, this)">
+                      <strong>1 SHEET</strong>
+                      <span class="total-stickers-tag" data-sheets="1">17 Stickers</span>
+                    </button>
+                    <button type="button" class="sheet-qty-btn" data-sheets="5" onclick="selectSheetQty(5, this)">
+                      <strong>5 SHEETS</strong>
+                      <span class="total-stickers-tag" data-sheets="5">85 Stickers</span>
+                    </button>
+                    <button type="button" class="sheet-qty-btn" data-sheets="10" onclick="selectSheetQty(10, this)">
+                      <strong>10 SHEETS</strong>
+                      <span class="total-stickers-tag" data-sheets="10">170 Stickers</span>
+                    </button>
+                    <button type="button" class="sheet-qty-btn" data-sheets="25" onclick="selectSheetQty(25, this)">
+                      <strong>25 SHEETS</strong>
+                      <span class="total-stickers-tag" data-sheets="25">425 Stickers</span>
+                    </button>
+                    <button type="button" class="sheet-qty-btn" data-sheets="50" onclick="selectSheetQty(50, this)">
+                      <strong>50 SHEETS</strong>
+                      <span class="total-stickers-tag" data-sheets="50">850 Stickers</span>
+                    </button>
+                    <button type="button" class="sheet-qty-btn" data-sheets="100" onclick="selectSheetQty(100, this)">
+                      <strong>100 SHEETS</strong>
+                      <span class="total-stickers-tag" data-sheets="100">1,700 Stickers</span>
+                    </button>
+                  </div>
+
+                  <!-- Manual Custom Sheets Input -->
+                  <div class="custom-sheets-manual-wrapper" style="margin-top: 14px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; background: #f8fafc; padding: 12px 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                    <span style="font-weight: 700; font-size: 14px; color: var(--dark-main);">Or Enter Custom Sheets:</span>
+                    <input type="number" id="manual-sheets-input" min="1" max="10000" placeholder="e.g. 5" oninput="updateManualSheets(this.value)" style="width: 100px; padding: 8px 12px; border: 2px solid var(--primary-teal); border-radius: var(--radius-sm); font-weight: 800; font-size: 15px; text-align: center; color: var(--dark-main); outline: none;">
+                    <span style="font-size: 13px; font-weight: 700; color: var(--primary-teal);" id="manual-sheets-total-stickers">Select sheets above</span>
+                  </div>
+                </div>
+
+                <!-- Step 5: File Upload & Live Artwork Preview Controls -->
+                <div class="config-step">
+                  <label class="step-label">5. Upload Your Artwork:</label>
+                  
+                  <!-- Design Approval Reassurance Banner -->
+                  <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fa-solid fa-circle-check" style="color: var(--primary-teal); font-size: 16px;"></i>
+                    <span style="font-size: 13px; font-weight: 700; color: #15803d;">We’ll Send Design for Approval After Order is Placed/Confirmed</span>
+                  </div>
+                  <div class="artwork-dropzone" id="artwork-dropzone-box" onclick="document.getElementById('artwork-input').click()">
+                    <i class="fa-solid fa-cloud-arrow-up fa-2xl" style="color: var(--primary-teal); margin-bottom: 10px;"></i>
+                    <p style="margin-bottom: 4px;"><strong>Click to upload design</strong> or drag & drop</p>
+                    <span style="font-size: 12px; color: var(--text-muted);">PNG, SVG, AI, PSD, PDF, JPG or JPEG (Max 50MB)</span>
+                    <input type="file" id="artwork-input" accept="image/*,.jpg,.jpeg,.png,.ai,.psd,.pdf,.svg" style="display: none;" onchange="handleFileUpload(this)">
+                  </div>
+
+                  <!-- Uploaded Artwork Card & Fine-Tuning Controls -->
+                  <div class="uploaded-artwork-card" id="uploaded-artwork-card" style="display: none; margin-top: 15px; background: #f0fdf4; border: 2px dashed var(--primary-teal); border-radius: var(--radius-sm); padding: 16px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap;">
+                      <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 54px; height: 54px; border-radius: 8px; border: 1px solid var(--border-color); background: #ffffff; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 4px; box-shadow: var(--shadow-sm);">
+                          <img id="artwork-thumb-preview" src="" alt="Thumb" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        </div>
+                        <div>
+                          <strong id="artwork-file-name" style="font-size: 14px; color: var(--dark-main); display: block;">my-logo.png</strong>
+                          <span id="artwork-file-meta" style="font-size: 12px; color: var(--primary-teal); font-weight: 600;"><i class="fa-solid fa-circle-check"></i> Artwork active on live preview</span>
+                        </div>
+                      </div>
+                      <button type="button" onclick="removeUploadedArtwork()" style="background: #fee2e2; color: #ef4444; border: none; padding: 6px 12px; border-radius: 6px; font-weight: 700; font-size: 12px; display: flex; align-items: center; gap: 5px; cursor: pointer;">
+                        <i class="fa-solid fa-trash-can"></i> Remove Artwork
+                      </button>
+                    </div>
+
+                    <!-- Design Authorization & Approval Checkbox -->
+                    <div style="margin-top: 14px; padding: 12px 14px; background: #ffffff; border: 1.5px solid #bbf7d0; border-radius: 8px; box-shadow: var(--shadow-xs);">
+                      <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13px; font-weight: 700; color: #14532d; line-height: 1.4; margin: 0; user-select: none;">
+                        <input type="checkbox" id="chk-artwork-approval" onchange="toggleArtworkApproval(this)" style="margin-top: 2px; width: 18px; height: 18px; accent-color: var(--primary-teal); cursor: pointer;">
+                        <span>I have authorization to use this design, and I have reviewed and approved it.</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Buy Box & Add to Cart -->
+              <div class="buy-box-container">
+                <div class="price-display-row">
+                  <div>
+                    <span class="price-label">Total Price:</span>
+                    <div class="calculated-price" id="calc-total-price">₹0</div>
+                  </div>
+                  <div class="unit-price-info" id="calc-unit-price">
+                    Please select finish & quantity
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-top: 20px;">
+                  <button class="btn-primary btn-add-sticker-cart" id="btn-add-custom-cart" onclick="addStickerToCart()" disabled="disabled" style="flex: 2; margin-top: 0; transition: all 0.3s ease; opacity: 0.45; cursor: not-allowed; pointer-events: auto; background: #94a3b8; filter: grayscale(0.6);">
+                    <i class="fa-solid fa-hand-pointer"></i> Please Select Options & Upload Artwork Above
+                  </button>
+                  <button type="button" class="btn-wishlist-cta" onclick="addStickerToWishlist()" style="flex: 1;">
+                    <i class="fa-solid fa-heart"></i> Add to Wishlist
+                  </button>
+                </div>
+                
+            </div>
+          </div>
+        </section>
+      <!-- How to Apply 4 Simple Steps Infographic Section Banner (50/50 Image & Video Split - Full Visibility & Padding) -->
+      <section class="how-to-apply-section reveal-on-scroll" style="background: #F5AD72; padding: 32px 0; box-shadow: inset 0 2px 10px rgba(0,0,0,0.05); overflow: hidden;">
+        <div style="text-align: center; width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+          <div class="section-header" style="margin-bottom: 20px;">
+            <span class="section-subtitle" style="background: rgba(255, 255, 255, 0.9); color: #1e272e; padding: 5px 16px; border-radius: 999px; font-weight: 800; display: inline-block; text-transform: uppercase; font-size: 12px;">Application Guide & Video Demo</span>
+            <h2 class="section-title" style="color: #ffffff; text-shadow: 0 2px 8px rgba(0,0,0,0.15); margin-top: 6px; font-size: 28px; font-weight: 900;">How To Apply UV DTF Transfer Stickers</h2>
+          </div>
+
+          <div class="how-to-apply-split-grid" style="display: flex; gap: 20px; align-items: stretch; justify-content: center; width: 100%; margin: 0 auto; flex-wrap: wrap;">
+            <!-- Left 50%: Image -->
+            <div style="flex: 1 1 540px; min-width: 300px; height: 320px; display: flex; overflow: hidden; border-radius: 16px; box-shadow: 0 14px 32px rgba(0,0,0,0.18); background: #ffffff; border: 4px solid #ffffff;">
+              <img src="assets/sticker-uvdtf-how-to-apply-banner.jpg" alt="Steps to Apply UV DTF Transfer Sticker" style="width: 100%; height: 100%; object-fit: contain; display: block; padding: 6px;">
+            </div>
+
+            <!-- Right 50%: Video -->
+            <div style="flex: 1 1 540px; min-width: 300px; height: 320px; display: flex;">
+              <div style="position: relative; width: 100%; height: 100%; border-radius: 16px; overflow: hidden; border: 4px solid #ffffff; box-shadow: 0 14px 32px rgba(0,0,0,0.18); background: #0f172a;">
+                <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                  <source src="assets/sticker-product-1-video.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video player.
+                </video>
+                <div style="position: absolute; bottom: 14px; left: 14px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); color: #ffffff; padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 800; display: flex; align-items: center; gap: 6px; z-index: 10;">
+                  <i class="fa-solid fa-circle-play" style="color: #A8D4B0;"></i>
+                  <span>UV DTF Application Video Demo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Specifications & Guidelines Tabs -->
+      <section class="product-specs-section" style="background: #fdfaf6; padding: 70px 0;">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">Technical Details</span>
+            <h2 class="section-title">Built to Last Anywhere</h2>
+          </div>
+
+          <div class="specs-grid-cards" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+            <div class="spec-card-box">
+              <i class="fa-solid fa-layer-group fa-2xl" style="color: var(--primary-teal); margin-bottom: 20px;"></i>
+              <h3>Premium 6mil Vinyl</h3>
+              <p>Extra thick premium vinyl layer with soft tactile weight. Holds up against friction, scuffs, and daily wear.</p>
+            </div>
+            <div class="spec-card-box">
+              <i class="fa-solid fa-scissors fa-2xl" style="color: var(--accent-orange); margin-bottom: 20px;"></i>
+              <h3>Precision Laser Die-Cut</h3>
+              <p>Cut precisely to your logo's shape with an automatic 1/16" protective white margin or exact full-bleed contour.</p>
+            </div>
+            <div class="spec-card-box">
+              <i class="fa-solid fa-shield-cat fa-2xl" style="color: var(--primary-teal); margin-bottom: 20px;"></i>
+              <h3>Permanent Acrylic Adhesive</h3>
+              <p>Sticks ultra-firmly to metal laptops, hydro flasks, skateboards, car bumpers, glass, and plastic smoothly.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Custom Products -->
+      <section class="product-tabs-section" style="padding: 80px 0; background: #ffffff;">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle">Complete Your Merch</span>
+            <h2 class="section-title">Customers Also Bought</h2>
+          </div>
+
+          <div class="product-grid">
+            <div class="product-card" data-category="tshirts">
+              <div class="product-thumb">
+                <img src="assets/slider-1.png" alt="Custom Print Sweatshirt">
+                <div class="product-overlay-actions">
+                  <button class="btn-icon btn-add-to-cart" title="Add to Cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <button class="btn-icon btn-quick-view" title="Quick View"><i class="fa-regular fa-eye"></i></button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Custom Heavyweight Hoodie</h3>
+                <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="product-price">$38.00</div>
+              </div>
+            </div>
+
+            <div class="product-card" data-category="mugs">
+              <div class="product-thumb">
+                <img src="assets/shop-2_56e2815c-6202-4fa3-80a7-1c0ccfc003f6_600x.jpg" alt="Classic White Mug">
+                <div class="product-overlay-actions">
+                  <button class="btn-icon btn-add-to-cart" title="Add to Cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <button class="btn-icon btn-quick-view" title="Quick View"><i class="fa-regular fa-eye"></i></button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Classic White Mug</h3>
+                <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="product-price">$15.00</div>
+              </div>
+            </div>
+
+            <div class="product-card" data-category="phonecases">
+              <span class="product-badge">HOT</span>
+              <div class="product-thumb">
+                <img src="assets/shop-3_f5efbceb-b04e-4bab-a870-692602478ddd_600x.jpg" alt="Printed Slim Case">
+                <div class="product-overlay-actions">
+                  <button class="btn-icon btn-add-to-cart" title="Add to Cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <button class="btn-icon btn-quick-view" title="Quick View"><i class="fa-regular fa-eye"></i></button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Printed Slim Case</h3>
+                <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="product-price">$18.00</div>
+              </div>
+            </div>
+
+            <div class="product-card" data-category="bags">
+              <div class="product-thumb">
+                <img src="assets/shop-1_b0931ee3-61da-442c-888f-6b1fb80bb02c_600x.jpg" alt="Eco Tote Bag">
+                <div class="product-overlay-actions">
+                  <button class="btn-icon btn-add-to-cart" title="Add to Cart"><i class="fa-solid fa-cart-shopping"></i></button>
+                  <button class="btn-icon btn-quick-view" title="Quick View"><i class="fa-regular fa-eye"></i></button>
+                </div>
+              </div>
+              <div class="product-info">
+                <h3 class="product-name">Eco Tote Bag</h3>
+                <div class="product-rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                <div class="product-price">$12.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="dithered-footer" id="contact" style="--df-accent: #F5AD72; background: #0f172a; color: #f8fafc; border-top: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden;">
+      <style>
+        .dithered-footer { font-family: inherit; }
+        .df-grid-container { max-width: 1200px; margin: 0 auto; padding: 70px 24px 50px; display: grid; grid-template-columns: repeat(1, 1fr); gap: 40px 30px; }
+        @media (min-width: 640px) { .df-grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 992px) { .df-grid-container { grid-template-columns: 1.6fr repeat(3, 1fr); } }
+        .df-brand-title { font-size: 24px; font-weight: 900; color: #ffffff; text-decoration: none; letter-spacing: -0.5px; display: inline-flex; align-items: center; gap: 12px; }
+        .df-tagline { margin-top: 14px; font-size: 14px; line-height: 1.65; color: #94a3b8; max-width: 320px; }
+        .df-newsletter-form { margin-top: 28px; max-width: 360px; }
+        .df-form-label { display: block; font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 10px; letter-spacing: 0.2px; }
+        .df-input-group { display: flex; gap: 10px; }
+        .df-email-input { flex: 1; min-width: 0; height: 44px; padding: 0 16px; border-radius: 10px; border: 1px solid #334155; background: rgba(15, 23, 42, 0.7); color: #ffffff; font-size: 13.5px; outline: none; transition: all 0.25s ease; }
+        .df-email-input:focus { border-color: var(--df-accent, #F5AD72); box-shadow: 0 0 0 3px rgba(245, 173, 114, 0.25); }
+        .df-subscribe-btn { height: 44px; padding: 0 20px; border-radius: 10px; background: var(--df-accent, #F5AD72); color: #0f172a; border: none; font-size: 13.5px; font-weight: 800; cursor: pointer; transition: all 0.25s ease; white-space: nowrap; box-shadow: 0 4px 14px rgba(245, 173, 114, 0.25); }
+        .df-subscribe-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+        .df-nav-title { font-size: 14.5px; font-weight: 800; color: #ffffff; margin-bottom: 18px; letter-spacing: 0.4px; text-transform: uppercase; }
+        .df-nav-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+        .df-nav-link { font-size: 13.5px; color: #94a3b8; text-decoration: none; transition: all 0.2s ease; display: inline-block; }
+        .df-nav-link:hover { color: #ffffff; transform: translateX(3px); }
+        .df-band { position: relative; height: 220px; overflow: hidden; background: #080c14; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .df-field { position: absolute; inset: 0; }
+        .df-field.df-lit { -webkit-mask-image: radial-gradient(circle 210px at var(--df-x, 50%) var(--df-y, 50%), #000 35%, rgba(0,0,0,0.2) 100%); mask-image: radial-gradient(circle 210px at var(--df-x, 50%) var(--df-y, 50%), #000 35%, rgba(0,0,0,0.2) 100%); }
+        .df-dots { position: absolute; top: 0; bottom: 0; left: 0; width: calc(100% + 360px); background: var(--df-accent, #F5AD72); -webkit-mask-image: radial-gradient(circle, #000 0.9px, transparent 1.3px), url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27360%27%20height%3D%27240%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%270%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270.04%27%20stop-color%3D%27%23000%27%2F%3E%3Cstop%20offset%3D%270.96%27%20stop-color%3D%27%23fff%27%2F%3E%3C%2FlinearGradient%3E%3Cfilter%20id%3D%27f%27%20x%3D%270%27%20y%3D%270%27%20width%3D%27100%25%27%20height%3D%27100%25%27%20color-interpolation-filters%3D%27sRGB%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.45%27%20numOctaves%3D%272%27%20seed%3D%277%27%20stitchTiles%3D%27stitch%27%20result%3D%27n%27%2F%3E%3CfeColorMatrix%20in%3D%27n%27%20type%3D%27matrix%27%20values%3D%271%200%200%200%200%201%200%200%200%200%201%200%200%200%200%200%200%200%200%201%27%20result%3D%27ng%27%2F%3E%3CfeComposite%20in%3D%27SourceGraphic%27%20in2%3D%27ng%27%20operator%3D%27arithmetic%27%20k2%3D%270.5%27%20k3%3D%270.5%27%20result%3D%27s%27%2F%3E%3CfeComponentTransfer%20in%3D%27s%27%20result%3D%27t%27%3E%3CfeFuncR%20type%3D%27discrete%27%20tableValues%3D%270%201%27%2F%3E%3C%2FfeComponentTransfer%3E%3CfeColorMatrix%20in%3D%27t%27%20type%3D%27matrix%27%20values%3D%270%200%200%200%201%200%200%200%200%200.5%200%200%200%200%200%201%200%200%200%200%27%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27url%28%23g%29%27%20filter%3D%27url%28%23f%29%27%2F%3E%3C%2Fsvg%3E"); -webkit-mask-size: 4px 4px, 360px 240px; mask-size: 4px 4px, 360px 240px; -webkit-mask-repeat: repeat, repeat-x; mask-repeat: repeat, repeat-x; -webkit-mask-position: 0 0, left bottom; mask-position: 0 0, left bottom; -webkit-mask-composite: source-in; mask-composite: intersect; animation: df-drift 35s linear infinite; }
+        .df-mark { pointer-events: none; position: absolute; bottom: -0.06em; left: 20px; user-select: none; font-size: clamp(4.5rem, 20vw, 12.5rem); font-weight: 900; line-height: 0.8; letter-spacing: -0.06em; color: #080c14; text-transform: uppercase; }
+        @keyframes df-drift { to { transform: translateX(-360px); } }
+        .df-bottom-bar { max-width: 1200px; margin: 0 auto; padding: 24px; display: flex; flex-direction: column; gap: 16px; align-items: center; justify-content: space-between; font-size: 13.5px; color: #94a3b8; }
+        @media (min-width: 640px) { .df-bottom-bar { flex-direction: row; } }
+        .df-social-link { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; color: #94a3b8; transition: all 0.2s ease; background: rgba(255,255,255,0.03); }
+        .df-social-link:hover { color: #ffffff; background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        .df-to-top-btn { display: inline-flex; align-items: center; gap: 6px; background: transparent; border: none; color: #94a3b8; font-size: 13px; font-weight: 700; cursor: pointer; transition: color 0.2s ease; padding: 4px 8px; border-radius: 6px; }
+        .df-to-top-btn:hover { color: #ffffff; background: rgba(255,255,255,0.05); }
+      </style>
+
+      <!-- Top Navigation & Brand Info Grid -->
+      <div class="df-grid-container">
+        <div class="df-brand-col">
+          <a href="index.html" class="df-brand-title">
+            <img src="assets/elementa-logo-white.png" alt="Elementa Logo" style="height: 42px; width: auto; display: block;">
+          </a>
+          <p class="df-tagline">Premier custom merchandise &amp; printing studio providing high definition apparel, promotional gear, and business drinkware.</p>
+
+          <form class="df-newsletter-form" onsubmit="handleFooterSubscribe(event)">
+            <label for="df-email-input" class="df-form-label">Get product updates &amp; 15% off by email</label>
+            <div class="df-input-group">
+              <input id="df-email-input" type="email" placeholder="enter your email..." required class="df-email-input">
+              <button type="submit" id="df-subscribe-btn" class="df-subscribe-btn">Subscribe</button>
+            </div>
+            <p id="df-sub-status" style="margin-top: 8px; font-size: 12.5px; color: #A8D4B0; display: none; font-weight: 600;"></p>
+          </form>
+        </div>
+
+        <div>
+          <p class="df-nav-title">Products</p>
+          <ul class="df-nav-list">
+            <li><a href="tshirts.html" class="df-nav-link">T-Shirts &amp; Apparel</a></li>
+            <li><a href="tshirts.html" class="df-nav-link">Custom Polo T-Shirts</a></li>
+            <li><a href="tshirts.html" class="df-nav-link">Oversized T-Shirts</a></li>
+            <li><a href="stickers.html" class="df-nav-link">UV DTF Stickers</a></li>
+            <li><a href="gifts.html" class="df-nav-link">Executive Corporate Gifts</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="df-nav-title">Resources</p>
+          <ul class="df-nav-list">
+            <li><a href="#calculator" class="df-nav-link">Instant Price Calculator</a></li>
+            <li><a href="stickers.html" class="df-nav-link">Application Guides</a></li>
+            <li><a href="index.html#products" class="df-nav-link">Bulk Order Discounts</a></li>
+            <li><a href="index.html#about" class="df-nav-link">Custom Artwork Specs</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="df-nav-title">Company</p>
+          <ul class="df-nav-list">
+            <li><a href="index.html#about" class="df-nav-link">About Elementa Studio</a></li>
+            <li><a href="index.html#contact" class="df-nav-link">Contact &amp; Support</a></li>
+            <li><a href="#" class="df-nav-link">Privacy Policy</a></li>
+            <li><a href="#" class="df-nav-link">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Interactive Dithered Dot Matrix Band -->
+      <div class="df-band" id="df-interactive-band" aria-hidden="true" onpointermove="handleDitherMove(event)" onpointerleave="handleDitherLeave()">
+        <div id="df-field-container" class="df-field">
+          <div class="df-dots"></div>
+        </div>
+        <p class="df-mark">ELEMENTA</p>
+      </div>
+
+      <!-- Bottom Copyright & Social Bar -->
+      <div style="border-top: 1px solid rgba(255,255,255,0.08);">
+        <div class="df-bottom-bar">
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px;">
+            <p>© 2026 Elementa Studio. Built for fast shipping &amp; premium print quality.</p>
+            <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: #A8D4B0; font-weight: 700; background: rgba(168,212,176,0.1); padding: 3px 10px; border-radius: 999px;">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: #22c55e;"></span>
+              All Systems Operational
+            </span>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="display: flex; gap: 6px;">
+              <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="df-social-link"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="df-social-link"><i class="fa-brands fa-facebook"></i></a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="df-social-link"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://x.com" target="_blank" rel="noopener" aria-label="X (Twitter)" class="df-social-link"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <span style="width: 1px; height: 16px; background: rgba(255,255,255,0.15); margin: 0 4px;"></span>
+            <button type="button" onclick="scrollToTop()" class="df-to-top-btn">
+              Back to top
+              <i class="fa-solid fa-arrow-up" style="font-size: 11px;"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Shopping Cart Drawer Snippet -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 style="font-size: 18px; font-weight: 700; color: #1e272e;">Your Shopping Cart</h3>
+        <button id="close-cart-btn" style="font-size: 20px; color: #636e72;">✕</button>
+      </div>
+      <div class="cart-drawer-body" id="cart-drawer-items"></div>
+      <div class="cart-drawer-footer">
+        <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 16px; margin-bottom: 15px;">
+          <span>Subtotal:</span>
+          <span id="cart-subtotal-price" style="color: #ff5e15;">$0.00</span>
+        </div>
+        <button class="btn-primary" style="width: 100%; text-align: center;" onclick="alert('Proceeding to Checkout!');">Checkout Now</button>
+      </div>
+    </div>
+
+    <script src="assets/main.js"></script>
+
+    <!-- Sticker Mode Switcher & Inbuilt Catalog Interactive Script -->
+    <script>
+      function switchStickerMode(mode) {
+        const inbuiltView = document.getElementById('inbuilt-mode-view');
+        const customView = document.getElementById('custom-mode-view');
+        const btnInbuilt = document.getElementById('tab-btn-inbuilt');
+        const btnCustom = document.getElementById('tab-btn-custom');
+
+        if (!inbuiltView || !customView) return;
+
+        if (mode === 'custom') {
+          inbuiltView.classList.remove('active');
+          inbuiltView.style.display = 'none';
+          customView.classList.add('active');
+          customView.style.display = 'block';
+          if (btnInbuilt) btnInbuilt.classList.remove('active');
+          if (btnCustom) btnCustom.classList.add('active');
+          window.location.hash = 'custom';
+        } else {
+          customView.classList.remove('active');
+          customView.style.display = 'none';
+          inbuiltView.classList.add('active');
+          inbuiltView.style.display = 'block';
+          if (btnCustom) btnCustom.classList.remove('active');
+          if (btnInbuilt) btnInbuilt.classList.add('active');
+          window.location.hash = 'inbuilt';
+        }
+      }
+
+      // Check URL hash on page load (e.g., #custom or #inbuilt)
+      window.addEventListener('DOMContentLoaded', () => {
+        if (window.location.hash === '#custom') {
+          switchStickerMode('custom');
+        } else {
+          switchStickerMode('inbuilt');
+        }
+      });
+
+      // Filter inbuilt catalog by category chip
+      function filterInbuiltCategory(category, btnElement) {
+        document.querySelectorAll('.inbuilt-chip-btn').forEach(btn => btn.classList.remove('active'));
+        if (btnElement) btnElement.classList.add('active');
+
+        const cards = document.querySelectorAll('#inbuilt-catalog-grid .inbuilt-product-card');
+        cards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      // Live search filter in inbuilt catalog
+      function filterInbuiltSearch(query) {
+        const q = query.toLowerCase().trim();
+        const cards = document.querySelectorAll('#inbuilt-catalog-grid .inbuilt-product-card');
+        cards.forEach(card => {
+          const title = card.querySelector('.inbuilt-card-title').textContent.toLowerCase();
+          const category = card.querySelector('.inbuilt-card-category').textContent.toLowerCase();
+          if (title.includes(q) || category.includes(q)) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      // Select pack size chip on ready-made sticker card
+      function selectInbuiltPack(chipElement, price) {
+        const parent = chipElement.closest('.inbuilt-product-card');
+        parent.querySelectorAll('.inbuilt-pack-opt').forEach(opt => opt.classList.remove('active'));
+        chipElement.classList.add('active');
+        parent.querySelector('.card-price-num').textContent = price;
+      }
+
+      // Add Inbuilt Pack to Cart
+      function addInbuiltCardToCart(btnElement) {
+        const card = btnElement.closest('.inbuilt-product-card');
+        const title = card.querySelector('.inbuilt-card-title').textContent;
+        const packSize = card.querySelector('.inbuilt-pack-opt.active').textContent;
+        const priceText = card.querySelector('.card-price-num').textContent;
+        const imgUrl = card.querySelector('.inbuilt-card-media img').src;
+        const priceNum = parseFloat(priceText);
+
+        if (window.CartState && typeof window.CartState.addItem === 'function') {
+          window.CartState.addItem({
+            id: `inbuilt-${Date.now()}`,
+            name: `${title} (${packSize})`,
+            price: priceNum,
+            quantity: 1,
+            image: imgUrl
+          });
+        } else {
+          alert(`Added to Cart: ${title} (${packSize}) - ₹${priceNum}`);
+        }
+      }
+    </script>
+  <!-- Cart & Wishlist Drawer Snippets -->
+  <div class="cart-drawer-overlay" id="cart-drawer-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 style="font-size: 18px; font-weight: 700; color: #1e272e;">Your Shopping Cart</h3>
+      <button id="close-cart-btn" style="font-size: 20px; color: #636e72; background: none; border: none; cursor: pointer;">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="cart-drawer-items"></div>
+    <div class="cart-drawer-footer">
+      <div style="display: flex; justify-content: space-between; font-weight: 700; font-size: 16px; margin-bottom: 15px;">
+        <span>Subtotal:</span>
+        <span id="cart-subtotal-price" style="color: #ff5e15;">₹0</span>
+      </div>
+      <button class="btn-primary" style="width: 100%; text-align: center;" onclick="alert('Proceeding to Checkout!');">Checkout Now</button>
+    </div>
+  </div>
+
+  <div class="cart-drawer-overlay" id="wishlist-drawer-overlay"></div>
+  <div class="cart-drawer" id="wishlist-drawer">
+    <div class="cart-drawer-header">
+      <h3 style="font-size: 18px; font-weight: 700; color: #1e272e;"><i class="fa-solid fa-heart" style="color: #ff4757; margin-right: 6px;"></i> My Saved Wishlist</h3>
+      <button id="close-wishlist-btn" style="font-size: 20px; color: #636e72; background: none; border: none; cursor: pointer;">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="wishlist-drawer-items"></div>
+  </div>
+
+  </body>
+</html>
+

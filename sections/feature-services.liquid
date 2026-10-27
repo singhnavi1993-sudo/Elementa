@@ -1,0 +1,314 @@
+<!-- Redesigned Studio Category Hubs featuring #F5AD72, #A8D4B0, #A2D9F7, #B2B4B3 -->
+<section class="feature-cards-section" id="products">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">explore elementa</span>
+      <h2 class="section-title">choose what you’d like to customize</h2>
+    </div>
+
+    <div class="feature-cards-grid">
+      
+      <!-- Studio Hub 1: #F5AD72 Theme (Stickers) -->
+      <a href="/pages/stickers?mode=custom#custom" class="feature-card tilt-card reveal-on-scroll feature-card-stickers">
+        <div class="feature-card-orb"></div>
+        <div class="feature-card-icon">
+          <i class="fa-solid fa-note-sticky"></i>
+        </div>
+        <h3 class="feature-card-title">Custom Stickers</h3>
+        <p class="feature-card-desc">Standard, Vinyl, Transparent &amp; UV DTF Stickers for every idea</p>
+        <span class="feature-card-btn">
+          Explore Stickers <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+      <!-- Studio Hub 2: #A8D4B0 Theme (T-Shirts) -->
+      <a href="/pages/t-shirts?mode=custom#custom" class="feature-card tilt-card reveal-on-scroll feature-card-tshirts">
+        <div class="feature-card-orb"></div>
+        <div class="feature-card-icon">
+          <i class="fa-solid fa-shirt"></i>
+        </div>
+        <h3 class="feature-card-title">Custom T-Shirts</h3>
+        <p class="feature-card-desc">Oversized, Round-neck &amp; Polo T-Shirts customized your way</p>
+        <span class="feature-card-btn">
+          Shop T-Shirts <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+      <!-- Studio Hub 3: #A2D9F7 Theme (Personalised Gifts) -->
+      <a href="/pages/gifts" class="feature-card tilt-card reveal-on-scroll feature-card-gifts">
+        <div class="feature-card-orb"></div>
+        <div class="feature-card-icon">
+          <i class="fa-solid fa-gift"></i>
+        </div>
+        <h3 class="feature-card-title">Personalised Gifts</h3>
+        <p class="feature-card-desc">personalised gifts with your name, message, design or logo</p>
+        <span class="feature-card-btn">
+          View Gift Sets <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+      <!-- Studio Hub 4: #B2B4B3 Theme (Custom Caps) -->
+      <a href="/products/caps" class="feature-card tilt-card reveal-on-scroll feature-card-caps">
+        <div class="feature-card-orb"></div>
+        <div class="feature-card-icon">
+          <i class="fa-solid fa-hat-cowboy"></i>
+        </div>
+        <h3 class="feature-card-title">Custom Caps</h3>
+        <p class="feature-card-desc">Custom caps with your name, text, design or logo</p>
+        <span class="feature-card-btn">
+          Browse Caps <i class="fa-solid fa-arrow-right"></i>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-cards-section {
+    padding: 90px 0;
+    background: #fdfaf6;
+    position: relative;
+  }
+  .feature-cards-section .container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .feature-cards-section .section-header {
+    text-align: center;
+    margin-bottom: 45px;
+  }
+  .feature-cards-section .section-subtitle {
+    background: rgba(168, 212, 176, 0.3);
+    color: #143d1c;
+    padding: 6px 18px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+  }
+  .feature-cards-section .section-title {
+    color: #0f172a;
+    margin-top: 10px;
+    font-size: 36px;
+    font-weight: 900;
+  }
+  .feature-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    text-decoration: none;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 36px 24px;
+    text-align: center;
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+  }
+  .feature-card:hover {
+    transform: translateY(-6px);
+  }
+  .feature-card-orb {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .feature-card-icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+  .feature-card-title {
+    font-size: 20px;
+    font-weight: 900;
+    color: #0f172a;
+    margin-bottom: 10px;
+  }
+  .feature-card-desc {
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .feature-card-btn {
+    margin-top: auto;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* Color themes for each card */
+  .feature-card-stickers {
+    border: 2px solid #F5AD72;
+    box-shadow: 0 10px 30px rgba(245, 173, 114, 0.15);
+  }
+  .feature-card-stickers .feature-card-orb { background: rgba(245, 173, 114, 0.15); }
+  .feature-card-stickers .feature-card-icon { background: #F5AD72; color: #ffffff; box-shadow: 0 8px 20px rgba(245, 173, 114, 0.35); }
+  .feature-card-stickers .feature-card-btn { background: #F5AD72; color: #ffffff; box-shadow: 0 4px 12px rgba(245, 173, 114, 0.3); }
+
+  .feature-card-tshirts {
+    border: 2px solid #A8D4B0;
+    box-shadow: 0 10px 30px rgba(168, 212, 176, 0.18);
+  }
+  .feature-card-tshirts .feature-card-orb { background: rgba(168, 212, 176, 0.2); }
+  .feature-card-tshirts .feature-card-icon { background: #A8D4B0; color: #143d1c; box-shadow: 0 8px 20px rgba(168, 212, 176, 0.35); }
+  .feature-card-tshirts .feature-card-btn { background: #A8D4B0; color: #143d1c; box-shadow: 0 4px 12px rgba(168, 212, 176, 0.35); }
+
+  .feature-card-gifts {
+    border: 2px solid #A2D9F7;
+    box-shadow: 0 10px 30px rgba(162, 217, 247, 0.2);
+  }
+  .feature-card-gifts .feature-card-orb { background: rgba(162, 217, 247, 0.2); }
+  .feature-card-gifts .feature-card-icon { background: #A2D9F7; color: #0c4a6e; box-shadow: 0 8px 20px rgba(162, 217, 247, 0.4); }
+  .feature-card-gifts .feature-card-btn { background: #A2D9F7; color: #0c4a6e; box-shadow: 0 4px 12px rgba(162, 217, 247, 0.35); }
+
+  .feature-card-caps {
+    border: 2px solid #B2B4B3;
+    box-shadow: 0 10px 30px rgba(178, 180, 179, 0.2);
+  }
+  .feature-card-caps .feature-card-orb { background: rgba(178, 180, 179, 0.2); }
+  .feature-card-caps .feature-card-icon { background: #B2B4B3; color: #1e293b; box-shadow: 0 8px 20px rgba(178, 180, 179, 0.4); }
+  .feature-card-caps .feature-card-btn { background: #B2B4B3; color: #1e293b; box-shadow: 0 4px 12px rgba(178, 180, 179, 0.35); }
+
+  /* Tablet: 2x2 Grid */
+  @media (max-width: 1024px) {
+    .feature-cards-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 20px !important;
+    }
+  }
+
+  /* Mobile: Compact 2x2 Grid (2 cards per row fitting in mobile screen) */
+  @media (max-width: 767px) {
+    .feature-cards-section {
+      padding: 36px 0 42px !important;
+    }
+    .feature-cards-section .container {
+      padding: 0 12px !important;
+    }
+    .feature-cards-section .section-header {
+      margin-bottom: 20px !important;
+    }
+    .feature-cards-section .section-subtitle {
+      font-size: 11px !important;
+      padding: 4px 12px !important;
+    }
+    .feature-cards-section .section-title {
+      font-size: 18px !important;
+      margin-top: 6px !important;
+      line-height: 1.25 !important;
+      letter-spacing: -0.3px !important;
+    }
+    .feature-cards-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 10px !important;
+    }
+    .feature-card {
+      padding: 16px 10px 14px !important;
+      border-radius: 16px !important;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+    }
+    .feature-card-orb {
+      width: 45px !important;
+      height: 45px !important;
+      top: -12px !important;
+      right: -12px !important;
+    }
+    .feature-card-icon {
+      width: 46px !important;
+      height: 46px !important;
+      font-size: 19px !important;
+      margin: 0 auto 10px !important;
+    }
+    .feature-card-title {
+      font-size: 14px !important;
+      font-weight: 800 !important;
+      margin-bottom: 6px !important;
+      line-height: 1.25 !important;
+    }
+    .feature-card-desc {
+      font-size: 11px !important;
+      line-height: 1.35 !important;
+      margin-bottom: 12px !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+      min-height: 30px !important;
+    }
+    .feature-card-btn {
+      padding: 7px 10px !important;
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      border-radius: 999px !important;
+      gap: 4px !important;
+      white-space: nowrap !important;
+    }
+    .feature-card-btn i {
+      font-size: 10px !important;
+    }
+  }
+
+  /* Ultra-Small Mobile Phones (<= 360px) */
+  @media (max-width: 360px) {
+    .feature-cards-grid {
+      gap: 8px !important;
+    }
+    .feature-cards-section .section-title {
+      font-size: 16px !important;
+    }
+    .feature-card {
+      padding: 12px 6px 10px !important;
+      border-radius: 12px !important;
+    }
+    .feature-card-icon {
+      width: 40px !important;
+      height: 40px !important;
+      font-size: 16px !important;
+      margin-bottom: 8px !important;
+    }
+    .feature-card-title {
+      font-size: 12.5px !important;
+    }
+    .feature-card-desc {
+      font-size: 10px !important;
+      min-height: 27px !important;
+      margin-bottom: 8px !important;
+    }
+    .feature-card-btn {
+      padding: 6px 8px !important;
+      font-size: 10px !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Services Block",
+  "settings": [],
+  "presets": [{ "name": "Services Block" }]
+}
+{% endschema %}

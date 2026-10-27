@@ -1,0 +1,482 @@
+<!-- Redesigned Clothesline Hanging Photos Hero Banner -->
+<section class="clothesline-hero-section" id="home" style="position: relative; background: linear-gradient(180deg, #FAF8F5 0%, #F4EFE6 100%); padding: 75px 0 95px; overflow: hidden; text-align: center;">
+
+  <!-- Ambient Floating Radial Glow Orbs -->
+  <div style="position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 700px; height: 350px; background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.12) 0%, rgba(245, 173, 114, 0.08) 50%, rgba(0,0,0,0) 80%); pointer-events: none; filter: blur(60px);"></div>
+
+  <div class="container" style="position: relative; z-index: 10; max-width: 1300px; margin: 0 auto; padding: 0 20px;">
+    
+    <!-- Main Hero Title -->
+    <h1 class="hero-main-title" style="font-size: clamp(34px, 5.5vw, 62px); font-weight: 900; line-height: 1.12; color: #0f172a; margin: 0 auto 20px; max-width: 900px; letter-spacing: -1.5px; text-transform: uppercase;">
+      YOUR IDEAS, <span style="color: #10B981;">MADE TANGIBLE.</span>
+    </h1>
+
+    <!-- Subtitle / Tagline -->
+    <p class="hero-subtitle" style="font-size: 20px; color: #334155; margin: 0 auto 24px; max-width: 750px; line-height: 1.5; font-weight: 700; letter-spacing: -0.3px;">
+      Custom T-shirts, stickers, caps &amp; personalised gifts — made your way.
+    </p>
+
+    <!-- Key Trust Badges -->
+    <div class="hero-trust-badges-row" style="display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0 auto 36px; max-width: 800px;">
+      <span style="background: #ffffff; border: 1px solid #e2e8f0; color: #0f172a; padding: 7px 18px; border-radius: 999px; font-weight: 700; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+        <i class="fa-solid fa-circle-check" style="color: #10B981; font-size: 14px;"></i>
+        <span>Approve Before Print</span>
+      </span>
+      <span style="background: #ffffff; border: 1px solid #e2e8f0; color: #0f172a; padding: 7px 18px; border-radius: 999px; font-weight: 700; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+        <i class="fa-solid fa-truck-fast" style="color: #10B981; font-size: 14px;"></i>
+        <span>Pan India Delivery</span>
+      </span>
+      <span style="background: #ffffff; border: 1px solid #e2e8f0; color: #0f172a; padding: 7px 18px; border-radius: 999px; font-weight: 700; font-size: 13.5px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+        <i class="fa-solid fa-bolt" style="color: #10B981; font-size: 14px;"></i>
+        <span>Dispatch in 3-5 days</span>
+      </span>
+    </div>
+
+    <!-- Main Center CTA Button -->
+    <div class="hero-cta-btn-wrap" style="margin-bottom: 60px;">
+      <a href="#products" style="background: #10B981; color: #ffffff; padding: 16px 42px; border-radius: 999px; font-weight: 900; font-size: 16.5px; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 12px 30px rgba(16, 185, 129, 0.35); transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);" onmouseover="this.style.transform='scale(1.05) translateY(-2px)'; this.style.background='#059669';" onmouseout="this.style.transform='scale(1) translateY(0)'; this.style.background='#10B981';">
+        <span>Explore Catalog</span>
+        <i class="fa-solid fa-arrow-right" style="font-size: 14px;"></i>
+      </a>
+    </div>
+
+    <!-- Hanging Clothesline Thread & Photos Container -->
+    <div class="clothesline-wrapper" style="position: relative; padding-top: 30px; margin-top: 10px;">
+      
+      <!-- SVG Clothesline Curved Thread / String (Positioned BEHIND cards at z-index 2) -->
+      <svg class="clothesline-svg-thread" viewBox="0 0 1200 110" preserveAspectRatio="none" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1200px; height: 100px; pointer-events: none; z-index: 2;">
+        <path d="M 0 14 C 350 70, 850 70, 1200 14" stroke="#334155" stroke-width="2.5" fill="none" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));" />
+      </svg>
+
+      <!-- 4 Hanging Polaroid Cards Row (Positioned IN FRONT at z-index 5) -->
+      <div class="clothesline-cards-row" style="display: flex; justify-content: center; align-items: flex-start; gap: 28px; flex-wrap: wrap; position: relative; z-index: 5;">
+        
+        <!-- Card 1: T-Shirts Page (Single Card Class: cl-card-tshirts) -->
+        <a href="/pages/t-shirts" class="clothesline-card-item cl-card-tshirts" style="flex: 1 1 220px; max-width: 250px; text-decoration: none;">
+          <div class="cl-peg-clip"></div>
+          <div class="cl-card-inner">
+            <div class="cl-photo-box">
+              <img src="{{ 'hero-tshirts-hanger.png' | asset_url }}" alt="Custom T-Shirts Showcase">
+            </div>
+            <div class="cl-card-info" style="text-align: center;">
+              <h3>Custom T-Shirts</h3>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2: Stickers Page (Single Card Class: cl-card-stickers) -->
+        <a href="/pages/stickers" class="clothesline-card-item cl-card-stickers" style="flex: 1 1 220px; max-width: 250px; text-decoration: none;">
+          <div class="cl-peg-clip"></div>
+          <div class="cl-card-inner">
+            <div class="cl-photo-box">
+              <img src="{{ 'hero-stickers-set.png' | asset_url }}" alt="Custom Stickers Showcase">
+            </div>
+            <div class="cl-card-info" style="text-align: center;">
+              <h3>Custom Stickers</h3>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3: Caps Page (Single Card Class: cl-card-caps) -->
+        <a href="/products/caps" class="clothesline-card-item cl-card-caps" style="flex: 1 1 220px; max-width: 250px; text-decoration: none;">
+          <div class="cl-peg-clip"></div>
+          <div class="cl-card-inner">
+            <div class="cl-photo-box">
+              <img src="{{ 'hero-caps-stack.png' | asset_url }}" alt="Custom Caps Showcase">
+            </div>
+            <div class="cl-card-info" style="text-align: center;">
+              <h3>Custom Caps</h3>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 4: Gifts Page (Single Card Class: cl-card-gifts) -->
+        <a href="/pages/gifts" class="clothesline-card-item cl-card-gifts" style="flex: 1 1 220px; max-width: 250px; text-decoration: none;">
+          <div class="cl-peg-clip"></div>
+          <div class="cl-card-inner">
+            <div class="cl-photo-box">
+              <img src="{{ 'hero-gifts-box.jpg' | asset_url }}" alt="Personalised Gifts Showcase">
+            </div>
+            <div class="cl-card-info" style="text-align: center;">
+              <h3>Personalised Gifts</h3>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Base Clothesline Card Styles */
+  .clothesline-card-item {
+    position: relative;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: block;
+    transform-origin: top center;
+  }
+  
+  /* ==========================================================================
+     4 HANGING CARDS CONFIGURATION (Balanced symmetry)
+     ========================================================================== */
+  
+  /* Card 1: T-Shirts & Apparel (Outer Left - 1st Card) */
+  .cl-card-tshirts {
+    transform: rotate(6deg) translateY(14px); /* <-- [CHANGE VALUE HERE] Lower value (e.g. 0px, -4px) moves UP, higher value (e.g. 12px, 20px) moves DOWN */
+  }
+
+  /* Card 2: Stickers (Inner Left - 2nd Card) */
+  .cl-card-stickers {
+    transform: rotate(2deg) translateY(26px);
+  }
+
+  /* Card 3: Custom Caps (Inner Right - 3rd Card) */
+  .cl-card-caps {
+    transform: rotate(-2deg) translateY(26px);
+  }
+
+  /* Card 4: Personalised Gifts (Outer Right - 4th Card) */
+  .cl-card-gifts {
+    transform: rotate(-6deg) translateY(14px); /* <-- [CHANGE VALUE HERE] Lower value (e.g. 0px, -4px) moves UP, higher value (e.g. 12px, 20px) moves DOWN */
+  }
+
+  /* Realistic Peg Clip hanging on thread */
+  .cl-peg-clip {
+    width: 15px;
+    height: 32px;
+    background: linear-gradient(180deg, #34D399 0%, #10B981 60%, #059669 100%);
+    border-radius: 3px;
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  /* Silver Metallic Spring Ring in middle of peg */
+  .cl-peg-clip::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: -2px;
+    right: -2px;
+    height: 4px;
+    background: linear-gradient(90deg, #475569 0%, #F8FAFC 50%, #334155 100%);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  /* Thread Slot Notch on Peg Top */
+  .cl-peg-clip::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 3px;
+    background: #0f172a;
+    border-radius: 1px;
+  }
+
+  /* Polaroid Outer Card Frame */
+  .cl-card-inner {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 12px 12px 18px;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    transition: all 0.35s ease;
+  }
+
+  /* Photo Box Container */
+  .cl-photo-box {
+    width: 100%;
+    height: 175px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cl-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  /* Text Info under Photo */
+  .cl-card-info {
+    margin-top: 14px;
+    text-align: left;
+    padding: 0 4px;
+  }
+  .cl-card-info h3 {
+    font-size: 15.5px;
+    font-weight: 900;
+    color: #0f172a;
+    margin: 0 0 3px;
+    letter-spacing: -0.3px;
+  }
+  .cl-card-info p {
+    font-size: 12px;
+    color: #64748b;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  /* Interactive Hover Physics Animation */
+  .clothesline-card-item:hover {
+    transform: rotate(0deg) translateY(-4px) scale(1.05) !important;
+    z-index: 25 !important;
+  }
+  .clothesline-card-item:hover .cl-card-inner {
+    box-shadow: 0 30px 60px rgba(16, 185, 129, 0.22);
+    border-color: #10B981;
+  }
+  .clothesline-card-item:hover .cl-photo-box img {
+    transform: scale(1.08);
+  }
+  .clothesline-card-item:hover .cl-peg-clip {
+    background: linear-gradient(180deg, #10B981 0%, #059669 100%) !important;
+  }
+
+  /* ==========================================================================
+     ABOVE 1024px RESOLUTION: Desktop Card Vertical Placement
+     Adjust translateY here to move cards higher or lower on desktop screens:
+     - LOWER/NEGATIVE number (e.g. 0px, -4px, -10px) = moves HIGHER / UP
+     - HIGHER number (e.g. 10px, 15px, 22px) = moves LOWER / DOWN
+     ========================================================================== */
+  @media (min-width: 1025px) {
+    /* 1st Card (Outer Left: Custom T-Shirts) */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(1),
+    .cl-card-tshirts {
+      transform: rotate(6deg) translateY(14px); /* <-- [CHANGE VALUE HERE for 1st card] */
+    }
+
+    /* 4th Card (Outer Right: Personalised Gifts) */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(4),
+    .cl-card-gifts {
+      transform: rotate(-6deg) translateY(14px); /* <-- [CHANGE VALUE HERE for 4th card] */
+    }
+  }
+
+  /* ==========================================================================
+     TABLET LANDSCAPE & COMPACT LAPTOPS (1024px to 964px)
+     Curved hanging arc: cards curved in U-shape following thread
+     ========================================================================== */
+  @media (max-width: 1024px) and (min-width: 964px) {
+    .clothesline-wrapper {
+      padding-top: 24px;
+    }
+    .clothesline-cards-row {
+      gap: 14px !important;
+      flex-wrap: nowrap !important;
+    }
+    .clothesline-card-item {
+      flex: 1 1 210px !important;
+      max-width: 235px !important;
+    }
+
+    /* 1st Card (Outer Left: Custom T-Shirts) - Higher up & tilted outward */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(1),
+    .cl-card-tshirts {
+      transform: rotate(5deg) translateY(10px) !important;
+    }
+
+    /* 2nd Card (Inner Left: Custom Stickers) - Lowered to 25px */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(2),
+    .cl-card-stickers {
+      transform: rotate(1.8deg) translateY(25px) !important;
+    }
+
+    /* 3rd Card (Inner Right: Custom Caps) - Lowered to 25px */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(3),
+    .cl-card-caps {
+      transform: rotate(-1.8deg) translateY(25px) !important;
+    }
+
+    /* 4th Card (Outer Right: Personalised Gifts) - Higher up & tilted outward */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(4),
+    .cl-card-gifts {
+      transform: rotate(-5deg) translateY(10px) !important;
+    }
+  }
+
+  /* ==========================================================================
+     TABLETS & IPAD PORTRAIT (963px down to 768px)
+     Curved thread hanging arc: balanced U-shape with proportional card sizes
+     ========================================================================== */
+  @media (max-width: 963px) and (min-width: 768px) {
+    .clothesline-wrapper {
+      padding-top: 22px;
+    }
+    .clothesline-cards-row {
+      gap: 10px !important;
+      flex-wrap: nowrap !important;
+    }
+    .clothesline-card-item {
+      flex: 1 1 165px !important;
+      max-width: 190px !important;
+    }
+    .cl-card-inner {
+      padding: 10px 10px 14px !important;
+      border-radius: 16px !important;
+    }
+    .cl-photo-box {
+      height: 135px !important;
+      border-radius: 10px !important;
+    }
+    .cl-card-info {
+      margin-top: 10px !important;
+    }
+    .cl-card-info h3 {
+      font-size: 13px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+
+    /* 1st Card (Outer Left: Custom T-Shirts) - Higher up & tilted */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(1),
+    .cl-card-tshirts {
+      transform: rotate(5deg) translateY(8px) !important;
+    }
+
+    /* 2nd Card (Inner Left: Custom Stickers) - Lowered into center curve */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(2),
+    .cl-card-stickers {
+      transform: rotate(1.8deg) translateY(22px) !important;
+    }
+
+    /* 3rd Card (Inner Right: Custom Caps) - Lowered into center curve */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(3),
+    .cl-card-caps {
+      transform: rotate(-1.8deg) translateY(22px) !important;
+    }
+
+    /* 4th Card (Outer Right: Personalised Gifts) - Higher up & tilted */
+    .clothesline-cards-row > .clothesline-card-item:nth-child(4),
+    .cl-card-gifts {
+      transform: rotate(-5deg) translateY(8px) !important;
+    }
+  }
+
+  /* Responsive Compact 2x2 Grid for Mobile Phones */
+  @media (max-width: 767px) {
+    .clothesline-hero-section {
+      padding: 24px 0 28px !important;
+    }
+    .hero-main-title {
+      font-size: clamp(20px, 5.2vw, 24px) !important;
+      margin-bottom: 6px !important;
+      letter-spacing: -0.4px !important;
+    }
+    .hero-subtitle {
+      font-size: 12.5px !important;
+      margin-bottom: 12px !important;
+      line-height: 1.35 !important;
+    }
+    .hero-trust-badges-row {
+      margin-bottom: 16px !important;
+      gap: 6px !important;
+    }
+    .hero-trust-badges-row span {
+      padding: 4px 10px !important;
+      font-size: 11px !important;
+      gap: 5px !important;
+    }
+    .hero-cta-btn-wrap {
+      margin-bottom: 18px !important;
+    }
+    .hero-cta-btn-wrap a {
+      padding: 10px 24px !important;
+      font-size: 13.5px !important;
+    }
+
+    .clothesline-svg-thread {
+      display: none !important;
+    }
+    .cl-peg-clip {
+      display: none !important;
+    }
+    .clothesline-wrapper {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+    .clothesline-cards-row {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 8px !important;
+      max-width: 300px !important;
+      margin: 0 auto !important;
+      width: 100% !important;
+    }
+    .clothesline-card-item {
+      flex: none !important;
+      max-width: 100% !important;
+      width: 100% !important;
+      transform: none !important;
+    }
+    .cl-card-inner {
+      padding: 5px 5px 7px !important;
+      border-radius: 12px !important;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08) !important;
+    }
+    .cl-photo-box {
+      height: 80px !important;
+      border-radius: 8px !important;
+    }
+    .cl-card-info {
+      margin-top: 4px !important;
+      padding: 0 2px !important;
+    }
+    .cl-card-info h3 {
+      font-size: 11px !important;
+      font-weight: 800 !important;
+      margin: 0 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      line-height: 1.2 !important;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .hero-main-title {
+      font-size: 18px !important;
+    }
+    .hero-subtitle {
+      font-size: 11.5px !important;
+    }
+    .clothesline-cards-row {
+      gap: 6px !important;
+      max-width: 270px !important;
+    }
+    .cl-photo-box {
+      height: 70px !important;
+    }
+    .cl-card-inner {
+      padding: 4px 4px 6px !important;
+      border-radius: 10px !important;
+    }
+    .cl-card-info h3 {
+      font-size: 10px !important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    { "type": "text", "id": "subtag_1", "label": "Subtag Pill", "default": "PREMIUM CUSTOM MERCHANDISE" },
+    { "type": "text", "id": "title_1", "label": "Headline", "default": "YOUR IDEAS, MADE TANGIBLE." },
+    { "type": "richtext", "id": "desc_1", "label": "Description", "default": "<p>High-definition apparel, waterproof UV DTF transfer stickers, corporate gift sets, and custom caps.</p>" }
+  ],
+  "presets": [{ "name": "Hero Banner" }]
+}
+{% endschema %}
